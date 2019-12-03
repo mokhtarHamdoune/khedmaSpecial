@@ -7,6 +7,10 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use App\Employer;
+use App\Candidate;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -38,6 +42,8 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:employer');
+        $this->middleware('guest:candidate');
     }
 
     /**
@@ -50,8 +56,8 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required', 'string', Rule::in(['employer','candidate'])],
         ]);
     }
 
@@ -61,12 +67,39 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+
+    public function showEmployerRegisterForm()
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        return view('sign_up',["trait_url"=>"/sign_up/employer"]);
+    }
+
+    public function showCandidateRegisterForm()
+    {
+        return view('sign_up',["trait_url"=>"/candidat/create"]);
+    }
+
+    protected function createEmployer(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $employer = Employer::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'role' => $request['role'],
         ]);
+        return redirect()->intended('login/employer');
+    }
+
+    protected function createCandidate(Request $request)
+    {
+        error_log("hello log");
+        // $this->validator($request->all())->validate();
+        $candidate = Candidate::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'role' => $request['role'],
+        ]);
+        return redirect('/');
     }
 }
