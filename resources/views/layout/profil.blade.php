@@ -1,3 +1,6 @@
+@section("head")
+    <link rel="stylesheet" type="text/css" href="{{asset('dashboard/css/style.css')}}" />
+@endsection
 @extends("layout.header_wrapper")
 @section("body")
     <div class="candidate_dashboard_wrapper jb_cover">
@@ -6,7 +9,7 @@
                 <div class="col-lg-3 col-md-12 col-sm-12 col-12">
 
                     <div class="emp_dashboard_sidebar jb_cover">
-                        <img src="dashboard/images/profile.jpg" class="img-responsive" alt="post_img">
+                        <img src="{{asset('dashboard/images/profile.jpg')}}" class="img-responsive" alt="post_img">
                         <div class="emp_web_profile candidate_web_profile jb_cover">
                             <h4>luca wallace</h4>
                             <p>@username</p>
@@ -21,8 +24,8 @@
                         <div class="emp_follow_link jb_cover">
                             <ul class="feedlist">
                                 <li><a href="{{url('/candidat')}}" class="link_active"><i class="fas fa-tachometer-alt"></i> dashboard </a></li>
-                                <li> <a href="{{url('/edit_profile')}}"> <i class="fas fa-edit"></i>edit profile</a></li>
-                                <li><a href="{{url('/cv')}}"><i class="fas fa-file"></i>resume </a></li>
+                                <li> <a href="{{url('/candidat/'.$id.'/edit')}}"> <i class="fas fa-edit"></i>edit profile</a></li>
+                                <li><a href="{{url('/candidat/cv')}}"><i class="fas fa-file"></i>resume </a></li>
                                 <li><a href="{{url('/favorites')}}"><i class="fas fa-heart"></i>favourite</a></li>
                                 <li><a href="{{url('/applied_jobs')}}"><i class="fas fa-check-square"></i>applied job</a></li>
                                 <li><a href="message.html"><i class="fas fa-envelope"></i>message</a></li>
@@ -67,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                @yield("left_content");
+                @yield("left_content")
             </div>
         </div>
     </div>

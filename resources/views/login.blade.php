@@ -8,9 +8,7 @@
                     <div class="login_banner_wrapper">
                         <img src="images/logo.png" alt="logo">
                         <div class="header_btn search_btn facebook_wrap jb_cover">
-
                             <a href="#">login with facebook <i class="fab fa-facebook-f"></i></a>
-
                         </div>
                         <div class="header_btn search_btn google_wrap jb_cover">
 
@@ -21,40 +19,24 @@
                             <h1>OR</h1>
                         </div>
                     </div>
-                    <div class="login_form_wrapper signup_wrapper">
-                        <h2>sign up</h2>
+                    <form class="login_form_wrapper signup_wrapper" action="{{url('/sign_in')}}" mathod="POST" >
+                        @csrf
+                        <h2>Log in</h2>
                             <div class="form-group icon_form comments_form">
 
-                            <input type="text" class="form-control require" name="full_name" placeholder="Full Name*">
+                            <input type="email" class="form-control require" name="email" placeholder="exemple@mail.com">
                             <i class="fas fa-user"></i>
                         </div>
                         <div class="form-group icon_form comments_form">
 
-                            <input type="text" class="form-control require" name="full_name" placeholder="Email Address*">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="form-group icon_form comments_form">
-
-                            <input type="password" class="form-control require" placeholder="Password *">
+                            <input type="password" name="password" class="form-control require" placeholder="Password *">
                             <i class="fas fa-lock"></i>
                         </div>
-                        <div class="login_remember_box">
-                            <label class="control control--checkbox">Remember me
-                                <input type="checkbox">
-                                <span class="control__indicator"></span>
-                            </label>
-                            <a href="#" class="forget_password">
-                                Forgot Password
-                            </a>
-                        </div>
-                        <div class="header_btn search_btn login_btn jb_cover">
-
-                            <a href="#">sign up</a>
-                        </div>
+                        <button type="submit" class="btn jb_cover">Sign up</button>
                         <div class="dont_have_account jb_cover">
                             <p>Don’t have an acount ? <a href="login.html">login</a></p>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

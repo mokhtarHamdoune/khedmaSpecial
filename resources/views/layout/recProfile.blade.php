@@ -1,3 +1,6 @@
+@section("head")
+    <link rel="stylesheet" type="text/css" href="{{asset('dashboard/css/style.css')}}" />
+@endsection
 @extends("layout.header_wrapper")
 @section("body")
 <div class="employe_dashboard_wrapper jb_cover">
