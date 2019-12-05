@@ -6,7 +6,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <div class="login_top_box jb_cover">
                     <div class="login_banner_wrapper">
-                        <img src="images/logo.png" alt="logo">
+                        <img src="{{asset('images/logo.png')}}" alt="logo">
                         <div class="header_btn search_btn facebook_wrap jb_cover">
                             <a href="#">login with facebook <i class="fab fa-facebook-f"></i></a>
                         </div>
