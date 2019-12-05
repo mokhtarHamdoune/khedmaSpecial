@@ -16,7 +16,7 @@ class IsCandidateMiddleWare
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::guard('candidate')->check() && Auth::guard('candidate')->user()->role == "candidate")
+        if(Auth::guard('candidate')->user() && Auth::guard('candidate')->user()->role == "candidate")
         {
             return $next($request);
         }
