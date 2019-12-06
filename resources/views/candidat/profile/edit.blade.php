@@ -1,6 +1,6 @@
 @extends("layout.profil")
 @section("left_content")
-    <form class="col-lg-9 col-md-12 col-sm-12 col-12" method="POST" action ="{{url('/candidat/1')}}">
+    <form class="col-lg-9 col-md-12 col-sm-12 col-12" method="POST" enctype="multipart/form-data" action ="{{url('/candidat/1')}}">
         @csrf
         @method("PUT")
         <div class="row">

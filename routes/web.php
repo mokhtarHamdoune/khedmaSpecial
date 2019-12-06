@@ -28,8 +28,6 @@ Route::get("/about_us",function(){
     return view ('about_us');
 });
 
-Auth::routes();
-
 // Route::get('/login', 'Auth\LoginController@showEmployerLoginForm');
     Route::get('/login', 'Auth\LoginController@showLoginForm');
     Route::get('/sign_up', 'Auth\RegisterController@showRegisterForm');
@@ -37,6 +35,7 @@ Auth::routes();
     // Route::post('/login/employer','Auth\LoginController@employerLogin');
     Route::post('/login','Auth\LoginController@Role')->name('login');
     Route::post('/sign_up','Auth\RegisterController@Role')->name('sign_up');
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 /*
     Route::view('/home', 'home')->middleware('auth');
     Route::view('/employer', 'employer');
@@ -59,7 +58,6 @@ Route::group(['middleware' => 'candidate'], function () {
     Route::view('/cv', 'candidat.cv');
     Route::view('/applied_jobs', 'candidat.applied_jobs');
     Route::view('/edit_profile', 'candidat.edit_profile');
-    Route::view('/dashboard', 'candidat.dashboard');
     //candidats profil and edit profil
     //show the profil
     Route::get('/candidat/{id_candidat}',"CandidatController@show");
@@ -67,16 +65,4 @@ Route::group(['middleware' => 'candidate'], function () {
     Route::get('/candidat/{id_candidat}/edit',"CandidatController@edit");
     //update
     Route::put('/candidat/{id_candidat}',"CandidatController@update");
-
-    // first essay
-    Route::get('/cv',function(){
-        return view ('candidat.cv');
-    });
-    //now add a controller and its method
-    Route::get('/favorites',function(){
-        return view ('candidat.favorites');
-    });
-    Route::get('/applied_jobs',function(){
-        return view ('candidat.applied_jobs');
-    });
 });

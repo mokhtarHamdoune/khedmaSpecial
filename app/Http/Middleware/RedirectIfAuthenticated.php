@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
             return redirect('recreteur.dashboard');
         }
         if ($guard == "candidate" && Auth::guard($guard)->check()) {
-            return redirect('/candidate');
+            return redirect('candidat.dashboard');
         }
         return $next($request);
     }
