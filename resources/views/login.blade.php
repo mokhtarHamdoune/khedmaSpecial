@@ -19,19 +19,25 @@
                             <h1>OR</h1>
                         </div>
                     </div>
-                    <form class="login_form_wrapper signup_wrapper" action="{{url('/sign_in')}}" mathod="POST" >
+                    <form class="login_form_wrapper signup_wrapper" action="{{ route('login') }}" method="POST" >
                         @csrf
                         <h2>Log in</h2>
-                            <div class="form-group icon_form comments_form">
 
+                        <div class="form-row justify-content-around">
+                            <label for="condidat"><input type="radio" name="role" class="form-control role" value="candidate" checked><span style="font-size:1.7em">cadidat</span></label>
+                            <label for="employer"><input type="radio" name="role"  class="form-control role" value="employer"><span style="font-size:1.7em">employer</span></label>
+                        </div>
+
+                        <div class="form-group icon_form comments_form">
                             <input type="email" class="form-control require" name="email" placeholder="exemple@mail.com">
                             <i class="fas fa-user"></i>
                         </div>
-                        <div class="form-group icon_form comments_form">
 
+                        <div class="form-group icon_form comments_form">
                             <input type="password" name="password" class="form-control require" placeholder="Password *">
                             <i class="fas fa-lock"></i>
                         </div>
+
                         <button type="submit" class="btn jb_cover">Sign up</button>
                         <div class="dont_have_account jb_cover">
                             <p>Don’t have an acount ? <a href="login.html">login</a></p>

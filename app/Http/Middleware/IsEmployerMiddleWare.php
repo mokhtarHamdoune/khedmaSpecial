@@ -16,7 +16,7 @@ class IsEmployerMiddleWare
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::guard('employer')->user() && Auth::guard('employer')->user()->role == "employer")
+        if(Auth::guard('employer')->check())
         {
             return $next($request);
         }

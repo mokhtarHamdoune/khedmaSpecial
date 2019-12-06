@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- 
+<!--
 Template Name: JB desks
 Version: 1.0.0
 Author: Webstrot
@@ -217,24 +217,62 @@ Author: Webstrot
                 </div>
                 <!-- .cd-dropdown-wrapper -->
             </header>
-            @guest
+            @auth('employer')
+            <div class="menu_btn_box header_btn jb_cover">
+                <h3>profile details</h3>
+                <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();"><i class="fas fa-sign-in-alt"></i>
+                                 {{ __('Logout') }}
+                             </a>
+                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                 @csrf
+                             </form>
+            </div>
+            @elseauth('candidate')
+            <div class="menu_btn_box jb_cover">
+               <div class="jb_profile_box">
+                   <div class="nice-select" tabindex="0"> <span class="current">
+				   <img src="images/pf.png" alt="img">
+				   <div class="luca_profile_wrapper"><h1><a href="#">Luca Wallace</a></h1>
+				   <p><a href="#">luca@example.com</a></p>
+				   </div></span>
+                      <ul class="list">
+							<li><a href="#"><i class="fas fa-user-edit"></i>account</a>
+							</li>
+							<li><a href="#"><i class="fas fa-cog"></i>Setting</a>
+							</li>
+							<li><a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();"><i class="fas fa-sign-in-alt"></i>
+                                 {{ __('Logout') }}
+                             </a>
+                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                 @csrf
+                             </form>
+							</li>
+					</ul>
+                   </div>
+                </div>
+            </div>
+            @else
             <div class="menu_btn_box header_btn jb_cover">
                 <ul>
                     <li>
-                        <a href="{{url('/sign_up/candidate')}}"><i class="flaticon-man-user"></i> sign up</a>
+                        <a href="{{url('/sign_up')}}"><i class="flaticon-man-user"></i> sign up</a>
                     </li>
                     <li>
                         <a href="{{url('/login')}}"> <i class="flaticon-login"></i> login</a>
                     </li>
                 </ul>
             </div>
-            @endguest
+            @endauth
             <div class="jb_navigation_wrapper">
                 <div class="mainmenu d-xl-block d-lg-block d-md-none d-sm-none d-none">
                     <ul class="main_nav_ul">
                         <li class="has-mega gc_main_navigation">
                             <a href="{{url('/')}}" class="gc_main_navigation {{ Request::is('/') ? 'active_class3' : '' }} ">home</a>
-                        </li>		
+                        </li>
                         <li class="has-mega gc_main_navigation">
                             <a href="{{url('/jobs')}}" class="gc_main_navigation {{ Request::is('jobs') ? 'active_class3' : '' }}">jobs</a>
                         </li>
@@ -244,7 +282,7 @@ Author: Webstrot
                                         <a href="{{url('/candidat')}}"><i class="fas fa-square"></i>candidate<span><i class="fas fa-chevron-right"></i></span></a>
                                     </li>
                                     <li class="parent">
-                                        <a href="{{url('/recreteur')}}"><i class="fas fa-square"></i>company<span><i class="fas fa-chevron-right"></i></span></a>    
+                                        <a href="{{url('/recreteur')}}"><i class="fas fa-square"></i>company<span><i class="fas fa-chevron-right"></i></span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -255,7 +293,7 @@ Author: Webstrot
                                     </li>
                                     <li class="parent">
                                         <a href="blog_category_right_sidebar.html"> <i class="fas fa-square"></i>blog category</a>
-                                    </li>           
+                                    </li>
                                 </ul>
                         </li>
                         <li class="has-mega gc_main_navigation"><a href="{{url('/about_us')}}" class="gc_main_navigation {{ Request::is('about_us') ? 'active_class3' : '' }}">About US</a></li>
@@ -333,7 +371,7 @@ Author: Webstrot
                             <li><a href="#"><i class="fa fa-square"></i>Time & Materials Tracking
 </a></li>
 
-                            <li><a href="#"><i class="fa fa-square"></i>Standards Compliance 
+                            <li><a href="#"><i class="fa fa-square"></i>Standards Compliance
 </a></li>
 
                             <li><a href="#"><i class="fa fa-square"></i>Real Time GPS Tracking
@@ -466,4 +504,4 @@ Author: Webstrot
 
 
 <!-- Mirrored from webstrot.com/html/jbdesk/main_version/main_pages/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Nov 2019 12:01:27 GMT -->
-</html> 
+</html>

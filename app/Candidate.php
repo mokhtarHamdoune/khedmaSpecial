@@ -12,7 +12,7 @@ class Candidate extends Authenticatable
     protected $guard = 'candidate';
 
     protected $fillable = [
-        'name', 'email', 'password', 'role',
+        'name', 'email', 'password',
     ];
 
     protected $hidden = [

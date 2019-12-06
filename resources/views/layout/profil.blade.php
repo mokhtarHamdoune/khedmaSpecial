@@ -24,7 +24,7 @@
                         <div class="emp_follow_link jb_cover">
                             <ul class="feedlist">
                                 <li><a href="{{url('/candidat')}}" class="link_active"><i class="fas fa-tachometer-alt"></i> dashboard </a></li>
-                                <li> <a href="{{url('/candidat/'.$id.'/edit')}}"> <i class="fas fa-edit"></i>edit profile</a></li>
+                                <li> <a href="{{url('/candidat/'.Auth::guard('candidate')->user()->id.'/edit')}}"> <i class="fas fa-edit"></i>edit profile</a></li>
                                 <li><a href="{{url('/candidat/cv')}}"><i class="fas fa-file"></i>resume </a></li>
                                 <li><a href="{{url('/favorites')}}"><i class="fas fa-heart"></i>favourite</a></li>
                                 <li><a href="{{url('/applied_jobs')}}"><i class="fas fa-check-square"></i>applied job</a></li>
@@ -75,4 +75,3 @@
         </div>
     </div>
 @endsection
-                    

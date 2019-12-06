@@ -21,7 +21,7 @@ class RedirectIfAuthenticated
             return redirect('/');
         }
         if ($guard == "employer" && Auth::guard($guard)->check()) {
-            return redirect('/employer');
+            return redirect('recreteur.dashboard');
         }
         if ($guard == "candidate" && Auth::guard($guard)->check()) {
             return redirect('/candidate');

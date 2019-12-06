@@ -1,6 +1,9 @@
 @extends("layout.header_wrapper")
 @section("body")
     <!-- work Wrapper Start -->
+    @if(Auth::guard('candidate')->check())
+        <h1>hello there</h1>
+        @endif
     <div class="iner_abt_wrapper jb_cover">
         <div class="container">
             <div class="row">
@@ -92,8 +95,8 @@
                 <div class="col-lg-6 col-md-12 col-12 col-sm-12">
                     <div class="jb_heading_wraper left_jb_jeading">
 
-                        <h3>We Iusto Creative Digital 
-Agency, We Provide 
+                        <h3>We Iusto Creative Digital
+Agency, We Provide
 Professional Web Page.</h3>
 
                     </div>
@@ -293,5 +296,5 @@ Professional Web Page.</h3>
         </div>
     </div>
     <!-- job rivew wrapper end-->
-    
+
 @endsection

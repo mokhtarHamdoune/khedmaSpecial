@@ -56,8 +56,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role' => ['required', 'string', Rule::in(['employer','candidate'])],
+            'password' => ['required', 'string', 'min:8'],
         ]);
     }
 
@@ -68,14 +67,19 @@ class RegisterController extends Controller
      * @return \App\User
      */
 
-    public function showEmployerRegisterForm()
+    public function Role(Request $request)
     {
-        return view('sign_up',["trait_url"=>"/sign_up/employer"]);
+        if($request['role']=="employer")
+        return $this->createEmployer($request);
+        elseif($request['role']=="candidate")
+        return $this->createCandidate($request);
+        else
+        return view('/');
     }
 
-    public function showCandidateRegisterForm()
+    public function showRegisterForm()
     {
-        return view('sign_up',["trait_url"=>"/candidat/create"]);
+        return view('sign_up');
     }
 
     protected function createEmployer(Request $request)
@@ -85,20 +89,17 @@ class RegisterController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
-            'role' => $request['role'],
         ]);
-        return redirect()->intended('login/employer');
+        return redirect('/');
     }
 
     protected function createCandidate(Request $request)
     {
-        error_log("hello log");
-        // $this->validator($request->all())->validate();
+        $this->validator($request->all())->validate();
         $candidate = Candidate::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
-            'role' => $request['role'],
         ]);
         return redirect('/');
     }

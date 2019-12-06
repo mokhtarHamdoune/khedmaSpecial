@@ -42,7 +42,17 @@ class LoginController extends Controller
         $this->middleware('guest:candidate')->except('logout');
     }
 
-    public function showEmployerLoginForm()
+    public function Role(Request $request)
+    {
+        if($request['role']=="employer")
+        return $this->employerLogin($request);
+        elseif($request['role']=="candidate")
+        return $this->candidateLogin($request);
+        else
+        return view('/');
+    }
+
+    public function showLoginForm()
     {
         return view('login');
     }
@@ -51,27 +61,20 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             'email'   => 'required|email',
-            'password' => 'required|min:6',
-            'role' => Rule::in(['employer'])
+            'password' => 'required|min:6'
         ]);
 
         if (Auth::guard('employer')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-            return redirect()->intended('/employer');
+            return redirect()->intended('/recreteur');
         }
         return back()->withInput($request->only('email', 'remember'));
-    }
-
-    public function showCandidateLoginForm()
-    {
-        return view('login');
     }
 
     public function candidateLogin(Request $request)
     {
         $this->validate($request, [
             'email'   => 'required|email',
-            'password' => 'required|min:6',
-            'role' => Rule::in(['candidate'])
+            'password' => 'required|min:6'
         ]);
 
         if (Auth::guard('candidate')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {

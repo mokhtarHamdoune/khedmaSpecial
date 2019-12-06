@@ -15,10 +15,9 @@ class CreateCandidatesTable extends Migration
     {
         Schema::create('candidates', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('role');
             $table->rememberToken();
             $table->timestamps();
         });
