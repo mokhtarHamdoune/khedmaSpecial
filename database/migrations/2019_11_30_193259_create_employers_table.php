@@ -18,6 +18,15 @@ class CreateEmployersTable extends Migration
             $table->string('name')->nullable();
             $table->string('email')->unique();
             $table->string('password');
+            $table->string("civilite")->nullable();
+            $table->string("telephone")->nullable();
+            $table->string("fonction")->nullable();
+            $table->string("google")->nullable();
+            $table->string("facebook")->nullable();
+            $table->string("twitter")->nullable();
+            $table->string("linkedin")->nullable();
+            $table->string("cantact_email")->nullable();
+            $table->string("image")->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

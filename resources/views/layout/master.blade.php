@@ -217,7 +217,7 @@ Author: Webstrot
                 </div>
                 <!-- .cd-dropdown-wrapper -->
             </header>
-            @auth('employer')edit_profile
+            @auth('employer')
             <div class="menu_btn_box header_btn jb_cover">
                 <h3>profile details</h3>
                 <a href="{{ route('logout') }}"

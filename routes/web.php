@@ -52,7 +52,7 @@ Route::group(['middleware' => 'employer'], function () {
     Route::view('/post_job', 'recruteur.post_job');
 
     Route::post('/post_job','RecruteurController@postNewJob');
-    Route::post('/edit_profile_recruteur','Auth\LoginController@showLoginForm')->name('edit_profile_recruteur');
+    Route::post('/edit_profile_recruteur','RecruteurController@uploadImage')->name('edit_profile_recruteur');
 });
 
 Route::group(['middleware' => 'candidate'], function () {

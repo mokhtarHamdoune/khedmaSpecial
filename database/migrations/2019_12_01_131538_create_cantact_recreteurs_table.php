@@ -25,7 +25,8 @@ class CreateCantactRecreteursTable extends Migration
             $table->string("facebook")->nullable();
             $table->string("twitter")->nullable();
             $table->string("linkedin")->nullable();
-            $table->string("verif_email")->nullable();
+            $table->string("cantact_email")->nullable();
+            $table->string("image")->nullable();
             $table->timestamps();
         });
     }
