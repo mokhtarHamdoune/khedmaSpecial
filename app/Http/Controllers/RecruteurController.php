@@ -24,16 +24,16 @@ class RecruteurController extends Controller
             }
             else
             {
-                $fileNameToStore = "noimage.jpg"; //default image
+                $fileNameToStore = "noimage.jpg"; //default image khas nzidha f dossier
             }
             $id = Auth::guard('employer')->user()->id;
             $user = Employer::find($id);
-            File::delete(app_path('public/storage/profile_images/'.$user->image));
+            File::delete(public_path().'/storage/profile_images/'.$user->image);
             $user->image = $fileNameToStore;
             $user->save();
-            return redirect('/');
+            return redirect()->back();
         }
-        return redirect('/');
+        return redirect()->back();;
     }
 
     public function postNewJob(Request $request)
