@@ -15,19 +15,20 @@ class CreateOffresTable extends Migration
     {
         Schema::create('offres', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string("title");
             $table->string("intitule");
             $table->string("type");
             $table->string("domaine");
-            $table->string("diplome");
-            $table->string("anneesExperience");
-            $table->string("discription");
+            $table->string("diplome")->nullable();
+            $table->string("anneesExperience")->nullable();
+            $table->string("description");
             $table->string("lieuTravaille");
-            $table->string("competence");
+            $table->string("competence")->nullable();
             $table->string("remuniration");
             $table->date("date_depot");
             $table->boolean("status");
             $table->date("date_prevue");
-            $table->date("duree_stage");
+            $table->date("duree_stage")->nullable();
             $table->timestamps();
         });
     }

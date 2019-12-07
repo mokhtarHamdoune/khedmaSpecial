@@ -21,6 +21,11 @@ class CreateCantactRecreteursTable extends Migration
             $table->string("prenom");
             $table->string("telephone");
             $table->string("fonction");
+            $table->string("google")->nullable();
+            $table->string("facebook")->nullable();
+            $table->string("twitter")->nullable();
+            $table->string("linkedin")->nullable();
+            $table->string("verif_email")->nullable();
             $table->timestamps();
         });
     }

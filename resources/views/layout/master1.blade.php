@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- 
+<!--
 Template Name: JB desks
 Version: 1.0.0
 Author: webstrot
@@ -273,7 +273,7 @@ Author: webstrot
                 <ul class="main_nav_ul menu_2_ul">
                     <li class="has-mega gc_main_navigation">
                         <a href="{{url('/')}}" class="gc_main_navigation {{ Request::is('/') ? 'active_class3' : '' }} ">home</a>
-                    </li>		
+                    </li>
                     <li class="has-mega gc_main_navigation">
                         <a href="{{url('/jobs')}}" class="gc_main_navigation {{ Request::is('jobs') ? 'active_class3' : '' }}">jobs</a>
                     </li>
@@ -283,7 +283,7 @@ Author: webstrot
                                     <a href="{{url('/candidat')}}"><i class="fas fa-square"></i>candidate<span><i class="fas fa-chevron-right"></i></span></a>
                                 </li>
                                 <li class="parent">
-                                    <a href="{{url('/recreteur')}}"><i class="fas fa-square"></i>company<span><i class="fas fa-chevron-right"></i></span></a>    
+                                    <a href="{{url('/recruteur')}}"><i class="fas fa-square"></i>company<span><i class="fas fa-chevron-right"></i></span></a>
                                 </li>
                             </ul>
                         </li>
@@ -294,7 +294,7 @@ Author: webstrot
                                 </li>
                                 <li class="parent">
                                     <a href="blog_category_right_sidebar.html"> <i class="fas fa-square"></i>blog category</a>
-                                </li>           
+                                </li>
                             </ul>
                     </li>
                     <li class="has-mega gc_main_navigation"><a href="{{url('/about_us')}}" class="gc_main_navigation {{ Request::is('about_us') ? 'active_class3' : '' }}">About US</a></li>
@@ -355,7 +355,7 @@ Author: webstrot
                             <li><a href="#"><i class="fa fa-square"></i>Time & Materials Tracking
 </a></li>
 
-                            <li><a href="#"><i class="fa fa-square"></i>Standards Compliance 
+                            <li><a href="#"><i class="fa fa-square"></i>Standards Compliance
 </a></li>
 
                             <li><a href="#"><i class="fa fa-square"></i>Real Time GPS Tracking
@@ -488,4 +488,4 @@ Author: webstrot
 
 
 <!-- Mirrored from webstrot.com/html/jbdesk/main_version/main_pages/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Nov 2019 12:01:27 GMT -->
-</html> 
+</html>

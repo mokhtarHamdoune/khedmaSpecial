@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Test;
+use App\Employer;
+use App\offre;
+use App\Candidate;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -14,7 +17,9 @@ class TestController extends Controller
      */
     public function index()
     {
-        //
+        $candidate = Candidate::find(1);
+        $candidate->offre()->syncWithoutDetaching(Offre::find(2));
+        return view('/welcome');
     }
 
     /**

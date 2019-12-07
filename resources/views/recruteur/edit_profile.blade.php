@@ -4,6 +4,8 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="job_listing_left_fullwidth jb_cover">
+                <form method="POST" action="{{route('edit_profile_recruteur')}}" enctype="multipart/form-data">
+                    @csrf
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="jp_job_post_side_img">
@@ -229,12 +231,12 @@
                             <span class="control__indicator"></span>
                         </label>
                         <div class="header_btn search_btn jb_cover">
-
-                            <a href="#">save changes</a>
+                            <button type="submit" class="btn-custom">save changes</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </form>
             </div>
         </div>
     </div>

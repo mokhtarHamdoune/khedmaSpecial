@@ -18,7 +18,6 @@ Route::get('/jobs',function(){
     return view ('jobs');
 });
 
-
 //contact_us
 Route::get("/contact_us",function(){
     return view ('contact_us');
@@ -27,12 +26,9 @@ Route::get("/contact_us",function(){
 Route::get("/about_us",function(){
     return view ('about_us');
 });
-
-// Route::get('/login', 'Auth\LoginController@showEmployerLoginForm');
+//sign in and up
     Route::get('/login', 'Auth\LoginController@showLoginForm');
     Route::get('/sign_up', 'Auth\RegisterController@showRegisterForm');
-
-    // Route::post('/login/employer','Auth\LoginController@employerLogin');
     Route::post('/login','Auth\LoginController@Role')->name('login');
     Route::post('/sign_up','Auth\RegisterController@Role')->name('sign_up');
     Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
@@ -45,12 +41,18 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //restrict access
 Route::group(['middleware' => 'employer'], function () {
-    Route::view('/recreteur', 'recreteur.dashboard');
-    Route::view('/edit_profile', 'recreteur.edit_profile');
-    Route::view('/company_page', 'recreteur.companyPage');
-    Route::view('/company_applications', 'recreteur.companyApp');
-    Route::view('/manage_jobs', 'recreteur.manage_jobs');
-    Route::view('/post_jobe', 'recreteur.post_job');
+    Route::get('/recruteur', function(){
+        $user= App\Offre::find(2);
+        return view('recruteur.dashboard', ['offres'=>$user->candidate]);
+    });
+    Route::view('/edit_profile_recruteur', 'recruteur.edit_profile');
+    Route::view('/company_page', 'recruteur.companyPage');
+    Route::view('/company_applications', 'recruteur.companyApp');
+    Route::view('/manage_jobs', 'recruteur.manage_jobs');
+    Route::view('/post_job', 'recruteur.post_job');
+
+    Route::post('/post_job','RecruteurController@postNewJob');
+    Route::post('/edit_profile_recruteur','Auth\LoginController@showLoginForm')->name('edit_profile_recruteur');
 });
 
 Route::group(['middleware' => 'candidate'], function () {
@@ -66,3 +68,5 @@ Route::group(['middleware' => 'candidate'], function () {
     //update
     Route::put('/candidat/{id_candidat}',"CandidatController@update");
 });
+
+Route::get('/save','TestController@index');

@@ -90,7 +90,7 @@ class RegisterController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        return redirect('/');
+        return redirect('login');
     }
 
     protected function createCandidate(Request $request)

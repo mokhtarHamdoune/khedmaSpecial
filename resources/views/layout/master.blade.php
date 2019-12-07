@@ -217,7 +217,7 @@ Author: Webstrot
                 </div>
                 <!-- .cd-dropdown-wrapper -->
             </header>
-            @auth('employer')
+            @auth('employer')edit_profile
             <div class="menu_btn_box header_btn jb_cover">
                 <h3>profile details</h3>
                 <a href="{{ route('logout') }}"
@@ -282,7 +282,7 @@ Author: Webstrot
                                         <a href="{{url('/candidat')}}"><i class="fas fa-square"></i>candidate<span><i class="fas fa-chevron-right"></i></span></a>
                                     </li>
                                     <li class="parent">
-                                        <a href="{{url('/recreteur')}}"><i class="fas fa-square"></i>company<span><i class="fas fa-chevron-right"></i></span></a>
+                                        <a href="{{url('/recruteur')}}"><i class="fas fa-square"></i>company<span><i class="fas fa-chevron-right"></i></span></a>
                                     </li>
                                 </ul>
                             </li>

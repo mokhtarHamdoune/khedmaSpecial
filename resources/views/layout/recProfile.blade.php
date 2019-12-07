@@ -22,8 +22,8 @@
                     </div>
                     <div class="emp_follow_link jb_cover">
                         <ul class="feedlist">
-                            <li><a href="{{url('/recreteur')}}"><i class="fas fa-tachometer-alt"></i> dashboard </a></li>
-                            <li><a href="{{url('/edit_profile_recreteur')}}"> <i class="fas fa-edit"></i>edit profile</a></li>
+                            <li><a href="{{url('/recruteur')}}"><i class="fas fa-tachometer-alt"></i> dashboard </a></li>
+                            <li><a href="{{url('/edit_profile_recruteur')}}"> <i class="fas fa-edit"></i>edit profile</a></li>
                             <li><a href="{{url('/company_page')}}"><i class="fas fa-file"></i>company page </a></li>
                             <li><a href="{{url('/manage_jobs')}}"><i class="fas fa-suitcase"></i>manage jobs</a></li>
                             <li><a href="{{url('/company_applications')}}" class="link_active"><i class="fas fa-mobile"></i>applications</a></li>

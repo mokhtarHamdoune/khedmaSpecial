@@ -9,6 +9,8 @@
                 </div>
                 <div class="job_overview_header jb_cover">
                     <div class="row">
+                        <form action="{{ route('new_job') }}" method="POST" >
+                            @csrf
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="select_box">
                                 <label>job category</label>
@@ -69,6 +71,7 @@
                                 </select><div class="nice-select" tabindex="0"><span class="current">1 year experience</span><ul class="list"><li data-value="1 year experience" class="option selected">1 year experience</li><li data-value="2 year experience" class="option">2 year experience</li><li data-value="3 year experience" class="option"> 3 year experience</li><li data-value="4 year experience" class="option">4 year experience</li></ul></div>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -123,7 +126,7 @@
                             <input type="number" onchange="transform('fontSize', this.value)" value="3" max="7" min="1">
 
                         </div>
-                    
+
                         <select onchange="transform('fontName', this.value)" style="display: none;">
                             <option disabled="">Font</option>
                             <option value="Times New Roman">Times</option>

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Offre;
 
 class Employer extends Authenticatable
 {
@@ -18,4 +19,9 @@ class Employer extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function offre()
+    {
+        return $this->hasMany(Offre::class);
+    }
 }

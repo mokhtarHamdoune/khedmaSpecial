@@ -3,6 +3,8 @@
     <div class="col-lg-9 col-md-12 col-sm-12 col-12">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+            <form action="{{url('/edit_profile_recruteur')}}" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="job_listing_left_fullwidth jb_cover">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -10,9 +12,14 @@
                                 <img src="{{asset('dashboard/images/pf1.jpg')}}" alt="post_img">
                             </div>
                             <div class="jp_job_post_right_cont edit_profile_wrapper">
-                                <h4>HELLo or PNG 500x500px Thumbnail</h4>
+                                <h4>JPEG or PNG 500x500px Thumbnail</h4>
                                 <div class="width_50">
-                                    <div class="dropify-wrapper" style="height: 100px;"><div class="dropify-message"> <p></p></div><div class="dropify-loader"></div><div class="dropify-errors-container"><ul></ul></div><input type="file" id="input-file-now-custom-233" class="dropify" data-height="90"><button type="button" class="dropify-clear">Remove</button><div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message"></p></div></div></div></div><span class="post_photo">browse image</span>
+                                    <div class="dropify-wrapper" style="height: 100px;">
+                                        <div class="dropify-message"> <p></p></div>
+                                        <div class="dropify-loader"></div>
+                                        <div class="dropify-errors-container">
+                                            <ul></ul></div>
+                                        <input type="file" id="input-file-now-custom-233" name="image" class="dropify" data-height="90"><button type="button" class="dropify-clear">Remove</button><div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message"></p></div></div></div></div><span class="post_photo">browse image</span>
                                 </div>
                             </div>
                         </div>
@@ -41,14 +48,14 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="contect_form3">
                                 <label>Website</label>
-                                <input type="email" name="email" placeholder="www.webstrot.com">
+                                <input type="email" name="website" placeholder="www.webstrot.com">
                             </div>
                         </div>
 
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="select_box">
                                 <label>job description</label>
-                                <select style="display: none;">
+                                <select name="job_description" style="display: none;">
                                     <option>it &amp; computer</option>
                                     <option>marketing</option>
                                     <option>mechanical</option>
@@ -60,19 +67,19 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="contect_form3">
                                 <label>address</label>
-                                <input type="text" name="name" placeholder="124/A Kalani Bagh">
+                                <input type="text" name="address" placeholder="124/A Kalani Bagh">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="contect_form3">
                                 <label>country</label>
-                                <input type="text" name="name" placeholder="India">
+                                <input type="text" name="country" placeholder="India">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="select_box">
                                 <label>state</label>
-                                <select style="display: none;">
+                                <select name="state" style="display: none;">
                                     <option>Madhya pradesh</option>
                                     <option>uttar pradesh</option>
                                     <option>himachal pradesh</option>
@@ -84,13 +91,13 @@
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="contect_form3">
                                 <label>city</label>
-                                <input type="text" name="name" placeholder="Dewas">
+                                <input type="text" name="city" placeholder="Dewas">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="select_box">
                                 <label>zip code</label>
-                                <select style="display: none;">
+                                <select name="zip_code" style="display: none;">
                                     <option>455001</option>
                                     <option>422501</option>
                                     <option>45310</option>
@@ -113,31 +120,25 @@
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>google</label>
-                                            <input type="email" name="email" placeholder="https://google.com/webstrot">
+                                            <input type="email" name="gmail" placeholder="https://google.com/webstrot">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>facebook</label>
-                                            <input type="email" name="email" placeholder="https://www.facebook.com/webstrot">
+                                            <input type="email" name="facebook" placeholder="https://www.facebook.com/webstrot">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>twitter</label>
-                                            <input type="email" name="email" placeholder="https://www.twitter.com/webstrot">
+                                            <input type="email" name="twitter" placeholder="https://www.twitter.com/webstrot">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>linkedin</label>
-                                            <input type="email" name="email" placeholder="https://www.linkedin.com/webstrot">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                                        <div class="header_btn search_btn jb_cover">
-
-                                            <a href="#">add more</a>
+                                            <input type="email" name="linkedin" placeholder="https://www.linkedin.com/webstrot">
                                         </div>
                                     </div>
                                 </div>
@@ -156,25 +157,25 @@
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>verification email</label>
-                                            <input type="email" name="email" placeholder="webstrot@example.com">
+                                            <input type="email" name="verification_email" placeholder="webstrot@example.com">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>current pasword</label>
-                                            <input type="password" name="password" placeholder="*************">
+                                            <input type="password" name="current_password" placeholder="*************">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>new pasword</label>
-                                            <input type="password" name="password" placeholder="*************">
+                                            <input type="password" name="new_password" placeholder="*************">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label> repeat new pasword</label>
-                                            <input type="password" name="password" placeholder="*************">
+                                            <input type="password" name="new_password_confirm" placeholder="*************">
                                         </div>
                                     </div>
                                 </div>
@@ -190,12 +191,13 @@
                                 <span class="control__indicator"></span>
                             </label>
                             <div class="header_btn search_btn jb_cover">
-                                <a href="#">save changes</a>
+                                <a>save changes</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 </div>
+            </form>
             </div>
         </div>
     </div>
