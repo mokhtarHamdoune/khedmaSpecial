@@ -16,7 +16,22 @@
                             <h4>JPEG or PNG 500x500px Thumbnail</h4>
 
                             <div class="width_50">
-                                <div class="dropify-wrapper" style="height: 100px;"><div class="dropify-message"> <p></p></div><div class="dropify-loader"></div><div class="dropify-errors-container"><ul></ul></div><input type="file" id="input-file-now-custom-233" name="image" class="dropify" data-height="90"><button type="button" class="dropify-clear">Remove</button><div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message"></p></div></div></div></div><span class="post_photo">browse image</span>
+                                <div class="dropify-wrapper" style="height: 100px;">
+                                    <div class="dropify-message"> <p></p></div>
+                                    <div class="dropify-loader"></div>
+                                    <div class="dropify-errors-container"><ul></ul></div>
+                                    <input type="file" id="input-file-now-custom-233" name="image" class="dropify" data-height="90">
+                                    <button type="button" class="dropify-clear">Remove</button>
+                                </div>
+                                <div class="dropify-preview">
+                                    <span class="dropify-render"></span>
+                                    <div class="dropify-infos">
+                                        <div class="dropify-infos-inner">
+                                            <p class="dropify-infos-message"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <span class="post_photo">browse image</span>
                             </div>
                         </div>
                     </div>

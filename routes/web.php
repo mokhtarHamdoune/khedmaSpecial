@@ -52,7 +52,7 @@ Route::group(['middleware' => 'employer'], function () {
     Route::view('/post_job', 'recruteur.post_job');
 
     Route::post('/post_job','RecruteurController@postNewJob');
-    Route::post('/edit_profile_recruteur','RecruteurController@uploadImage')->name('edit_profile_recruteur');
+    Route::post('/edit_profile_recruteur','RecruteurController@test')->name('edit_profile_recruteur');
 });
 
 Route::group(['middleware' => 'candidate'], function () {
@@ -69,4 +69,4 @@ Route::group(['middleware' => 'candidate'], function () {
     Route::put('/candidat/{id_candidat}',"CandidatController@update");
 });
 
-Route::get('/save','TestController@index');
+Route::get('/save','RecruteurController@profile');
