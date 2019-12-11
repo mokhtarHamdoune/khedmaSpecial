@@ -218,9 +218,19 @@ Author: Webstrot
                 <!-- .cd-dropdown-wrapper -->
             </header>
             @auth('employer')
-            <div class="menu_btn_box header_btn jb_cover">
-                <h3>profile details</h3>
-                <a href="{{ route('logout') }}"
+            <div class="menu_btn_box jb_cover">
+               <div class="jb_profile_box">
+                   <div class="nice-select" tabindex="0"> <span class="current">
+				   <img src="images/cmp1.png" alt="img">
+				   <div class="luca_profile_wrapper"><h1><a href="#">I'am an Employer</a></h1>
+				   <p><a href="#">luca@example.com</a></p>
+				   </div></span>
+                      <ul class="list">
+							<li><a href="#"><i class="fas fa-user-edit"></i>account</a>
+							</li>
+							<li><a href="#"><i class="fas fa-cog"></i>Setting</a>
+							</li>
+							<li><a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();"><i class="fas fa-sign-in-alt"></i>
                                  {{ __('Logout') }}
@@ -228,13 +238,17 @@ Author: Webstrot
                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                  @csrf
                              </form>
+							</li>
+					</ul>
+                   </div>
+                </div>
             </div>
             @elseauth('candidate')
             <div class="menu_btn_box jb_cover">
                <div class="jb_profile_box">
                    <div class="nice-select" tabindex="0"> <span class="current">
 				   <img src="images/pf.png" alt="img">
-				   <div class="luca_profile_wrapper"><h1><a href="#">Luca Wallace</a></h1>
+				   <div class="luca_profile_wrapper"><h1><a href="#">I'm a Candidate</a></h1>
 				   <p><a href="#">luca@example.com</a></p>
 				   </div></span>
                       <ul class="list">
