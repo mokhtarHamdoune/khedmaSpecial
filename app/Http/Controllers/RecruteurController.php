@@ -18,8 +18,8 @@ class RecruteurController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'min:8'],
+            'name' => ['string', 'max:255'],
+            'password' => ['string', 'min:8'],
         ]);
     }
 
@@ -43,7 +43,7 @@ class RecruteurController extends Controller
         image::uploadImage($id, "employer", $request);
         $user->save();
         }
-        return view('test', ['candidat' => $user]);
+        return redirect()->back();
     }
 
     public function test(Request $request){

@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Candidate;
 use App\Employer;
+use Illuminate\Support\Facades\File;
 
 class imageController extends Controller
 {
-    public function getUser($role){
+    public static function getUser($id, $role){
         if($role == "employer"){
             $user = Employer::find($id);
         }
@@ -19,9 +20,9 @@ class imageController extends Controller
         return $user;
     }
 
-    public function uploadImage($id, $role,Request $request){
+    public static function uploadImage($id, $role,Request $request){
 
-        $user = $this->getUser($role);
+        $user = imageController::getUser($id, $role);
         if($request->image)
             {
                 $fileNameWithExt = $request->file('image')->getClientOriginalName();
@@ -34,22 +35,22 @@ class imageController extends Controller
             {
                 $fileNameToStore = "noimage.jpg"; //default image khas nzidha f dossier
             }
-            $this->deleteProfileImage($user->id, $role);
+            imageController::deleteProfileImage($user->id, $role);
             $user->image = $fileNameToStore;
             $user->save();
     }
 
-    public function deleteProfileImage($id, $role){
+    public static function deleteProfileImage($id, $role){
 
-        $user = $this->getUser($role);
+        $user = imageController::getUser($id, $role);
         if($user->image != "noimage.jpg")
         File::delete(public_path().'/storage/profile_images/'.$user->image);
     }
 
-    public function replaceWithDefault($id, $role){
+    public static function replaceWithDefault($id, $role){
 
-        $user = $this->getUser($role);
-        $this->deleteProfileImage($user->id, $role);
+        $user = imageController::getUser($id, $role);
+        imageController::deleteProfileImage($user->id, $role);
         $user->image = "noimage.jpg";
         $user->save();
     }

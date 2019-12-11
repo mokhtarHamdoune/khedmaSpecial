@@ -19,24 +19,41 @@
                             <h1>OR</h1>
                         </div>
                     </div>
+
                     <form class="login_form_wrapper signup_wrapper" method="POST" action="{{ route('sign_up') }}">
                         @csrf
                         <h2>sign up</h2>
-                            <div class="form-row justify-content-around">
-                                <label for="condidat"><input type="radio" name="role" class="form-control role" value="candidate" checked><span style="font-size:1.7em">cadidat</span></label>
-                                <label for="employer"><input type="radio" name="role"  class="form-control role" value="employer"><span style="font-size:1.7em">employer</span></label>
-                            </div>
-                            <div class="form-group icon_form comments_form">
-                                <input type="text" class="form-control require" name="name" placeholder="Full Name*">
-                                <i class="fas fa-user"></i>
-                            </div>
-                        <div class="form-group icon_form comments_form">
+                        <div class="form-row justify-content-around">
+                            <label for="condidat"><input type="radio" name="role" class="form-control role" value="candidate" checked><span style="font-size:1.7em">cadidat</span></label>
+                            <label for="employer"><input type="radio" name="role"  class="form-control role" value="employer"><span style="font-size:1.7em">employer</span></label>
+                        </div>
 
+                        <div class="form-group icon_form comments_form">
+                            <input type="text" class="form-control require" name="name" placeholder="Full Name*">
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <i class="fas fa-user"></i>
+                        </div>
+
+                        <div class="form-group icon_form comments_form">
                             <input type="email" class="form-control require" name="email" placeholder="Email Address*">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="form-group icon_form comments_form">
                             <input type="password" name="password" class="form-control require" placeholder="Password *">
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             <i class="fas fa-lock"></i>
                         </div>
                         <div class="login_remember_box">
