@@ -22,9 +22,18 @@
                     <form class="login_form_wrapper signup_wrapper" action="{{ route('login') }}" method="POST" >
                         @csrf
                         <h2>Log in</h2>
+                        @if (session('user'))
+                            <div class="alert alert-warning">
+                                <span class="" role="alert">
+                                    <strong>
+                                        {{ session('user') }}
+                                    </strong>
+                                </span>
+                            </div>
+                        @endif
 
                         <div class="form-row justify-content-around">
-                            <label for="condidat"><input type="radio" name="role" class="form-control role" value="candidate" checked><span style="font-size:1.7em">cadidat</span></label>
+                            <label for="candidat"><input type="radio" name="role" class="form-control role" value="candidate" checked><span style="font-size:1.7em">cadidat</span></label>
                             <label for="employer"><input type="radio" name="role"  class="form-control role" value="employer"><span style="font-size:1.7em">employer</span></label>
                             @error('role')
                                 <span class="invalid-feedback" role="alert">
@@ -34,7 +43,7 @@
                         </div>
 
                         <div class="form-group icon_form comments_form">
-                            <input type="email" class="form-control require" name="email" placeholder="exemple@mail.com">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror require" name="email" placeholder="exemple@mail.com" value="{{old('email')}}">
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -44,7 +53,7 @@
                         </div>
 
                         <div class="form-group icon_form comments_form">
-                            <input type="password" name="password" class="form-control require" placeholder="Password *">
+                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror require" placeholder="Password *">
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

@@ -48,12 +48,11 @@ class RecruteurController extends Controller
 
     public function test(Request $request){
 
-        if(Auth::guard('employer')->check()){
-        $id = Auth::guard('employer')->user()->id;
-        $user = Employer::find($id);
-        image::uploadImage($id, "employer", $request);
-        }
-        return view('test', ['candidat' => $user]);
+        $user = Candidate::find(1);
+        $user->offre()->syncWithoutDetaching([1,2,3]);
+
+        $user = Candidate::find(1)->offre;
+        return view('test', ['offres' => $user]);
     }
 
     public function postNewJob(Request $request)

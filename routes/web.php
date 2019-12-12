@@ -69,4 +69,4 @@ Route::group(['middleware' => 'candidate'], function () {
     Route::put('/candidat/{id_candidat}',"CandidatController@update");
 });
 
-Route::get('/save','RecruteurController@profile');
+Route::get('/save','RecruteurController@test');

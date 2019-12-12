@@ -67,7 +67,7 @@ class LoginController extends Controller
         if (Auth::guard('employer')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
             return redirect()->intended('/recruteur');
         }
-        return back()->withInput($request->only('email', 'remember'));
+        return back()->withInput($request->only('email', 'remember'))->with(['user' => 'no account found with the provided email and password']);
     }
 
     public function candidateLogin(Request $request)

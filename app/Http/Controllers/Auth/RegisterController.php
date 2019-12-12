@@ -11,6 +11,7 @@ use Illuminate\Validation\Rule;
 use App\Employer;
 use App\Candidate;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 
 class RegisterController extends Controller
 {
@@ -85,12 +86,19 @@ class RegisterController extends Controller
     protected function createEmployer(Request $request)
     {
         $this->validator($request->all())->validate();
+        try{
         $employer = Employer::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-
+        }
+        catch (QueryException $e){
+            $error_code = $e->errorInfo[1];
+            if($error_code == 1062){
+                return back()->with(['error' => 'email is already in use, please try another']);
+            }
+        }
         return redirect('login');
     }
 

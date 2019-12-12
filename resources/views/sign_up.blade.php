@@ -23,6 +23,17 @@
                     <form class="login_form_wrapper signup_wrapper" method="POST" action="{{ route('sign_up') }}">
                         @csrf
                         <h2>sign up</h2>
+
+                        @if (session('error'))
+                            <div class="alert alert-warning">
+                                <span class="" role="alert">
+                                    <strong>
+                                        {{ session('error') }}
+                                    </strong>
+                                </span>
+                            </div>
+                        @endif
+
                         <div class="form-row justify-content-around">
                             <label for="condidat"><input type="radio" name="role" class="form-control role" value="candidate" checked><span style="font-size:1.7em">cadidat</span></label>
                             <label for="employer"><input type="radio" name="role"  class="form-control role" value="employer"><span style="font-size:1.7em">employer</span></label>
