@@ -10,8 +10,9 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\Employer;
 use App\Candidate;
+use App\Cv;
 use Illuminate\Http\Request;
-
+use Auth;
 class RegisterController extends Controller
 {
     /*
@@ -32,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -96,12 +97,16 @@ class RegisterController extends Controller
 
     protected function createCandidate(Request $request)
     {
+        
         $this->validator($request->all())->validate();
         $candidate = Candidate::create([
-            'name' => $request['name'],
+            'userName' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        return redirect('/');
+        
+        if (Auth::guard('candidate')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect()->intended('/');
+        }
     }
 }

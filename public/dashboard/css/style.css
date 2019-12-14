@@ -1394,6 +1394,9 @@ a:hover {
 	float:left;
 	width:100px;
 }
+.jp_job_post_side_img img{
+    width:92px;
+}
 .jp_job_post_right_cont{
 	float:left;
 	width:calc(100% - 100px);
@@ -1575,7 +1578,7 @@ a:hover {
 }
 .jp_listing_left_bottom_sidebar_social_wrapper li{
 	float:left;
-	margin-left:10px;
+	margin-left:0px;
 }
 .jp_listing_left_bottom_sidebar_social_wrapper{
 	text-align:center;
@@ -1895,13 +1898,14 @@ a:hover {
 .width_50{
 	margin-top:10px;
 	width:170px;
-	height:40px;
+	height:48px;
 	line-height:40px;
 	position:relative;
 }
 .width_50 .dropify-wrapper{
+    top:-5px;
 	width:170px;
-	height:40px !important;
+	height:48px !important;
 	line-height:40px;
 	background: #ff3366;
     color: #fff;
@@ -1910,7 +1914,8 @@ a:hover {
    border-radius: 0;
 	border:0;
 	text-align:center;
-	text-transform:capitalize;
+    text-transform:capitalize;
+    padding:0px;
 }
 .word_file{
 	font-size:13px;
@@ -1949,7 +1954,7 @@ a:hover {
 	font-size:18px;
 }
 .width_50 .dropify-wrapper .dropify-clear{
-	top:-7px; right:47px;
+	top:-4px; right:47px;
 }
 .contect_form3 {
     width: 100%;
@@ -2120,14 +2125,15 @@ a:hover {
 	color:#333;
 	padding:30px 0;
 }
+.delete_jb_form label{
+    margin-bottom: 0px;
+}
 .delete_jb_form input{
 	background:#fff;
-	border:0;
 	float:left; width:100%;
-	padding:10px 0;
+	padding:5px 5px;
 	margin-bottom:30px;
-	padding-top:30px;
-	border-bottom:1px solid #e2e2e2;
+	border:1px solid #e2e2e2;
 }
 .applt_pop_btn{
 	float:left;
@@ -2174,8 +2180,6 @@ a:hover {
 }
 .category_wrapper .delete_jb_form input{
 	font-size:16px;
-	padding:0;
-	padding-bottom:7px;
 	color:#797979;
 	margin-bottom:0;
 }
@@ -2191,8 +2195,7 @@ a:hover {
 	height: auto;
 	width:100%;
     resize: auto;
-	border:0;
-	border-bottom:1px solid #e2e2e2;
+    border:1px solid #e2e2e2;
 }
 .pdd .width_50 {
 	margin-top:0;
@@ -2514,15 +2517,8 @@ a:hover {
 	padding-bottom:40px;
 }
 .education_board li:first-child{
-	color:#797979;
+	color:#94233f;
 	padding-bottom:8px;
-}
-.education_board li:last-child{
-	color:#222;
-	padding-bottom:8px;
-}
-.education_board ul li:last-child a{
-	color:#ff3366;
 }
 .education_board li{
 	text-transform:capitalize;

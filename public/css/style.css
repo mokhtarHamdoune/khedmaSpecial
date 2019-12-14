@@ -1214,7 +1214,6 @@ a:hover {
 .select_box {
     position: relative;
 	width:42%;
-	margin-left:15px;
 	float:left;
 }
 .select_box i {

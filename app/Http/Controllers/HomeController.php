@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -11,18 +11,27 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
+    //je sais pas esq nzid les middleware wala namhim compli
+
+    // public function __construct()
+    // {
+    //     $this->middleware(['middleware' => 'candidate']);
+    // }
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function show()
     {
-        return view('home');
+        if(Auth::guard("candidate")->check()){
+            return view('welcome',["candidate"=>Auth::guard("candidate")->user()]);
+        }else if(Auth::guard("employer")->check()){
+            return view('welcome',["candidate"=>Auth::guard("employer")->user()]);
+        }else {
+            return view('welcome');
+        }
     }
 }

@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -78,7 +78,7 @@ class LoginController extends Controller
         ]);
 
         if (Auth::guard('candidate')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-            return redirect()->intended('/candidat');
+            return redirect()->intended('/');
             /*
             $id=Auth::guard('candidate')->user()->id;
             return redirect('/',["id"=>$id]);
