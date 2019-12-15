@@ -67,8 +67,8 @@ class CandidatController extends Controller
         $candidate->Tel=$request["telephone"];
         $candidate->in=$request["In"];
         if($request->hasFile("profile_image")){
-            Storage::disk('public')->delete($candidate->photo);
-            $candidate->photo= $candidate->photo=$request->profile_image->store("candidate_profile_img");
+            if($candidate->photo!==null)Storage::disk('public')->delete($candidate->photo);
+            $candidate->photo=$request->profile_image->store("candidate_profile_img");
         }
         $candidate->save();
         return redirect()->route("dashboard");

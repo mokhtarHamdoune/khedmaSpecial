@@ -18,6 +18,7 @@ class CreateCvsTable extends Migration
             $table->string("titre")->nullable();
             $table->bigInteger("langues")->nullable();
             $table->bigInteger("documents")->nullable();
+            $table->string("image")->nullable();
             $table->unsignedBigInteger("idCandidate");
             $table->timestamps();
             $table->foreign("idCandidate")->references("id")->on("candidates")->onDelete("cascade");

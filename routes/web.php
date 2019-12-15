@@ -61,7 +61,10 @@ Route::middleware(['middleware' => 'candidate'])->prefix("candidate")->group(fun
     Route::get("/profile",'CandidatController@edit')->name("profile");
     Route::put("/profile",'CandidatController@update')->name("profile");
     Route::get("/uploadImg/{id}/{role}","imageController@uploadImage")->name("upload");
-    Route::get("/resume","CvController@show")->name("resume");
+    Route::get("/resume","CvController@index")->name("resume");
+    Route::post("/resume","CvController@store")->name("resume.store");
+    Route::delete("/resume/{id_cv}","CvController@destroy")->name("resume.delete");
+    Route::get("resume/{id_cv}","CvController@show")->name("resume.show");
     // Route::view('/cv', 'candidat.cv');
     // Route::view('/applied_jobs', 'candidat.applied_jobs');
     // Route::view('/edit_profile', 'candidat.edit_profile');
