@@ -3,13 +3,13 @@
 <div class="col-lg-9 col-md-12 col-sm-12 col-12">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-            <div class="job_listing_left_fullwidth jb_cover">
-                <form method="POST" action="{{route('edit_profile_recruteur')}}" enctype="multipart/form-data">
-                    @csrf
+            <form action="{{route('edit_profile_recruteur.update')}}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="job_listing_left_fullwidth jb_cover">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="jp_job_post_side_img">
-                            <img style="width:100%" src="{{asset('storage/profile_images/'.Auth::guard('employer')->user()->image)}}" alt="post_img">
+                            <img style="width:100%" src="{{asset('storage/profile_images/'.$user->image)}}" alt="post_img">
 
                         </div>
                         <div class="jp_job_post_right_cont edit_profile_wrapper">
@@ -38,11 +38,6 @@
 
                 </div>
             </div>
-
-            <div class="header_btn search_btn jb_cover">
-                    <button type="submit" class="btn-custom">save changes</button>
-                </div>
-            </form>
             <div class="browse_img_banner jb_cover">
 
                 <div class="jp_job_post_side_img">
@@ -64,20 +59,20 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="contect_form3">
-                            <label>@username</label>
-                            <input type="text" name="name" placeholder="Webstrot">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="Webstrot" value="{{$user->name}}">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="contect_form3">
-                            <label>Email</label>
-                            <input type="email" name="email" placeholder="webstrot@example.com">
+                            <label>email</label>
+                            <input type="email" name="email" placeholder="webstrot@example.com" value="{{$user->email}}">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="contect_form3">
-                            <label>Phone</label>
-                            <input type="number" name="number" placeholder="+91 9098085819">
+                            <label>Telephone</label>
+                            <input type="number" name="telephone" placeholder="+91 9098085819" value="{{$user->telephone}}">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -100,8 +95,8 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="contect_form3">
-                            <label>contact mail</label>
-                            <input type="email" name="contact_email" placeholder="hr@wevstrot.com">
+                            <label>Contact email</label>
+                            <input type="email" name="contact_email" placeholder="hr@wevstrot.com" value="{{$user->contact_email}}">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -171,26 +166,26 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
-                                            <label>google</label>
-                                            <input type="email" name="gmail" placeholder="https://google.com/webstrot">
+                                            <label>gmail</label>
+                                            <input type="email" name="gmail" placeholder="https://google.com/webstrot" value="{{$user->google}}">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>facebook</label>
-                                            <input type="email" name="facebook" placeholder="https://www.facebook.com/webstrot">
+                                            <input type="email" name="facebook" placeholder="https://www.facebook.com/webstrot" value="{{$user->facebook}}">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>twitter</label>
-                                            <input type="email" name="twitter" placeholder="https://www.twitter.com/webstrot">
+                                            <input type="email" name="twitter" placeholder="https://www.twitter.com/webstrot" value="{{$user->twitter}}">
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                         <div class="contect_form3">
                                             <label>linkedin</label>
-                                            <input type="email" name="linkedin" placeholder="https://www.linkedin.com/webstrot">
+                                            <input type="email" name="linkedin" placeholder="https://www.linkedin.com/webstrot" value="{{$user->linkedin}}">
                                         </div>
                                     </div>
                                 </div>
@@ -235,20 +230,21 @@
                         </div>
                     </div>
                 </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="login_remember_box jb_cover">
-                        <label class="control control--checkbox">Enable Two Step Verification Via Email
-                            <input type="checkbox">
-                            <span class="control__indicator"></span>
-                        </label>
-                        <div class="header_btn search_btn jb_cover">
-                            <button type="submit" class="btn-custom">save changes</button>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="login_remember_box jb_cover">
+                            <label class="control control--checkbox">Enable Two Step Verification Via Email
+                                <input type="checkbox">
+                                <span class="control__indicator"></span>
+                            </label>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
+            <div class="header_btn search_btn jb_cover">
+                    <button type="submit" class="btn-custom">save changes</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

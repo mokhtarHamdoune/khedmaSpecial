@@ -23,6 +23,16 @@ class RecruteurController extends Controller
         ]);
     }
 
+    public function dashboardApplications(){
+        $user= Auth::guard('employer')->user();
+        $offres = $user->offre;
+        $candidates = array();
+        foreach($offres as $offre){
+            array_push($candidates, $offre->candidate);
+        }
+        return view('recruteur.dashboard', ['candidates'=>$candidates]);
+    }
+
     public function editProfile(Request $request){
 
         $this->validator($request->all())->validate();
@@ -39,7 +49,7 @@ class RecruteurController extends Controller
         $user->facebook = $request->facebook;
         $user->twitter = $request->twitter;
         $user->linkedin = $request->linkedin;
-        $user->cantact_email = $request->cantact_email;
+        $user->contact_email = $request->contact_email;
         image::uploadImage($id, "employer", $request);
         $user->save();
         }
@@ -48,11 +58,26 @@ class RecruteurController extends Controller
 
     public function test(Request $request){
 
-        $user = Candidate::find(1);
-        $user->offre()->syncWithoutDetaching([1,2,3]);
-
-        $user = Candidate::find(1)->offre;
-        return view('test', ['offres' => $user]);
+        $user = Employer::find(1);
+        $offres = $user->offre;
+        $candidates = array();
+        $final = array();
+        foreach($offres as $offre){
+            array_push($candidates, $offre->candidate[0]);
+        }
+        foreach($candidates as $candidate){
+            unset($candidate->pivot);
+        }
+        $i = $j = 0;
+        foreach($candidates as $candidate){
+            if(! in_array($candidate , $final)){
+                $final[$i][0] = $candidate->id;
+                $final[$i][1] = $candidate->name;
+                $i++;
+            }
+        }
+        array_unique($final, SORT_REGULAR);
+        return view('test', ['offres' => $final]);
     }
 
     public function postNewJob(Request $request)

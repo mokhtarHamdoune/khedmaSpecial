@@ -10,15 +10,15 @@
                             <h6>recent applications</h6>
                         </div>
                     </div>
-                    @if(count($offres)>0)
-                    @foreach($offres as $offer)
+                    @if(count($candidates)>0)
+                    @foreach($candidates as $candidate)
                     <div class="latest_job_box jb_cover">
                         <div class="job_list recent_app_1">
                             <div class="recent_img">
                                 <img src="{{asset('dashboard/images/rs1.jpg')}}" alt="post_img">
                             </div>
                             <div class="recent_cntnt">
-                                <h6><a href="#">{{$offer->name}}</a></h6>
+                                <h6><a href="#">{{$candidate[0]}}</a></h6>
                                 <ul>
                                     <li><i class="fas fa-suitcase"></i>&nbsp; web designer</li>
                                     <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles</li>
