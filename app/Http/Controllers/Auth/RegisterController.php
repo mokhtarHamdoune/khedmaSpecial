@@ -12,12 +12,9 @@ use App\Employer;
 use App\Candidate;
 use App\Cv;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 use Auth;
-=======
 use Illuminate\Database\QueryException;
 
->>>>>>> master
 class RegisterController extends Controller
 {
     /*
