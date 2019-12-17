@@ -1470,6 +1470,13 @@ a:hover {
 .job_overview_header{
 	padding:25px;
 }
+.e_d_container p{
+    font-size:1.2em;
+    color:#bbb;
+}
+.e_d_container p:hover{
+    color:black;
+}
 .job_filter_sidebar_heading h1{
 	color:#fff;
 	font-size:16px;

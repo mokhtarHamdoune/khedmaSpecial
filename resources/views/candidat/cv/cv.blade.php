@@ -1,6 +1,6 @@
 @extends("layout.profil")
 @section("left_content")
-<div class="col-lg-9 col-md-12 col-sm-12 col-12">
+<div class="col-lg-9 col-md-12 col-sm-12 col-12 mb-5">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="job_filter_category_sidebar company_wrapper jb_cover">
@@ -21,12 +21,11 @@
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-12">
                                                         <div class="category_lavel jb_cover">
-                                                            <p>job :</p>
+                                                            <p>Titre :</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-12 col-12">
                                                         <div class="delete_jb_form">
-
                                                             <input type="text" name="name" placeholder="Graphic Designer">
                                                         </div>
                                                     </div>
@@ -36,18 +35,30 @@
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-12">
                                                         <div class="category_lavel jb_cover">
-                                                            <p>location :</p>
+                                                            <p>Langues :</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-12 col-12">
-                                                        <div class="delete_jb_form">
+                                                        <div class="row">
+                                                            <div class="col-md-9" id="languages">
+                                                                <div class="delete_jb_form language">
+                                                                    <input type="text"  name="name" placeholder="Langue">
+                                                                </div>
+                                                                <div class="delete_jb_form language">
+                                                                    <input type="text" name="name" placeholder="Langue">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3 d-flex justify-content-between align-items-end">
+                                                                   <button class="btn btn-outline-info" id="add_lang">+</button>
+                                                                   <button class="btn btn-outline-danger" id="delete_lang">-</button>
+                                                            </div>
 
-                                                            <input type="text" name="name" placeholder="loss angles">
                                                         </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="category_wrapper jb_cover">
+                                            <!-- <div class="category_wrapper jb_cover">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-12">
                                                         <div class="category_lavel jb_cover">
@@ -61,8 +72,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="category_wrapper jb_cover">
+                                            </div> -->
+                                            <!-- <div class="category_wrapper jb_cover">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-12">
                                                         <div class="category_lavel jb_cover">
@@ -76,8 +87,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="category_wrapper jb_cover">
+                                            </div> -->
+                                            <!-- <div class="category_wrapper jb_cover">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-12">
                                                         <div class="category_lavel jb_cover">
@@ -91,7 +102,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
 
                                             <div class="padder_top jb_cover"></div>
                                             <div class="header_btn search_btn applt_pop_btn">
@@ -120,12 +131,12 @@
                                     </div>
                                     <div class="jp_listing_list_icon_cont_wrapper">
                                         <ul>
-                                            <li>job description:</li>
+                                            <li>Titre De Cv :</li>
                                             <li class="basic">{{$cv->titre}}</li>
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                <!--<div class="jp_listing_overview_list_main_wrapper jb_cover">
                                     <div class="jp_listing_list_icon">
                                         <i class="fas fa-map-marker-alt"></i>
                                     </div>
@@ -146,7 +157,7 @@
                                             <li class="basic">0145636941</li>
                                         </ul>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="jp_listing_overview_list_main_wrapper jb_cover">
@@ -155,20 +166,9 @@
                                     </div>
                                     <div class="jp_listing_list_icon_cont_wrapper">
                                         <ul>
-                                            <li>email:</li>
-                                            <li class="basic">digital@example.com</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <div class="jp_listing_overview_list_main_wrapper dcv jb_cover">
-                                    <div class="jp_listing_list_icon">
-                                        <i class="fas fa-globe-asia"></i>
-                                    </div>
-                                    <div class="jp_listing_list_icon_cont_wrapper">
-                                        <ul>
-                                            <li>LinkedIn:</li>
-                                            <li class="basic">www.digital.com</li>
+                                            <li>Langues:</li>
+                                            <li>Englais</li>
+                                            <li>Francais</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -181,7 +181,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="job_filter_category_sidebar company_wrapper jb_cover">
                     <div class="job_filter_sidebar_heading jb_cover">
-                        <h1>Formations<span><a href="#" data-toggle="modal" data-target="#myModal4"><i class="fas fa-edit"></i></a></span></h1>
+                        <h1>Formations<span><a href="#" data-toggle="modal" data-target="#myModal4"><i class="fas fa-plus-square"></i></a></span></h1>
                     </div>
                     <div class="modal fade delete_popup company_popup" id="myModal4" role="dialog">
                         <div class="modal-dialog">
@@ -193,11 +193,11 @@
                                         <div class="delett_cntn jb_cover">
                                             <h1><i class="fas fa-edit"></i>Fomations</h1>
 
-                                            <div class="category_wrapper jb_cover">
+                                            <div class="category_wrapper jb_cover formation">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-12">
                                                         <div class="category_lavel jb_cover">
-                                                            <p>formatoin 01 :</p>
+                                                            <p>formatoin:</p>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-12 col-12">
@@ -210,43 +210,29 @@
                                                             <input type="text" name="name">
                                                         </div>
                                                         <div class="delete_jb_form gallery_link">
+                                                            <label for="">leiu</label>
+                                                            <input type="text" name="name">
+                                                        </div>
+                                                        <div class="delete_jb_form gallery_link">
                                                             <label for="">Début Fomation</label>
-                                                            <input type="month" name="name" placeholder="Date début">
+                                                            <input type="month" name="name" >
                                                         </div>
                                                         <div class="delete_jb_form gallery_link">
                                                             <label for="">Fin Formation</label>
-                                                            <input type="month" name="name" placeholder="Date fin">
+                                                            <input type="month" name="name">
                                                         </div>
 
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="category_wrapper gallery_browse jb_cover">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-                                                        <div class="category_lavel jb_cover">
-                                                            <p>education 02 :</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-12 col-12">
-                                                        <div class="delete_jb_form gallery_link">
-                                                            <input type="text" name="name" placeholder="Title">
-                                                        </div>
-                                                        <div class="delete_jb_form gallery_link">
-                                                            <input type="text" name="name" placeholder="Institude">
-                                                        </div>
-                                                        <div class="delete_jb_form gallery_link">
-                                                            <input type="text" name="name" placeholder="Period">
-                                                        </div>
-                                                        <div class="delete_jb_form gallery_link">
-
-                                                            <textarea name="message" rows="2" placeholder="Description"></textarea>
-                                                        </div>
-
-                                                    </div>
+                                            <!-- <div class="row justify-content-end mb-5" id="formation">
+                                                <div class="col-md-3">
+                                                    <button class="btn btn-outline-info float-right" id="add_4">Ajouter</button>
                                                 </div>
-                                            </div> -->
-
+                                                <div class="col-md-3">
+                                                    <button class="btn btn-outline-danger float-right"  id="delete_4">Supprimer</button>
+                                                </div>
+                                            </div>                 -->
                                             <div class="header_btn search_btn applt_pop_btn">
 
                                                 <a href="#">save updates</a>
@@ -265,6 +251,45 @@
                     </div>
                     <div class="job_overview_header jb_cover">
                         <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="row justify-content-end">
+                                    <div class="col-md-1 e_d_container">
+                                        <p class="edit"><i class="fas fa-edit"></i></p>
+                                    </div>
+                                    <div class="col-md-1 e_d_container">
+                                        <p class="delete"><i class="fas fa-minus"></i></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="jp_listing_overview_list_main_wrapper education_board jb_cover">
+                                    <div class="jp_listing_list_icon">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="jp_listing_list_icon_cont_wrapper">
+                                        <ul id="formcontainer1">
+                                            <li>janvier 2019-décembre 2019</li>
+                                            <li>Diplome:<span class="form_item">Ginie Logiciel</span></li>
+                                            <li>Domaine:<span class="form_item">Informatique</span></li>
+                                            <li>Lieu:<span class="form_item">Tlemcen</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job_overview_header jb_cover">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="row justify-content-end">
+                                    <div class="col-md-1 e_d_container">
+                                        <p class="edit"><i class="fas fa-edit"></i></p>
+                                    </div>
+                                    <div class="col-md-1 e_d_container">
+                                        <p class="delete"><i class="fas fa-minus"></i></p>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="jp_listing_overview_list_main_wrapper education_board jb_cover">
                                     <div class="jp_listing_list_icon">
@@ -299,7 +324,7 @@
                                         <div class="delett_cntn jb_cover">
                                             <h1><i class="fas fa-edit"></i>experiences</h1>
 
-                                            <div class="category_wrapper jb_cover">
+                                            <div class="category_wrapper jb_cover experience">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-12">
                                                         <div class="category_lavel jb_cover">
@@ -330,32 +355,14 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="category_wrapper gallery_browse jb_cover">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-12 col-12">
-                                                        <div class="category_lavel jb_cover">
-                                                            <p>experience 2 :</p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-12 col-12">
-                                                        <div class="delete_jb_form gallery_link">
-                                                            <input type="text" name="name" placeholder="Title">
-                                                        </div>
-                                                        <div class="delete_jb_form gallery_link">
-                                                            <input type="text" name="name" placeholder="Company">
-                                                        </div>
-                                                        <div class="delete_jb_form gallery_link">
-                                                            <input type="text" name="name" placeholder="Period">
-                                                        </div>
-                                                        <div class="delete_jb_form gallery_link">
-
-                                                            <textarea name="message" rows="2" placeholder="Description"></textarea>
-                                                        </div>
-
-                                                    </div>
+                                            <div class="row justify-content-end mb-5" id="experience">
+                                                <div class="col-md-3">
+                                                    <button class="btn btn-outline-info float-right" id="add_6">Ajouter</button>
                                                 </div>
-                                            </div> -->
-
+                                                <div class="col-md-3">
+                                                    <button class="btn btn-outline-danger float-right"  id="delete_6">Supprimer</button>
+                                                </div>
+                                            </div>  
                                             <div class="header_btn search_btn applt_pop_btn">
 
                                                 <a href="#">save updates</a>
@@ -407,7 +414,7 @@
                                         <div class="delett_cntn jb_cover">
                                             <h1><i class="fas fa-edit"></i>compétences</h1>
 
-                                            <div class="category_wrapper gallery_browse jb_cover">
+                                            <div class="category_wrapper jb_cover competence">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-12 col-12">
                                                         <div class="category_lavel jb_cover">
@@ -427,7 +434,14 @@
                                                     </div>
                                                 </div>
                                             </div>
-
+                                            <div class="row justify-content-end mb-5" id="competence">
+                                                <div class="col-md-3">
+                                                    <button class="btn btn-outline-info float-right" id="add_7">Ajouter</button>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <button class="btn btn-outline-danger float-right"  id="delete_7">Supprimer</button>
+                                                </div>
+                                            </div>
                                             <div class="header_btn search_btn applt_pop_btn">
 
                                                 <a href="#">save updates</a>
