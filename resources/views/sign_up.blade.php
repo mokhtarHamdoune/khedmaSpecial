@@ -31,6 +31,15 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
+                            @if (session('error'))
+                                <div class="alert alert-warning">
+                                    <span class="" role="alert">
+                                        <strong>
+                                            {{ session('error') }}
+                                        </strong>
+                                    </span>
+                                </div>
+                            @endif
                         </div>
                         <div class="form-group icon_form comments_form">
                             <input type="text" class="form-control require" name="name" placeholder="Full Name*">
