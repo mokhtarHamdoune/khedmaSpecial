@@ -28,5 +28,6 @@ class Candidate extends Authenticatable
     public function cv(){
         return $this->hasMany(Cv::class,"idCandidate");
     }
+    
 }
 

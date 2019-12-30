@@ -4861,7 +4861,7 @@ a:hover {
     color: #ff3366;
 }
 .check_box_anchr {
-    color: ##002398 !important;
+    color: #002398 !important;
 }
 .dont_have_account p{
 	font-size:16px;
@@ -6878,4 +6878,63 @@ background:#fff;
 .role_container .role{
 	width: 25px;
     margin: auto;
+}
+.card-img-top {
+	height: 200px;
+}
+/* drag and drop file */
+.box__input{
+	height:60;
+	padding-top: 65px;
+}
+.box__input input[type="file"]{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.box__input label{
+	font-size: 1.25em;
+    font-weight: 700;
+    color: #000;
+	display:block;
+	text-align: center;;
+	cursor: pointer;
+}
+.box__input input[type="file"]:focus + label strong,
+.box__input input[type="file"] + label strong:hover {
+    color: #47656d;
+}
+
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+  display: none;
+}
+.box.has-advanced-upload {
+	background-color: #92b0b3;
+	outline: 2px dashed black;
+	outline-offset: -10px;
+	height: 160px;
+}
+.box.has-advanced-upload .box__dragndrop {
+	display: inline;
+}
+.box.is-dragover {
+	background-color: #bdc4c5;
+}
+.dowDel{
+	display:flex;
+	justify-content: space-around;
+}
+.dowDel a{
+	color:gray;
+	font-size: 1.2em;
+}
+.dowDel a:hover{
+	color:black;
+	transition-delay: 2ms;
 }

@@ -29,7 +29,7 @@ class HomeController extends Controller
         if(Auth::guard("candidate")->check()){
             return view('welcome',["candidate"=>Auth::guard("candidate")->user()]);
         }else if(Auth::guard("employer")->check()){
-            return view('welcome',["candidate"=>Auth::guard("employer")->user()]);
+            return view('welcome',["employer"=>Auth::guard("employer")->user()]);
         }else {
             return view('welcome');
         }

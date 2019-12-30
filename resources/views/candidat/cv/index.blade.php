@@ -10,7 +10,7 @@
                             <h1>Vos Cvs</h1>
                         </div>
                         <div class="col-md-2">
-                            <button class="btn btn-sm btn-light" data-toggle="modal" data-target="#add_cv" >Ajouter CV</button>
+                            <button class="btn btn-sm btn-light" data-toggle="modal" data-target="#add_cv" >Nouvel CV</button>
                         </div>
                     </div>
                 </div>
@@ -23,18 +23,22 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{$cv->titre}}</h5>
                                     <p class="card-text">{{$cv->created_at}}</p>
-                                    <div class="d-flex justfiy-content-around">
-                                        <a href="{{route('resume.show',$cv->id)}}" class="btn btn-primary">Montrer</a>
-                                        <form action="{{route('resume.delete',$cv->id)}}" method="post">
-                                            {{csrf_field()}}
-                                            {{method_field('DELETE')}}
-                                            <button class="btn btn-danger" type="submit">Supprimer</button>
-                                        </form>
+                                    <div class="row justfiy-content-around">
+                                        <div class="col-6">
+                                         <a href="{{route('resume.show',$cv->id)}}" class="btn btn-primary">Montrer</a>
+                                        </div>
+                                        <div class="col-6">
+                                            <form action="{{route('resume.delete',$cv->id)}}" method="post">
+                                                {{csrf_field()}}
+                                                {{method_field('DELETE')}}
+                                                <button class="btn btn-danger" type="submit">Supprimer</button>
+                                            </form>
+                                        </div>
                                     </div>
                                     
                                 </div>
                             </div>
-                        </div>  
+                        </div> 
                         @endforeach                    
                     </div>              
                 </div>

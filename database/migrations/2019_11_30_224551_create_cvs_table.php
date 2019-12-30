@@ -16,8 +16,7 @@ class CreateCvsTable extends Migration
         Schema::create('cvs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string("titre")->nullable();
-            $table->bigInteger("langues")->nullable();
-            $table->bigInteger("documents")->nullable();
+            $table->text("langues")->nullable();
             $table->string("image")->nullable();
             $table->unsignedBigInteger("idCandidate");
             $table->timestamps();

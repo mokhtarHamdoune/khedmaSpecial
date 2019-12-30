@@ -7,6 +7,12 @@
     <meta name="keywords" content="JB desks,job portal,job" />
     <meta name="author" content="" />
     <meta name="MobileOptimized" content="320" />
+    @auth("candidate")
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @endauth
+    @auth("employer")
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @endauth
     <!--Template style -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/animate.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}" />
@@ -39,7 +45,7 @@
     <!-- Top Scroll End -->
     <!-- cp navi wrapper Start -->
     <nav class="cd-dropdown  d-block d-sm-block d-md-block d-lg-none d-xl-none">
-        <h2><a href="index.html"> <span><img src="images/logo.png" alt="img"></span></a></h2>
+        <h2><a href="index.html"> <span><img src="{{asset('images/logo.png')}}" alt="img"></span></a></h2>
         <a href="#0" class="cd-close">Close</a>
         <ul class="cd-dropdown-content">
             <li>
@@ -215,7 +221,8 @@
 							</li>
 							<li><a href="#"><i class="fas fa-cog"></i>Setting</a>
 							</li>
-							<li><a href="{{route('logout')}}"
+							<li>
+                            <a href="{{route('logout')}}"
                                 onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();"><i class="fas fa-sign-in-alt"></i>
                                  {{ __('Logout') }}

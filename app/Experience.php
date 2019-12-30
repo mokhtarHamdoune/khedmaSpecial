@@ -4,7 +4,7 @@ namespace App;
 use App\Cv;
 use Illuminate\Database\Eloquent\Model;
 
-class Document extends Model
+class Experience extends Model
 {
     public function cv(){
         $this->belongsTo(Cv::Class);

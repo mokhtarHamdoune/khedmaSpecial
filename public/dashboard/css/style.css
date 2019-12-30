@@ -336,17 +336,23 @@ a:hover {
     font-size:16px;
     color:#fff;
     border:1px solid transparent;
-    line-height:50px;
     text-transform:capitalize;
-      z-index: 1;
-      -webkit-backface-visibility: hidden;
-      -moz-osx-font-smoothing: grayscale;
-      transition: background-color 0.6s, color 0.6s;
-         -webkit-transition: all 0.6s;
-      -o-transition: all 0.6s;
-      -ms-transition: all 0.6s;
-      -moz-transition: all 0.6s;
-      transition: all 0.6s;}
+    z-index: 1;
+    -webkit-backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+      
+}
+.btn-custom:hover{
+    border:  2px solid #ff3366;
+    background:#fff;
+    color: #ff3366;
+    transition: background-color 0.6s, color 0.6s;
+    -webkit-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    -ms-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    transition: all 0.6s;
+}
 .header_btn li:last-child a::before {
 	content: '';
 	position: absolute;
@@ -2142,6 +2148,14 @@ a:hover {
 	margin-bottom:30px;
 	border:1px solid #e2e2e2;
 }
+.delete_jb_form .nice-select{
+    width: 100%;
+}
+.delete_jb_form .nice-select{
+    width: 100%;
+}.delete_jb_form .nice-select .list{
+    width: 100%;
+}
 .applt_pop_btn{
 	float:left;
 	display:inline-block;
@@ -2548,7 +2562,6 @@ a:hover {
 }
 .speical_qualification_wrapper li i{
 	margin-right:15px;
-	color:#ff3366;
 }
 /***---favourite jobs wrapper css---****/
 .jb_job_post_side_img{

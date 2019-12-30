@@ -38,7 +38,7 @@ Route::get("/about_us",function(){
     Route::view('/candidate', 'candidate');*/
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 //restrict access
 Route::group(['middleware' => 'employer'], function () {
     Route::get('/recruteur', 'RecruteurController@dashboardApplications');
@@ -49,9 +49,9 @@ Route::group(['middleware' => 'employer'], function () {
     Route::view('/manage_jobs', 'recruteur.manage_jobs');
     Route::view('/post_job', 'recruteur.post_job');
     Route::post('/post_job','RecruteurController@postNewJob')->name('new_job');
-
     Route::post('/edit_profile_recruteur','RecruteurController@editProfile')->name('edit_profile_recruteur');
-    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+    
+   
 });
 
 
@@ -64,6 +64,23 @@ Route::middleware(['middleware' => 'candidate'])->prefix("candidate")->group(fun
     Route::post("/resume","CvController@store")->name("resume.store");
     Route::delete("/resume/{id_cv}","CvController@destroy")->name("resume.delete");
     Route::get("resume/{id_cv}","CvController@show")->name("resume.show");
+
+    Route::post("/formation","CvController@addFormation");
+    Route::put("/formation/{id_form}","CvController@editFormation");
+    Route::delete("/formation/{id_form}","CvController@deleteFormation");
+
+    Route::post("/experience","CvController@addExperience");
+    Route::put("/experience/{id_exp}","CvController@updateExperience");
+    Route::delete("/experience/{id_exp}","CvController@deleteExperience");
+
+    Route::post("/competence","CvController@addCompetence");
+    Route::put("/competence/{id_cmp}","CvController@editCompetence");
+    Route::delete("/competence/{id_cmp}","CvController@deleteCompetence");
+    
+    Route::put("/basics/{id_cmp}","CvController@editBasics");
+
+    Route::post("/document","CvController@addDocument");
+    Route::delete("/document/{id_doc}","CvController@dropDocument");
     // Route::view('/cv', 'candidat.cv');
     // Route::view('/applied_jobs', 'candidat.applied_jobs');
     // Route::view('/edit_profile', 'candidat.edit_profile');
@@ -73,7 +90,7 @@ Route::middleware(['middleware' => 'candidate'])->prefix("candidate")->group(fun
     // Route::get('/candidat/{id_candidat}/edit',"CandidatController@edit");
     // //update
     // Route::put('/candidat/{id_candidat}',"CandidatController@update");
-    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+    // Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 });
 
 Route::get('/save','RecruteurController@test');
