@@ -49,7 +49,7 @@ Route::group(['middleware' => 'employer'], function () {
     Route::view('/company_applications', 'recruteur.companyApp');
     Route::view('/post_job', 'recruteur.post_job');
 
-    Route::post('/post_job','RecruteurController@postNewJob')->name('new_job');
+    Route::post('/post_job/new','RecruteurController@postNewJob')->name('new_job');
 
     Route::post('/edit_profile_recruteur','RecruteurController@editProfile')->name('edit_profile_recruteur');
 
