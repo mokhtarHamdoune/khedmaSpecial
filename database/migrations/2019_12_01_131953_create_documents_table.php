@@ -18,6 +18,8 @@ class CreateDocumentsTable extends Migration
             $table->string("type");
             $table->string("nom");
             $table->string("fichier");
+            $table->unsignedBigInteger("idCV");
+            $table->foreign("idCV")->references("id")->on("cvs")->onDelete("cascade")->onUpdate("cascade");
             $table->timestamps();
         });
     }

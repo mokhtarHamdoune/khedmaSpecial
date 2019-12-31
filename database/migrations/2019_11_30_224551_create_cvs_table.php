@@ -15,10 +15,12 @@ class CreateCvsTable extends Migration
     {
         Schema::create('cvs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string("titre");
-            $table->bigInteger("langues");
-            $table->bigInteger("documents");
+            $table->string("titre")->nullable();
+            $table->text("langues")->nullable();
+            $table->string("image")->nullable();
+            $table->unsignedBigInteger("idCandidate");
             $table->timestamps();
+            $table->foreign("idCandidate")->references("id")->on("candidates")->onDelete("cascade");
         });
     }
 

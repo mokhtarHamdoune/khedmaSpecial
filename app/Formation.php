@@ -1,12 +1,11 @@
 <?php
 
 namespace App;
-use App\Cv;
 use Illuminate\Database\Eloquent\Model;
-
-class Document extends Model
+use App\Cv;
+class Formation extends Model
 {
     public function cv(){
-        $this->belongsTo(Cv::Class);
+        return $this->belongsTo(Cv::class);
     }
 }

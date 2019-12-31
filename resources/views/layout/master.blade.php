@@ -1,19 +1,4 @@
 <!DOCTYPE html>
-<!--
-Template Name: JB desks
-Version: 1.0.0
-Author: Webstrot
-
--->
-<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
-<!--[if !IE]><!-->
-<html lang="en">
-<!--[endif]-->
-
-
-<!-- Mirrored from webstrot.com/html/jbdesk/main_version/main_pages/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 21 Nov 2019 12:00:37 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8" />
     <title>JB desks Responsive HTML Template</title>
@@ -22,6 +7,12 @@ Author: Webstrot
     <meta name="keywords" content="JB desks,job portal,job" />
     <meta name="author" content="" />
     <meta name="MobileOptimized" content="320" />
+    @auth("candidate")
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @endauth
+    @auth("employer")
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @endauth
     <!--Template style -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/animate.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}" />
@@ -38,7 +29,6 @@ Author: Webstrot
     <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}" />
     @yield("head")
     <link rel="stylesheet" type="text/css" href="{{asset('css/responsive.css')}}" />
-    <!--favicon-->
     <link rel="shortcut icon" type="image/png" href="{{asset('images/favicon.png')}}" />
 </head>
 
@@ -50,11 +40,12 @@ Author: Webstrot
         </div>
     </div>
     <div class="cursor"></div>
-    <!-- Top Scroll Start --><a href="javascript:" id="return-to-top"><i class="fas fa-angle-double-up"></i></a>
+    <!-- Top Scroll Start -->
+    <a href="javascript:" id="return-to-top"><i class="fas fa-angle-double-up"></i></a>
     <!-- Top Scroll End -->
     <!-- cp navi wrapper Start -->
     <nav class="cd-dropdown  d-block d-sm-block d-md-block d-lg-none d-xl-none">
-        <h2><a href="index.html"> <span><img src="images/logo.png" alt="img"></span></a></h2>
+        <h2><a href="index.html"> <span><img src="{{asset('images/logo.png')}}" alt="img"></span></a></h2>
         <a href="#0" class="cd-close">Close</a>
         <ul class="cd-dropdown-content">
             <li>
@@ -218,9 +209,20 @@ Author: Webstrot
                 <!-- .cd-dropdown-wrapper -->
             </header>
             @auth('employer')
-            <div class="menu_btn_box header_btn jb_cover">
-                <h3>profile details</h3>
-                <a href="{{ route('logout') }}"
+            <div class="menu_btn_box jb_cover">
+               <div class="jb_profile_box">
+                   <div class="nice-select" tabindex="0"> <span class="current">
+				   <img src="{{asset('images/cmp1.png')}}" alt="img">
+				   <div class="luca_profile_wrapper"><h1><a href="#">I am an Employer</a></h1>
+				   <p><a href="#">luca@example.com</a></p>
+				   </div></span>
+                      <ul class="list">
+							<li><a href="#"><i class="fas fa-user-edit"></i>account</a>
+							</li>
+							<li><a href="#"><i class="fas fa-cog"></i>Setting</a>
+							</li>
+							<li>
+                            <a href="{{route('logout')}}"
                                 onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();"><i class="fas fa-sign-in-alt"></i>
                                  {{ __('Logout') }}
@@ -228,14 +230,18 @@ Author: Webstrot
                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                  @csrf
                              </form>
+							</li>
+					</ul>
+                   </div>
+                </div>
             </div>
             @elseauth('candidate')
             <div class="menu_btn_box jb_cover">
                <div class="jb_profile_box">
                    <div class="nice-select" tabindex="0"> <span class="current">
-				   <img src="images/pf.png" alt="img">
-				   <div class="luca_profile_wrapper"><h1><a href="#">Luca Wallace</a></h1>
-				   <p><a href="#">luca@example.com</a></p>
+				   <img src="{{asset('images/pf.png')}}" alt="img">
+				   <div class="luca_profile_wrapper"><h1><a href="#">{{$candidate->userName}}</a></h1>
+				   <p><a href="#">{{$candidate->email}}</a></p>
 				   </div></span>
                       <ul class="list">
 							<li><a href="#"><i class="fas fa-user-edit"></i>account</a>
@@ -276,16 +282,11 @@ Author: Webstrot
                         <li class="has-mega gc_main_navigation">
                             <a href="{{url('/jobs')}}" class="gc_main_navigation {{ Request::is('jobs') ? 'active_class3' : '' }}">jobs</a>
                         </li>
-                        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">dashboard</a>
-                                <ul class="navi_2_dropdown">
-                                    <li class="parent">
-                                        <a href="{{url('/candidat')}}"><i class="fas fa-square"></i>candidate<span><i class="fas fa-chevron-right"></i></span></a>
-                                    </li>
-                                    <li class="parent">
-                                        <a href="{{url('/recruteur')}}"><i class="fas fa-square"></i>company<span><i class="fas fa-chevron-right"></i></span></a>
-                                    </li>
-                                </ul>
-                            </li>
+                        @auth('employer')
+                        <li class="has-mega gc_main_navigation"><a href="{{url('/recruteur')}}" class="gc_main_navigation">dashboard</a>
+                        @elseauth('candidate')
+                        <li class="has-mega gc_main_navigation"><a href="{{route('dashboard')}}" class="gc_main_navigation">dashboard</a>
+                        @endauth
                         <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">blog</a>
                             <ul class="navi_2_dropdown">
                                     <li class="parent">
@@ -499,6 +500,7 @@ Author: Webstrot
     <script src="{{asset('js/imagesloaded.pkgd.min.js')}}"></script>
     <script src="{{asset('js/isotope.pkgd.min.js')}}"></script>
     <script src="{{asset('js/custom.js')}}"></script>
+    @yield("script")
     <!-- custom js-->
 </body>
 

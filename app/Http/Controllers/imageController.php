@@ -21,8 +21,7 @@ class imageController extends Controller
     }
 
     public static function uploadImage($id, $role,Request $request){
-
-        $user = imageController::getUser($id, $role);
+        $user = $this->getUser($id, $role);
         if($request->image)
             {
                 $fileNameWithExt = $request->file('image')->getClientOriginalName();
@@ -35,7 +34,7 @@ class imageController extends Controller
             {
                 $fileNameToStore = "noimage.jpg"; //default image khas nzidha f dossier
             }
-            imageController::deleteProfileImage($user->id, $role);
+            $this->deleteProfileImage($user->id, $role);
             $user->image = $fileNameToStore;
             $user->save();
     }

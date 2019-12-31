@@ -1214,7 +1214,6 @@ a:hover {
 .select_box {
     position: relative;
 	width:42%;
-	margin-left:15px;
 	float:left;
 }
 .select_box i {
@@ -4862,7 +4861,7 @@ a:hover {
     color: #ff3366;
 }
 .check_box_anchr {
-    color: ##002398 !important;
+    color: #002398 !important;
 }
 .dont_have_account p{
 	font-size:16px;
@@ -4917,10 +4916,40 @@ a:hover {
 	background:transparent;
 	border:0;
 	padding:0;
+	float:none;
+	display:inline-block;
 	padding-top:5px;
 }
 .jb_profile_box .nice-select:after{
 	display:none;
+}
+
+
+.luca_profile_wrapper h1 a{
+	font-size:16px;
+	color:#222;
+	text-transform:capitalize;
+}
+.jb_profile_box .luca_profile_wrapper{
+	float:right;
+	width:calc(100% - 50px);
+	padding-left:15px;
+}
+.jb_profile_box .luca_profile_wrapper h1{
+	line-height:20px;
+}
+.jb_profile_box .luca_profile_wrapper p{
+	line-height:19px;
+}
+.luca_profile_wrapper p a{
+	font-size:14px;
+	color:#ff3366;
+}
+.jb_profile_box img {
+    float: left;
+    width: 50px;
+    padding-top: 5px;
+    border-radius: 100px;
 }
 .index_2_search{
 	padding:0;
@@ -4944,7 +4973,7 @@ a:hover {
   -moz-border-radius: 0; 
    border-radius: 0; 
 	border:1px solid #e2e2e2;
-	border-top:2px solid #57ac60;
+	border-top:2px solid #b446ff;
 	-ms-box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     -moz-box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     -webkit-box-shadow: 0 4px 15px rgba(0,0,0,0.05);
@@ -4964,7 +4993,7 @@ a:hover {
 }
 .jb_profile_box .list li a:hover{
 	color:#fff;
-	background:#57ac60;
+	background:#b446ff;
 }
 .jb_profile_box .list li a i{
 	margin-right:8px;
@@ -5074,7 +5103,7 @@ a:hover {
 	color:#fff;
 }
 .salary_filters .nice-select{
-	background:#3e4f4c;
+	background:#ff3366;
 	width:100%;
 	color:#fff;
 	font-style:italic;
@@ -5087,11 +5116,11 @@ a:hover {
     border-right: 2px solid #fff;
 }
 .salary_filters .nice-select .list{
-	background:#3e4f4c;
+	background:#ff3366;
 	width:100%;
 }
 .salary_filters .nice-select .option:hover, .salary_filters .nice-select .option.focus, .salary_filters .nice-select .option.selected.focus{
-	color:#3e4f4c;
+	color:#ff3366;
 }
 .filter_gbtn{text-align:center;}
 .filter_gbtn a{
@@ -5542,9 +5571,12 @@ a:hover {
     -moz-transition: all 0.5s;
     transition: all 0.5s;
 }
+.jb_profile_box .list li a i{
+	color:#b446ff;
+}
 .jb_profile_box .list li a:hover i{
 	color:#fff;
-		 -webkit-transition: all 0.5s;
+	-webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     -ms-transition: all 0.5s;
     -moz-transition: all 0.5s;
@@ -5616,11 +5648,12 @@ a:hover {
     border-top: 3px solid #b446ff;
 }
 .blue_main_menu .parent a:hover, .active_class2:before, .blue_sub_menu .jen_tabs_conent_list li a:hover, .jb_3_profile_box .list li a:hover{
-    background:  background: rgb(180, 70, 255);
+    background: rgb(180, 70, 255);
     background: -moz-linear-gradient(90deg, rgb(180, 70, 255) 25%, rgb(109, 104, 254) 100%);
     background: -webkit-linear-gradient(90deg, rgb(180, 70, 255) 25%, rgb(109, 104, 254) 100%);
-    background: linear-gradient(90deg, rgb(180, 70, 255) 25%, rgb(109, 104, 254) 100%);;
+    background: linear-gradient(90deg, rgb(180, 70, 255) 25%, rgb(109, 104, 254) 100%);
 }
+
 .blue_main_menu ul li a i, .blue_sub_menu .jen_tabs_conent_list h1, .blue_sub_menu .open_job_text p, .jb_3_profile_box .list li a i{
 	color:#b446ff;
 }
@@ -6832,4 +6865,76 @@ background:#fff;
 	    -ms-transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
+}
+.role_container{
+	margin-bottom: 2em;
+}
+.role_container label{
+	font-size:1.7em;
+	font-family:'Lato',sans-serif;
+	font-weight: 500;
+	color:#ff3366;
+}
+.role_container .role{
+	width: 25px;
+    margin: auto;
+}
+.card-img-top {
+	height: 200px;
+}
+/* drag and drop file */
+.box__input{
+	height:60;
+	padding-top: 65px;
+}
+.box__input input[type="file"]{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+.box__input label{
+	font-size: 1.25em;
+    font-weight: 700;
+    color: #000;
+	display:block;
+	text-align: center;;
+	cursor: pointer;
+}
+.box__input input[type="file"]:focus + label strong,
+.box__input input[type="file"] + label strong:hover {
+    color: #47656d;
+}
+
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+  display: none;
+}
+.box.has-advanced-upload {
+	background-color: #92b0b3;
+	outline: 2px dashed black;
+	outline-offset: -10px;
+	height: 160px;
+}
+.box.has-advanced-upload .box__dragndrop {
+	display: inline;
+}
+.box.is-dragover {
+	background-color: #bdc4c5;
+}
+.dowDel{
+	display:flex;
+	justify-content: space-around;
+}
+.dowDel a{
+	color:gray;
+	font-size: 1.2em;
+}
+.dowDel a:hover{
+	color:black;
+	transition-delay: 2ms;
 }

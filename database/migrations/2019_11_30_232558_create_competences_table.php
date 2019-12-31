@@ -15,6 +15,7 @@ class CreateCompetencesTable extends Migration
     {
         Schema::create('competences', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string("annees_exp");
             $table->unsignedBigInteger("idCV");
             $table->text("description");
             $table->foreign("idCV")->references("id")->on("cvs")->onDelete("cascade")->onUpdate("cascade");

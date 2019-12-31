@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Candidat;
+use App\Candidate;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 class CandidatController extends Controller
 {
 
@@ -26,9 +27,10 @@ class CandidatController extends Controller
      * @param  \App\Candidat  $candidat
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        return view("candidat.profile.dashboard",["id"=>$id]);
+        $candidate=Auth::guard("candidate")->user();
+        return view("candidat.dashboard",['candidate'=>$candidate]);
     }
 
     /**
@@ -37,11 +39,10 @@ class CandidatController extends Controller
      * @param  \App\Candidat  $candidat
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        // $canditat= Condidat::find($id);
-        // return view("candidat.profile.edit",["condidat"=>$candidat]);
-        return view("candidat.profile.edit",["id"=>$id]);
+        $candidate=Auth::guard("candidate")->user();
+        return view("candidat.edit_profile",['candidate'=>$candidate]);
     }
 
     /**
@@ -51,18 +52,27 @@ class CandidatController extends Controller
      * @param  \App\Candidat  $candidat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
-        // $candidat= Condidat::find($id);
-        // $condidat->civilite=$request->input("civilite");
-        // $candidat->nom=$request->input("nom");
-        // $candidat->prenom=$request->input("prenom");
-        // $candidat->date_naissance=$request->input("data_naissance");
-        // $candidat->email=$request->input("email");
-        // $candidat->telephone=$request->input("telephone");
-        // $candidat->adresse=$request->input("address");
-        // $candidat->In=$request->input("In");
-        var_dump($request->all());
+        $candidate=Auth::guard("candidate")->user();
+        $request->validate([
+            "email"=>"required"
+        ]);
+        $candidate->civilite=$request["civilite"];
+        $candidate->nom=$request["nom"];
+        $candidate->prenom=$request["prenom"];
+        $candidate->date_naissance=$request["data_naissance"];
+        $candidate->email=$request["email"];
+        $candidate->adresse=$request["address"];
+        $candidate->Tel=$request["telephone"];
+        $candidate->in=$request["In"];
+        if($request->hasFile("profile_image")){
+            if($candidate->photo!==null)Storage::disk('public')->delete($candidate->photo);
+            $candidate->photo=$request->profile_image->store("candidate_profile_img");
+        }
+        $candidate->save();
+        return redirect()->route("dashboard");
+
     }
 
 }

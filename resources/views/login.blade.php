@@ -3,7 +3,7 @@
 <div class="login_wrapper jb_cover">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 p-5">
                 <div class="login_top_box jb_cover">
                     <div class="login_banner_wrapper">
                         <img src="{{asset('images/logo.png')}}" alt="logo">
@@ -32,9 +32,10 @@
                             </div>
                         @endif
 
-                        <div class="form-row justify-content-around">
-                            <label for="candidat"><input type="radio" name="role" class="form-control role" value="candidate" checked><span style="font-size:1.7em">cadidat</span></label>
-                            <label for="employer"><input type="radio" name="role"  class="form-control role" value="employer"><span style="font-size:1.7em">employer</span></label>
+                        <div class="form-row justify-content-around role_container" >
+                            <label for="condidat"><input type="radio" name="role" class="form-control role" value="candidate" checked><span>Candidate</span></label>
+                            <label for="employer"><input type="radio" name="role"  class="form-control role" value="employer"><span>Employer</span></label>
+
                             @error('role')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
