@@ -18,9 +18,9 @@
                                 <img src="{{asset('dashboard/images/rs1.jpg')}}" alt="post_img">
                             </div>
                             <div class="recent_cntnt">
-                                <h6><a href="#">{{$candidate[0]}}</a></h6>
+                                <h6><a href="#">{{$candidate->name}}</a></h6>
                                 <ul>
-                                    <li><i class="fas fa-suitcase"></i>&nbsp; web designer</li>
+                                    <li><i class="fas fa-suitcase"></i>&nbsp; {{App\Offre::find($candidate->pivot->offre_id)->title}}</li>
                                     <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles</li>
                                 </ul>
                             </div>

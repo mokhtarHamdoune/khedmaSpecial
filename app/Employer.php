@@ -27,6 +27,7 @@ class Employer extends Authenticatable
 
     public function candidate()
     {
-        return $this->hasManyThrough('App\Candidate', 'App\Offre');
+        return $this->hasManyThrough('App\candidate_offre', 'App\Offre', 'employer_id', 'offre_id');
     }
+
 }

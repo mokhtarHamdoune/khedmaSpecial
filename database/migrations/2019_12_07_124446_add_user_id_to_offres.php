@@ -14,7 +14,7 @@ class AddUserIdToOffres extends Migration
     public function up()
     {
         Schema::table('offres', function (Blueprint $table) {
-            $table->integer('employer_id');
+            $table->integer('employer_id')->nullable();
         });
     }
 

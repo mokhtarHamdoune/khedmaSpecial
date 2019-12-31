@@ -27,7 +27,7 @@
                             <li><a href="{{url('/company_page')}}"><i class="fas fa-file"></i>company page </a></li>
                             <li><a href="{{url('/manage_jobs')}}"><i class="fas fa-suitcase"></i>manage jobs</a></li>
                             <li><a href="{{url('/company_applications')}}" class="link_active"><i class="fas fa-mobile"></i>applications</a></li>
-                            <li><a href="{{url('/post_jobe')}}"><i class="fas fa-user-plus"></i>post new job</a></li>
+                            <li><a href="{{url('/post_job')}}"><i class="fas fa-user-plus"></i>post new job</a></li>
                             <li><a href="message.html"><i class="fas fa-envelope"></i>message</a></li>
                         </ul>
                         <ul class="feedlist logout_link jb_cover">

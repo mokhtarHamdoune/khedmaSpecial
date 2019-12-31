@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Offre extends Model
 {
     protected $fillable = [
-        'title', 'intitule', 'type', 'domaine',
+        'title', 'country', 'type', 'domaine',
         'diplome', 'anneesExperience', 'description',
-        'lieuTravaille', 'competence', 'remuniration',
-        'date_depot', 'status', 'date_prevue', 'duree_stage',
+        'lieuTravailleExact', 'competence', 'remuniration',
+        'city', 'status', 'latitude', 'longitude','duree_stage'
     ];
 
     public function candidate()
@@ -20,6 +20,6 @@ class Offre extends Model
 
     public function employer()
     {
-        return $this->belongsTo(Employer::class);
+        return $this->belongsTo('App\Employer');
     }
 }

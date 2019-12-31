@@ -20,6 +20,13 @@ class ProfileRecruteurController extends Controller
         return view('recruteur.edit_profile',['user' => $user]);
     }
 
+    public function indexOffres()
+    {
+        $user = Auth::guard('employer')->user();
+        $offres = $user->offre()->paginate(2);
+        return view('recruteur.manage_jobs',['offres' => $offres]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -3,57 +3,32 @@
 <div class="col-lg-9 col-md-12 col-sm-12 col-12">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-            <form action="{{route('edit_profile_recruteur.update')}}" method="POST" enctype="multipart/form-data">
+            <form id="form" action="{{route('edit_profile_recruteur.update')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="job_listing_left_fullwidth jb_cover">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="jp_job_post_side_img">
-                            <img style="width:100%" src="{{asset('storage/profile_images/'.$user->image)}}" alt="post_img">
-
-                        </div>
-                        <div class="jp_job_post_right_cont edit_profile_wrapper">
-                            <h4>JPEG or PNG 500x500px Thumbnail</h4>
-
-                            <div class="width_50">
-                                <div class="dropify-wrapper" style="height: 100px;">
-                                    <div class="dropify-message"> <p></p></div>
-                                    <div class="dropify-loader"></div>
-                                    <div class="dropify-errors-container"><ul></ul></div>
-                                    <input type="file" id="input-file-now-custom-233" name="image" class="dropify" data-height="90">
-                                    <button type="button" class="dropify-clear">Remove</button>
-                                </div>
-                                <div class="dropify-preview">
-                                    <span class="dropify-render"></span>
-                                    <div class="dropify-infos">
-                                        <div class="dropify-infos-inner">
-                                            <p class="dropify-infos-message"></p>
-                                        </div>
+                        <div class="jb_cover" style="width:50%">
+                            <div class="dropify-wrapper">
+                                <div class="dropify-message"> <p></p></div>
+                                <div class="dropify-loader"></div>
+                                <div class="dropify-errors-container"><ul></ul></div>
+                                <input type="file" id="input-file-now-custom-233" class="dropify" data-default-file="{{asset('storage/profile_images/'.$user->image)}}" />
+                                <button type="button" class="dropify-clear">Remove</button>
+                            </div>
+                            <div class="dropify-preview">
+                                <span class="dropify-render"></span>
+                                <div class="dropify-infos">
+                                    <div class="dropify-infos-inner">
+                                        <p class="dropify-infos-message"></p>
                                     </div>
                                 </div>
-                                    <span class="post_photo">browse image</span>
                             </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="browse_img_banner jb_cover">
-
-                <div class="jp_job_post_side_img">
-                    <img src="{{asset('dashboard/images/banner.png')}}" alt="post_img">
-
-                </div>
-
-                <div class="jp_job_post_right_cont edit_profile_wrapper">
-                    <h4>JPEG or PNG 1920x300px Cover Image</h4>
-
-                    <div class="width_50">
-                        <div class="dropify-wrapper" style="height: 100px;"><div class="dropify-message"> <p></p></div><div class="dropify-loader"></div><div class="dropify-errors-container"><ul></ul></div><input type="file" id="input-file-now-custom-2" class="dropify" data-height="90"><button type="button" class="dropify-clear">Remove</button><div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message"></p></div></div></div></div><span class="post_photo">browse image</span>
+                        </div><span class="post_photo">browse image</span>
                     </div>
                 </div>
-
             </div>
+
             <div class="browse_img_banner jb_cover">
 
                 <div class="row">
@@ -242,7 +217,7 @@
                 </div>
             </div>
             <div class="header_btn search_btn jb_cover">
-                    <button type="submit" class="btn-custom">save changes</button>
+                    <button type="submit" class="btn-custom" id="save">save changes</button>
                 </div>
             </form>
         </div>

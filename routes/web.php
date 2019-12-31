@@ -43,13 +43,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'employer'], function () {
     Route::get('/recruteur', 'RecruteurController@dashboardApplications');
     Route::get('/edit_profile_recruteur', 'ProfileRecruteurController@index')->name('edit_profile_recruteur.index');
+    Route::get('/manage_jobs', 'ProfileRecruteurController@indexOffres');
     Route::post('/edit_profile_recruteur/update', 'ProfileRecruteurController@update')->name('edit_profile_recruteur.update');
     Route::view('/company_page', 'recruteur.companyPage');
     Route::view('/company_applications', 'recruteur.companyApp');
-    Route::view('/manage_jobs', 'recruteur.manage_jobs');
     Route::view('/post_job', 'recruteur.post_job');
 
-    Route::post('/post_job','RecruteurController@postNewJob')->name('new_job');
+    Route::post('/post_job/new','RecruteurController@postNewJob')->name('new_job');
     Route::post('/edit_profile_recruteur','RecruteurController@editProfile')->name('edit_profile_recruteur');
 });
 

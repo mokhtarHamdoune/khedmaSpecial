@@ -1,4 +1,5 @@
 
-@foreach($offres as $one)
-    {{$one[1]}}<br>
-@endforeach
+@extends('layouts.app')
+@section('content')
+{{$candidates->country}}
+@endsection
