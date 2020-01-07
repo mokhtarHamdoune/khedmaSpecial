@@ -4,7 +4,7 @@
     <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
         <div class="job_main_overflow jb_cover">
-            <div class="latest_job_overlow jb_cover">
+            <div id="jobs" class="latest_job_overlow jb_cover">
                 <div class="manage_jobs_wrapper jb_cover">
                     <div class="job_list mange_list">
 

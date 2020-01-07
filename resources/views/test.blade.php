@@ -1,5 +1,9 @@
 
 @extends('layouts.app')
 @section('content')
-{{$candidates->country}}
+@foreach($candidates as $candidate)
+{{$candidate->name}}
+{{$candidate->offre}}
+@endforeach
+{{$candidates->links()}}
 @endsection

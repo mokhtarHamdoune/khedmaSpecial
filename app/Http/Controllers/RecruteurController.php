@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\http\Controllers\imageController as Image;
+use DB;
 
 class RecruteurController extends Controller
 {
@@ -25,12 +26,22 @@ class RecruteurController extends Controller
 
     public function dashboardApplications(){
         $user = Auth::guard('employer')->user();
+        /*
         $offres = $user->offre;
         $candidates = $offres->map(function ($item, $key) {
             return $item->candidate;
         });
         $candidates = $candidates->flatten(1);
-        return view('recruteur.dashboard', ['candidates'=>$candidates->forpage(1,3)]);
+        */
+        $candidates = DB::table('candidates')
+        ->join('candidate_offre','candidate_offre.candidate_id','=','candidates.id')
+        ->join('offres','offres.id','=','candidate_offre.offre_id')
+        ->join('employers','employers.id','=','offres.employer_id')
+        ->select('candidates.*','offres.title as offre')
+        ->where('employers.id','=',$user->id)
+        ->paginate(1);
+
+        return view('recruteur.dashboard', ['candidates'=>$candidates]);
     }
 
     public function editProfile(Request $request){

@@ -10,8 +10,8 @@
                             <h6>recent applications</h6>
                         </div>
                     </div>
-                    @if(count($candidates)>0)
-                    @foreach($candidates as $candidate)
+@if(count($candidates)>0)
+@foreach($candidates as $candidate)
                     <div class="latest_job_box jb_cover">
                         <div class="job_list recent_app_1">
                             <div class="recent_img">
@@ -20,7 +20,7 @@
                             <div class="recent_cntnt">
                                 <h6><a href="#">{{$candidate->name}}</a></h6>
                                 <ul>
-                                    <li><i class="fas fa-suitcase"></i>&nbsp; {{App\Offre::find($candidate->pivot->offre_id)->title}}</li>
+                                    <li><i class="fas fa-suitcase"></i>&nbsp; {{$candidate->offre}}</li>
                                     <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles</li>
                                 </ul>
                             </div>
@@ -44,25 +44,7 @@
 @endif
                     </div>
                     <div class="blog_pagination_section jb_cover">
-                        <ul>
-                            <li>
-                                <a href="#" class="prev"> <i class="flaticon-left-arrow"></i> </a>
-                            </li>
-                            <li><a href="#">1</a>
-                            </li>
-                            <li class="third_pagger"><a href="#">2</a>
-                            </li>
-                            <li class="d-block d-sm-block d-md-block d-lg-block"><a href="#">3</a>
-                            </li>
-                            <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">...</a>
-                            </li>
-                            <li class="d-none d-sm-block d-md-block d-lg-block"><a href="#">6</a>
-                            </li>
-
-                            <li>
-                                <a href="#" class="next"> <i class="flaticon-right-arrow"></i> </a>
-                            </li>
-                        </ul>
+                        {{$candidates->links()}}
                     </div>
                 </div>
             </div>
