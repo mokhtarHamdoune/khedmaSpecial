@@ -83,8 +83,10 @@ Route::middleware(['middleware' => 'candidate'])->prefix("candidate")->group(fun
 
     Route::post("/document","CvController@addDocument");
     Route::delete("/document/{id_doc}","CvController@dropDocument");
+
+    Route::get('/applied_jobs', 'AppliedJobsController@index')->name("appJobs");
+    Route::delete("/applied_jobs/{id_offre}","AppliedJobsController@destroy");
     // Route::view('/cv', 'candidat.cv');
-    // Route::view('/applied_jobs', 'candidat.applied_jobs');
     // Route::view('/edit_profile', 'candidat.edit_profile');
     // //candidats profil and edit profil
     // //show the profil

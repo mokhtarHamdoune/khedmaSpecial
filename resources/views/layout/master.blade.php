@@ -501,6 +501,7 @@
     <script src="{{asset('js/isotope.pkgd.min.js')}}"></script>
     <script src="{{asset('js/custom.js')}}"></script>
     @yield("script")
+    @yield("applied")
     <!-- custom js-->
 </body>
 

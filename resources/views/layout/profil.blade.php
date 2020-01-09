@@ -27,7 +27,7 @@
                                 <li> <a href="{{route('profile')}}"> <i class="fas fa-edit"></i>edit profile</a></li>
                                 <li><a href="{{route('resume')}}"><i class="fas fa-file"></i>resume </a></li>
                                 <li><a href="{{url('/favorites')}}"><i class="fas fa-heart"></i>favourite</a></li>
-                                <li><a href="{{url('/applied_jobs')}}"><i class="fas fa-check-square"></i>applied job</a></li>
+                                <li><a href="{{route('appJobs')}}"><i class="fas fa-check-square"></i>applied job</a></li>
                                 <li><a href="message.html"><i class="fas fa-envelope"></i>message</a></li>
                                 <li><a href="pricing_plans.html"><i class="fas fa-tag"></i>pricing plans</a></li>
                             </ul>
