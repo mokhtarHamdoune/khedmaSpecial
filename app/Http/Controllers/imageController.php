@@ -21,20 +21,20 @@ class imageController extends Controller
     }
 
     public static function uploadImage($id, $role,Request $request){
-        $user = $this->getUser($id, $role);
+        $user = imageController::getUser($id, $role);
         if($request->image)
             {
                 $fileNameWithExt = $request->file('image')->getClientOriginalName();
                 $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
                 $extension = $request->file('image')->getClientOriginalExtension();
                 $fileNameToStore = $fileName.'_'.time().'.'.$extension;
-                $path = $request->file('image')->storeAs('public/profile_images', $fileNameToStore);
+                $path = $request->file('image')->storeAs('profile_images', $fileNameToStore);
             }
             else
             {
                 $fileNameToStore = "noimage.jpg"; //default image khas nzidha f dossier
             }
-            $this->deleteProfileImage($user->id, $role);
+            imageController::deleteProfileImage($user->id, $role);
             $user->image = $fileNameToStore;
             $user->save();
     }

@@ -46,7 +46,7 @@ Route::group(['middleware' => 'employer'], function () {
     Route::get('/manage_jobs', 'ProfileRecruteurController@indexOffres');
     Route::post('/edit_profile_recruteur/update', 'ProfileRecruteurController@update')->name('edit_profile_recruteur.update');
     Route::view('/company_page', 'recruteur.companyPage');
-    Route::view('/company_applications', 'recruteur.companyApp');
+    Route::get('/company_applications', 'RecruteurController@CompanyApplications');
     Route::view('/post_job', 'recruteur.post_job');
 
     Route::post('/post_job/new','RecruteurController@postNewJob')->name('new_job');

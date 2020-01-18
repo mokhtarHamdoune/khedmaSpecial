@@ -13,7 +13,7 @@
                                 <div class="dropify-message"> <p></p></div>
                                 <div class="dropify-loader"></div>
                                 <div class="dropify-errors-container"><ul></ul></div>
-                                <input type="file" id="input-file-now-custom-233" class="dropify" data-default-file="{{asset('storage/profile_images/'.$user->image)}}" />
+                                <input type="file" id="input-file-now-custom-233" name="image" class="dropify" data-default-file="{{asset('storage/profile_images/'.$user->image)}}" />
                                 <button type="button" class="dropify-clear">Remove</button>
                             </div>
                             <div class="dropify-preview">

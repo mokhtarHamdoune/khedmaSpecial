@@ -25,14 +25,12 @@ class RecruteurController extends Controller
     }
 
     public function dashboardApplications(){
+
+        return view('recruteur.dashboard');
+    }
+
+    public function CompanyApplications(){
         $user = Auth::guard('employer')->user();
-        /*
-        $offres = $user->offre;
-        $candidates = $offres->map(function ($item, $key) {
-            return $item->candidate;
-        });
-        $candidates = $candidates->flatten(1);
-        */
         $candidates = DB::table('candidates')
         ->join('candidate_offre','candidate_offre.candidate_id','=','candidates.id')
         ->join('offres','offres.id','=','candidate_offre.offre_id')
@@ -41,7 +39,7 @@ class RecruteurController extends Controller
         ->where('employers.id','=',$user->id)
         ->paginate(1);
 
-        return view('recruteur.dashboard', ['candidates'=>$candidates]);
+        return view('recruteur.companyApp', ['candidates'=>$candidates]);
     }
 
     public function editProfile(Request $request){
