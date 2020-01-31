@@ -18,8 +18,8 @@ class TestController extends Controller
     public function index()
     {
         $candidate = Candidate::find(1);
-        $candidate->offre()->syncWithoutDetaching(Offre::find(2));
-        return view('/welcome');
+        $candidate->offre()->syncWithoutDetaching(Offre::find(2),['created_at' => '2019-12-26 23:49:47']);
+        return view('test');
     }
 
     /**

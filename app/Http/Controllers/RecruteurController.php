@@ -66,7 +66,7 @@ class RecruteurController extends Controller
     }
 
     public function test(Request $request){
-
+/*
         $user = Employer::find(1);
         $offres = $user->offre;
         $candidates = array();
@@ -86,7 +86,13 @@ class RecruteurController extends Controller
             }
         }
         array_unique($final, SORT_REGULAR);
-        return view('test', ['offres' => $final]);
+        return view('test', ['offres' => $final]);*/
+
+  /*      $candidate = Auth::guard('candidate')->user();
+        $candidate->offre()->syncWithoutDetaching([5 => ['created_at' => '2019-12-26 23:49:47']]);
+*/
+        if(Offre::find(12)) return view('test');
+        else return redirect('/welcome');
     }
 
     public function postNewJob(Request $request)

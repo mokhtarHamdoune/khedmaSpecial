@@ -9,16 +9,12 @@ use Illuminate\Support\Facades\Storage;
 class CandidatController extends Controller
 {
 
-    
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
 
+    public function postule(Request $request)
+    {
+        $user = Auth::guard('candidate')->user();
+        $user->offres()->saveWithoutDetaching([$request->offre_id]);
+        return redirect()->back();
     }
 
     /**
