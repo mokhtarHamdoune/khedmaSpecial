@@ -24,9 +24,28 @@ class RecruteurController extends Controller
         ]);
     }
 
-    public function dashboardApplications(){
+    public function companySingle($id){
+        $candidate = Auth::guard('candidate')->user();
+        $rec = Employer::find($id);
+        if($rec){
+        $offres = $rec->offre()->orderBy('created_at','desc')->limit(6)->get();
+        return view('company_single', ['rec' => $rec, 'offres' => $offres, 'candidate' => $candidate]);}
+        return redirect()->route('home');
+    }
 
-        return view('recruteur.dashboard');
+    public function companySingleJ(){
+        return view('company_single');
+    }
+
+    public function dashboardApplications(){
+        $user = Auth::guard('employer')->user();
+        return view('recruteur.dashboard',['user' => $user]);
+    }
+
+    public function messages(){
+        $user = Auth::guard('employer')->user();
+        $messages = DB::table('messages')->select('*')->where('employer_id','=',$user->id)->orderby('status','asc')->paginate(1);
+        return view('recruteur.messages',['user' => $user, 'messages' => $messages]);
     }
 
     public function CompanyApplications(){

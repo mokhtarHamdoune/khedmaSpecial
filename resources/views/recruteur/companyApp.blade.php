@@ -18,7 +18,7 @@
                                 <img src="{{asset('dashboard/images/rs1.jpg')}}" alt="post_img">
                             </div>
                             <div class="recent_cntnt">
-                                <h6><a href="#">{{$candidate->name}}</a></h6>
+                                <h6><a href="#">{{$candidate->userName}}</a></h6>
                                 <ul>
                                     <li><i class="fas fa-suitcase"></i>&nbsp; {{$candidate->offre}}</li>
                                     <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles</li>

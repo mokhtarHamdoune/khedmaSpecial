@@ -11,7 +11,7 @@
 |
 */
 // The HomeController to give the right home to the righ actor(guest,candidate,employer)
-Route::get('/',"HomeController@show");
+Route::get('/',"HomeController@show")->name('home');
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -27,6 +27,12 @@ Route::get("/contact_us",function(){
 Route::get("/about_us",function(){
     return view ('about_us');
 });
+
+
+Route::get('/company_single/{id}', 'RecruteurController@companySingle');
+Route::get('/candidate_single/{id}', 'CandidatController@candidateSingle');
+Route::get('/sendMessage/{id}', 'CandidatController@sendMess')->name('sendMessage');
+
 //sign in and up
     Route::get('/login', 'Auth\LoginController@showLoginForm');
     Route::get('/sign_up', 'Auth\RegisterController@showRegisterForm');
@@ -37,16 +43,18 @@ Route::get("/about_us",function(){
     Route::view('/employer', 'employer');
     Route::view('/candidate', 'candidate');*/
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 //restrict access
 Route::group(['middleware' => 'employer'], function () {
     Route::get('/recruteur', 'RecruteurController@dashboardApplications');
     Route::get('/edit_profile_recruteur', 'ProfileRecruteurController@index')->name('edit_profile_recruteur.index');
     Route::get('/manage_jobs', 'ProfileRecruteurController@indexOffres');
     Route::post('/edit_profile_recruteur/update', 'ProfileRecruteurController@update')->name('edit_profile_recruteur.update');
-    Route::view('/company_page', 'recruteur.companyPage');
+    Route::post('/company_page/update', 'ProfileRecruteurController@updateInfos')->name('rec_infos');
+    Route::get('/company_page', 'ProfileRecruteurController@companyPage')->name('companyPage');
     Route::get('/company_applications', 'RecruteurController@CompanyApplications');
+    Route::get('/messages', 'RecruteurController@messages');
     Route::view('/post_job', 'recruteur.post_job');
 
     Route::post('/post_job/new','RecruteurController@postNewJob')->name('new_job');
@@ -97,4 +105,4 @@ Route::middleware(['middleware' => 'candidate'])->prefix("candidate")->group(fun
     // Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 });
 
-Route::get('/save','RecruteurController@test');
+Route::get('/save','TestController@index');
