@@ -15,7 +15,7 @@ class candidate extends Seeder
     public function run()
     {
         DB::table('candidates')->insert([
-            'name' => Str::random(10),
+            'userName' => Str::random(10),
             'email' => Str::random(10).'@gmail',
             'password' => Str::random(10),
         ]);

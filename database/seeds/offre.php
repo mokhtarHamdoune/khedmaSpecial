@@ -13,20 +13,23 @@ class offre extends Seeder
     {
         DB::table('offres')->insert([
             'title' => Str::random(10),
-            'intitule' => Str::random(10),
             'type' => Str::random(10),
             'domaine' => Str::random(10),
             'diplome' => Str::random(10),
             'anneesExperience' => Str::random(10),
             'description' => Str::random(10),
-            'lieuTravaille' => Str::random(10),
             'competence' => Str::random(10),
             'remuniration' => Str::random(10),
-            'date_depot' => '2019-12-06 21:05:45',
+
+
+            'city' => Str::random(10),
+            'country' => Str::random(10),
+            'lieuTravailleExact' => Str::random(10),
+
+
             'status' => true,
-            'date_prevue' => '2019-12-06 21:05:45',
             'duree_stage' => '2019-12-06 21:05:45',
-            'employer_id' => 5,
+            'employer_id' => 1,
         ]);
     }
 }

@@ -17,9 +17,10 @@ class TestController extends Controller
      */
     public function index()
     {
-        $candidate = Candidate::find(1);
-        $candidate->offre()->syncWithoutDetaching(Offre::find(2));
-        return view('/welcome');
+        Offre::find(1)->update(['status' => 1]);
+        $rec = Employer::find(1);
+        $offres = $rec->offre()->orderBy('created_at','desc')->take(6)->get();
+        return view('test', ['candidates' => $offres]);
     }
 
     /**

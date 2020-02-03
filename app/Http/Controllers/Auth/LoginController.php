@@ -84,6 +84,6 @@ class LoginController extends Controller
             return redirect('/',["id"=>$id]);
             */
         }
-        return back()->withInput($request->only('email', 'remember'));
+        return back();
     }
 }

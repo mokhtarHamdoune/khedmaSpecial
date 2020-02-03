@@ -3,22 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Candidate;
+use App\Messages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 class CandidatController extends Controller
 {
+    public function candidateSingle($id){
+        $candidate = Candidate::find($id);
+        return view('candidate_single', ['candidate' => $candidate]);
+    }
 
-    
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function sendMess(Request $request, $id)
     {
+        $request->validate([
+            'name' => 'required',
+            'Email' => 'required',
+            'message' => 'required',
+        ]);
+        $message = new Messages;
+        $message->name = $request->name;
+        $message->Email = $request->Email;
+        $message->body = $request->message;
+        $message->employer_id = $id;
+        $message->save();
 
+        return redirect()->back();
+    }
+
+    public function postule(Request $request)
+    {
+        $user = Auth::guard('candidate')->user();
+        $user->offres()->saveWithoutDetaching([$request->offre_id]);
+        return redirect()->back();
     }
 
     /**

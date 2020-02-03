@@ -24,9 +24,28 @@ class RecruteurController extends Controller
         ]);
     }
 
-    public function dashboardApplications(){
+    public function companySingle($id){
+        $candidate = Auth::guard('candidate')->user();
+        $rec = Employer::find($id);
+        if($rec){
+        $offres = $rec->offre()->orderBy('created_at','desc')->limit(6)->get();
+        return view('company_single', ['rec' => $rec, 'offres' => $offres, 'candidate' => $candidate]);}
+        return redirect()->route('home');
+    }
 
-        return view('recruteur.dashboard');
+    public function companySingleJ(){
+        return view('company_single');
+    }
+
+    public function dashboardApplications(){
+        $user = Auth::guard('employer')->user();
+        return view('recruteur.dashboard',['user' => $user]);
+    }
+
+    public function messages(){
+        $user = Auth::guard('employer')->user();
+        $messages = DB::table('messages')->select('*')->where('employer_id','=',$user->id)->orderby('status','asc')->paginate(1);
+        return view('recruteur.messages',['user' => $user, 'messages' => $messages]);
     }
 
     public function CompanyApplications(){
@@ -66,7 +85,7 @@ class RecruteurController extends Controller
     }
 
     public function test(Request $request){
-
+/*
         $user = Employer::find(1);
         $offres = $user->offre;
         $candidates = array();
@@ -86,7 +105,13 @@ class RecruteurController extends Controller
             }
         }
         array_unique($final, SORT_REGULAR);
-        return view('test', ['offres' => $final]);
+        return view('test', ['offres' => $final]);*/
+
+  /*      $candidate = Auth::guard('candidate')->user();
+        $candidate->offre()->syncWithoutDetaching([5 => ['created_at' => '2019-12-26 23:49:47']]);
+*/
+        if(Offre::find(12)) return view('test');
+        else return redirect('/welcome');
     }
 
     public function postNewJob(Request $request)

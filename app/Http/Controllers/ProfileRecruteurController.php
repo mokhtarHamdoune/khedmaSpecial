@@ -20,6 +20,12 @@ class ProfileRecruteurController extends Controller
         return view('recruteur.edit_profile',['user' => $user]);
     }
 
+    public function companyPage()
+    {
+        $user = Auth::guard('employer')->user();
+        return view('recruteur.companypage',['user' => $user]);
+    }
+
     public function indexOffres()
     {
         $user = Auth::guard('employer')->user();
@@ -101,6 +107,22 @@ class ProfileRecruteurController extends Controller
         $user->save();
 
         return redirect()->route('edit_profile_recruteur.index');
+    }
+
+    public function updateInfos(Request $request)
+    {
+
+        $this->validate($request, [
+            'about_us'   => 'max:1000',
+            'extra_info'   => 'max:1000'
+        ]);
+
+        $user = Auth::guard('employer')->user();
+        $user->about_us = $request->about_us;
+        $user->extra_info = $request->extra_info;
+        $user->save();
+
+        return redirect()->route('companyPage');
     }
 
     /**

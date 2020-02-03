@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-md-7 col-sm-12 col-12">
                         <div class="jp_job_post_side_img">
-                            <img src="images/ws.png" alt="post_img">
+                            <img src="{{asset('storage/profile_images/'.$user->image)}}" alt="post_img">
 
                         </div>
                         <div class="jp_job_post_right_cont">
