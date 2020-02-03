@@ -12,12 +12,14 @@
 */
 // The HomeController to give the right home to the righ actor(guest,candidate,employer)
 Route::get('/',"HomeController@show")->name('home');
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 Route::get('/jobs',"JobsController@index")->name("jobs");
 Route::get('/jobs/filter','JobsController@filter')->name("jobs.pagination");
 Route::get("/jobs/details/{id_job}","JobsController@show")->name("jobs.show");
+
+//campanies
+Route::get("/companies","RecruteurController@index");
+Route::get('/companies/{id}', 'RecruteurController@companySingle');
 
 //contact_us
 Route::get("/contact_us",function(){
@@ -29,7 +31,6 @@ Route::get("/about_us",function(){
 });
 
 
-Route::get('/company_single/{id}', 'RecruteurController@companySingle');
 Route::get('/candidate_single/{id}', 'CandidatController@candidateSingle');
 Route::get('/sendMessage/{id}', 'CandidatController@sendMess')->name('sendMessage');
 

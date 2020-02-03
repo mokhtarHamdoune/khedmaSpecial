@@ -20,15 +20,14 @@ class CreateEmployersTable extends Migration
             $table->string('password');
             $table->text('about_us')->nullable();
             $table->text('extra_info')->nullable();
-            $table->string("civilite")->nullable();
             $table->string("telephone")->nullable();
+            $table->boolean("type")->nullable();
             $table->string("fonction")->nullable();
-            $table->string("google")->nullable();
             $table->string("facebook")->nullable();
             $table->string("twitter")->nullable();
             $table->string("linkedin")->nullable();
             $table->string("contact_email")->nullable();
-            $table->string("image")->default('noimage.jpg');
+            $table->string("image")->default('noimge.png');
             $table->rememberToken();
             $table->timestamps();
         });

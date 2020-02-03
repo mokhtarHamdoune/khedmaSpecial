@@ -10,7 +10,7 @@
                         </div>
                         <div class="job_overview_header jb_cover">
                             <div class="jb_job_overview_img">
-                                <img src="{{$offre->image ?? asset('images/default_cmp_logo.png')}}" id="job_sing_img" alt="post_img">
+                                <img src="{{asset('storage/profile_images/'.$offre->image)}}" id="job_sing_img" alt="post_img">
                                 <h4>{{$offre->title}}</h4>
                                 <p>{{$offre->name}}</p>
                                 <ul class="job_single_lists">

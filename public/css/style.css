@@ -2021,12 +2021,12 @@ a:hover {
 	float:left;
 	width:100%;
 	position:relative;
-	padding:35px;
-	padding-bottom:20px;
+	padding:20px;
+	padding-bottom: 0px;
 	text-align:center;
 }
 .company_img_wrapper img{
-	width:auto !important;
+	width:100px !important;
 	display:inline-block !important;
 }
 .btc_team_social_wrapper {

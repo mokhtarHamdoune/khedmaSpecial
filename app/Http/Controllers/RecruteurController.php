@@ -16,6 +16,11 @@ use DB;
 class RecruteurController extends Controller
 {
 
+    //all the companies
+    public function index(){
+        $employers = Employer::all();
+        return view("companies.companies",["employers"=>$employers]);
+    }
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -29,7 +34,7 @@ class RecruteurController extends Controller
         $rec = Employer::find($id);
         if($rec){
         $offres = $rec->offre()->orderBy('created_at','desc')->limit(6)->get();
-        return view('company_single', ['rec' => $rec, 'offres' => $offres, 'candidate' => $candidate]);}
+        return view('companies.company_single', ['rec' => $rec, 'offres' => $offres, 'candidate' => $candidate]);}
         return redirect()->route('home');
     }
 
