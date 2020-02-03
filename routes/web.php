@@ -15,9 +15,9 @@ Route::get('/',"HomeController@show");
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/jobs',function(){
-    return view ('jobs');
-});
+Route::get('/jobs',"JobsController@index")->name("jobs");
+Route::get('/jobs/filter','JobsController@filter')->name("jobs.pagination");
+Route::get("/jobs/details/{id_job}","JobsController@show")->name("jobs.show");
 
 //contact_us
 Route::get("/contact_us",function(){
@@ -66,6 +66,8 @@ Route::middleware(['middleware' => 'candidate'])->prefix("candidate")->group(fun
     Route::post("/resume","CvController@store")->name("resume.store");
     Route::delete("/resume/{id_cv}","CvController@destroy")->name("resume.delete");
     Route::get("resume/{id_cv}","CvController@show")->name("resume.show");
+
+    Route::get("resume/{id_cv}/final","CvController@finalCv")->name("resume.final");
 
     Route::post("/formation","CvController@addFormation");
     Route::put("/formation/{id_form}","CvController@editFormation");

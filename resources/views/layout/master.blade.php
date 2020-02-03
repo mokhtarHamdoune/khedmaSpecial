@@ -502,6 +502,7 @@
     <script src="{{asset('js/custom.js')}}"></script>
     @yield("script")
     @yield("applied")
+    @yield("search")
     <!-- custom js-->
 </body>
 

@@ -211,16 +211,13 @@ Vacancies Right Now!.</h2>
 
                         </div>
                         <div class="select_box select_box3">
-
                             <select>
                                 <option>location</option>
                                 <option>pune</option>
                                 <option>banglore</option>
                                 <option>indore</option>
                                 <option>bhopal</option>
-
                             </select>
-
                         </div>
                         <div class="contect_form3 contct_form_new3">
 

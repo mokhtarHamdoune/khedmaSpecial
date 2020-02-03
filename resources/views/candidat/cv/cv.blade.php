@@ -3,9 +3,14 @@
     <div class="col-lg-9 col-md-12 col-sm-12 col-12 mb-5">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="job_listing_left_fullwidth jb_cover mb-2 mt-0">
+                    <div class="search_btn clearfix">
+                        <a href="{{route('resume.final',$cv->id)}}" class="float-right">CV OVERVIEW &nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
                 <div class="job_filter_category_sidebar company_wrapper jb_cover">
                     <div class="job_filter_sidebar_heading jb_cover">
-                        <h1> basic information <span><a href="#" data-toggle="modal" id="edit_basics"><i class="fas fa-edit"></i></a></span></h1>
+                        <h1> Informations de base <span><a href="#" data-toggle="modal" id="edit_basics"><i class="fas fa-edit"></i></a></span></h1>
                     </div>
                     <div class="modal fade delete_popup company_popup" id="myModal1" role="dialog">
                         <div class="modal-dialog">

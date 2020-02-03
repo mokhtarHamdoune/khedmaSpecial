@@ -320,7 +320,7 @@ const addDocument=()=>{
                 <th scope="row">${i}</th>
                 <td>${formData.get("type_doc")}</td>
                 <td>${formData.get("document").name}</td>
-                <td class="dowDel"><a href="${response.path}"><i class="fas fa-download"></i></a><a href="dropFile/${response.doc_id}"><i class="fas fa-trash-alt"></i></i></a></td>
+                <td class="dowDel"><a href="${response.path}" download><i class="fas fa-download"></i></a><a href="dropFile/${response.doc_id}"><i class="fas fa-trash-alt"></i></i></a></td>
                 </tr>`);
                 $("#myModal8").modal("hide");
                 $('#doc_form').trigger("reset");

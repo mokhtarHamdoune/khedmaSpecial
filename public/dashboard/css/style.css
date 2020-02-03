@@ -3565,3 +3565,16 @@ background:#fff;
     box-shadow: 0 0 0 30px rgba(232, 76, 61, 0);
   }
 }
+.cv_final h1 span {
+	float: left;
+}
+.cv_final h1 span a i:hover{
+    color:brown;
+    transition-duration: 200ms;
+}
+.cv_final_img img{
+	width:210px;
+	padding-bottom: 4px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+}
