@@ -23,11 +23,11 @@
                         </div>
                         <div class="emp_follow_link jb_cover">
                             <ul class="feedlist">
-                                <li><a href="{{route('dashboard')}}" class="link_active"><i class="fas fa-tachometer-alt"></i> dashboard </a></li>
-                                <li> <a href="{{route('profile')}}"> <i class="fas fa-edit"></i>edit profile</a></li>
-                                <li><a href="{{route('resume')}}"><i class="fas fa-file"></i>resume </a></li>
-                                <li><a href="{{url('/favorites')}}"><i class="fas fa-heart"></i>favourite</a></li>
-                                <li><a href="{{route('appJobs')}}"><i class="fas fa-check-square"></i>applied job</a></li>
+                                <li><a href="{{route('dashboard')}}" class="{{Route::is('dashboard') ? 'link_active' : '' }}"><i class="fas fa-tachometer-alt"></i> dashboard </a></li>
+                                <li> <a href="{{route('profile')}}" class="{{Route::is('profile') ? 'link_active' : '' }}"> <i class="fas fa-edit"></i>edit profile</a></li>
+                                <li><a href="{{route('resume')}}" class="{{Route::is('resume') ? 'link_active' : '' }}"><i class="fas fa-file"></i>resume </a></li>
+                                <li><a href="{{url('/favorites')}}" class="{{Route::is('favorites') ? 'link_active' : '' }}"><i class="fas fa-heart"></i>favourite</a></li>
+                                <li><a href="{{route('appJobs')}}" class="{{Route::is('appJobs') ? 'link_active' : '' }}"><i class="fas fa-check-square"></i>applied job</a></li>
                                 <li><a href="message.html"><i class="fas fa-envelope"></i>message</a></li>
                                 <li><a href="pricing_plans.html"><i class="fas fa-tag"></i>pricing plans</a></li>
                             </ul>

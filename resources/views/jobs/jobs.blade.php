@@ -40,12 +40,12 @@
                         </div>
                         <div class="category_jobbox jb_cover">
                             <p class="job_field">
-                                <input type="checkbox" id="c11" value="0" name="societe[]">
+                                <input type="checkbox" id="c11" value="0" name="type[]">
                                 <label for="c11">Public
                                     <span> (124)</span></label>
                             </p>
                             <p class="job_field">
-                                <input type="checkbox" id="c12" value="1" name="societe[]">
+                                <input type="checkbox" id="c12" value="1" name="type[]">
                                 <label for="c12">
                                     Privé
                                     <span> (42)</span>
@@ -135,7 +135,7 @@
                                 </ul>
                             </div>
                             <div class="showpro">
-                                <p>You're Watching 01 to {{$all}}</p>
+                                <p>Vous regardez 01 à {{$all}}</p>
                             </div>
                         </div>
                         <div class="tab-content btc_shop_index_content_tabs_main jb_cover mb-5">
@@ -147,7 +147,7 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                                     <div class="jp_job_post_side_img">
-                                                        <img src="{{$offre->image ?? asset('images/default_cmp_logo.png')}}" alt="post_img" class="cmp_logo" />
+                                                        <img src="{{asset('storage/profile_images/'.$offre->image)}}" alt="post_img" class="cmp_logo" />
                                                         <br> <span>{{$offre->name}}</span>
                                                     </div>
                                                     <div class="jp_job_post_right_cont">
@@ -186,7 +186,7 @@
                                             <div class="row">
                                                 <div class="col-lg-9 col-md-9 col-sm-12 col-12">
                                                     <div class="jp_job_post_side_img">
-                                                        <img src="{{$offre->image ?? asset('images/default_cmp_logo.png')}}" class="cmp_logo" alt="post_img" />
+                                                        <img src="{{asset('storage/profile_images/'.$offre->image)}}" class="cmp_logo" alt="post_img" />
                                                         <br> <span>{{$offre->name}}</span>
                                                     </div>
                                                     <div class="jp_job_post_right_cont">
@@ -276,13 +276,11 @@
                             </p>
                             <div class="seeMore"><a href="#">view all categories</a></div>
                         </div>
-
                     </div>
                     <div class="job_filter_category_sidebar jb_cover">
                         <div class="job_filter_sidebar_heading jb_cover">
                             <h1>jobs by  location</h1>
                         </div>
-
                         <div class="category_jobbox jb_cover">
                             <p class="job_field">
                                 <input type="checkbox" id="c011" name="cb">
@@ -394,6 +392,47 @@
                             <h4>Get Best Matched Jobs On your Email. Add Resume NOW!</h4>
                             <div class="width_50">
                                 <input type="file" id="input-file-now-custom-203" class="dropify" data-height="90" /><span class="post_photo">add resume</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade apply_job_popup show" id="myModal01" role="dialog" style="padding-right: 17px; display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+
+                        <div class="apply_job jb_cover">
+                            <h1>apply for this job :</h1>
+                            <div class="search_alert_box jb_cover">
+
+                                <div class="apply_job_form">
+
+                                    <input type="text" name="name" placeholder="full name">
+                                </div>
+                                <div class="apply_job_form">
+
+                                    <input type="text" name="Email" placeholder="Enter Your Email">
+                                </div>
+                                <div class="apply_job_form">
+                                    <textarea class="form-control" name="message" placeholder="Message"></textarea>
+                                </div>
+
+                                <div class="resume_optional jb_cover">
+                                    <p>resume (optional)</p>
+                                    <div class="width_50">
+                                        <div class="dropify-wrapper" style="height: 100px;"><div class="dropify-message"> <p></p></div><div class="dropify-loader"></div><div class="dropify-errors-container"><ul></ul></div><input type="file" id="input-file-now-custom-01" class="dropify" data-height="90"><button type="button" class="dropify-clear">Remove</button><div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message"></p></div></div></div></div><span class="post_photo">upload resume</span>
+                                    </div>
+                                    <p class="word_file"> microsoft word or pdf file only (5mb)</p>
+                                </div>
+
+                            </div>
+                            <div class="header_btn search_btn applt_pop_btn jb_cover">
+                                <a href="#">apply now</a>
                             </div>
                         </div>
                     </div>

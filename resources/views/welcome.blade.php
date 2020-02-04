@@ -183,49 +183,21 @@ Vacancies Right Now!.</h2>
             <img src="images/shape4.png" class="img-responsive" alt="img">
         </div>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-8 col-sm-8">
                     <div class="index3_form_box jb_cover">
-                        <div class="select_box select_box3">
-
-                            <select>
-                                <option>category</option>
-                                <option>real estate</option>
-                                <option>electronics</option>
-                                <option>marketing</option>
-                                <option>education</option>
-
-                            </select>
-
-                        </div>
-                        <div class="select_box select_box3">
-
-                            <select>
-                                <option>job title</option>
-                                <option>teacher</option>
-                                <option>marketing</option>
-                                <option>doctor</option>
-                                <option>graphic</option>
-
-                            </select>
-
-                        </div>
-                        <div class="select_box select_box3">
-                            <select>
-                                <option>location</option>
-                                <option>pune</option>
-                                <option>banglore</option>
-                                <option>indore</option>
-                                <option>bhopal</option>
-                            </select>
-                        </div>
                         <div class="contect_form3 contct_form_new3">
-
-                            <input type="text" name="name" placeholder="Keyword">
+                            <input type="text" name="search" id="search" placeholder="domaine,entreprise,wilaya...">
                         </div>
                         <div class="index3_form_search">
                             <a href="#"><i class="fas fa-search"></i></a>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-8" >
+                    <div class="row">
+                        <div class="col-lg-10 col-md-10 col-sm-10" id="search_result" style="display:none;">
+                        </div>  
                     </div>
                 </div>
             </div>
@@ -1078,4 +1050,7 @@ Vacancies Right Now!.</h2>
             <img src="images/bubble2.png" class="img-responsive " alt="img">
         </div>
     </div>
+@endsection
+@section ("search")
+<script src="{{asset('js/search.js')}}"></script>
 @endsection

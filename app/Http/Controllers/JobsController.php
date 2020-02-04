@@ -1,39 +1,27 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\offre;
+use App\Employer;
 use DB;
 class JobsController extends Controller
 {
     //just for the first time
     public function index(){
-        $page=0;
-        //for the first time there is no request
-        if(request("page")){
-            $page=request("page");
-        }
         $offres=DB::table("offres")->join("employers","offres.employer_id","=","employers.id")
         ->select("offres.*","employers.name","employers.image")
         ->where("offres.status","=",1)
-        ->offset($page*10-10)
+        ->offset(0)
         ->limit(10)
         ->get();
-        //retunr just the requested page
-        if(request("page")){
-            return response()->json(["offres"=>$offres]);
+        if(Auth::guard("candidate")->check()){
+            return view("jobs.jobs",["candidate"=>Auth::guard("candidate")->user(),"offres"=>$offres,"all"=>count(offre::all())]);
         }
         return view("jobs.jobs",["offres"=>$offres,"all"=>count(offre::all())]);
     }
-    public function pagination($page){
-        dd($page);
-        // $offres=DB::table("offres")->join("employers","offres.employer_id","=","employers.id")
-        // ->select("offres.*","employers.name","employers.image")
-        // ->offset($page*10)
-        // ->limit(10)
-        // ->get();
-    }
+    //jobs single
     public function show($id_offre){
         $offre=DB::table("offres")->join("employers","offres.employer_id","=","employers.id")
         ->select("offres.*","employers.name","employers.image")
@@ -41,7 +29,10 @@ class JobsController extends Controller
         ->get();
         return view("jobs.job_single",["offre"=>$offre[0]]);
     }
+    //filtring
     public function filter(Request $request,offre $offre){
+        //numero de page
+        $page=$request->page;
         $offre=$offre->newQuery();
         $offre->where("status","=","1");
         if($request->has("domaine")){
@@ -51,19 +42,56 @@ class JobsController extends Controller
             $offre->whereIn("offres.city",$request->wilaya);
         }
         $offre->join("employers","offres.employer_id","=","employers.id");
-        
-        if($request->has("societe")){
-            $offre->whereIn("employers.societe",$request->societe);
+        if($request->has("type")){
+            $offre->whereIn("employers.type",$request->type);
+        }
+        //whene the user choose from the search home
+        if($request->has("name")){
+            $offre->where("employers.name","=",$request->name);
         }
         $offre->select("offres.*","employers.name","employers.image");
-        // ->whereIn("offres.domaine",$request->domaine)
-        // ->whereIn("offres.city",$request->wilaya)
-        // ->join("employers","offres.employer_id","=","employers.id")
-        // ->select("offres.*","employers.name","employers.image")
-        // ->whereIn("emplyers.societe",$request->societe)
-        // ->offset(0)
-        // ->limit(10)
-        // ->get();
-        return response()->json(["offres"=>$offre->get()]);
+        //number of lines return from filtring
+        $all=count($offre->get());
+        $offre->offset($page*10-10)->limit(10);
+        // return response()->json(["offres"=>$offre->get(),"all"=>$all]);
+        return view("jobs.jobs",["offres"=>$offre]);
+        
+    }
+    //home search
+    public function search(Request $request){
+        $query=$request->search;
+        if($query!=""){
+            $domaines=offre::where("domaine","like","%".$query."%")
+            ->select("domaine")->groupBy("domaine")->get();
+            $titles=offre::where("title","like","%".$query."%")
+            ->select("title")->groupBy("title")->get();
+            $cities=offre::where("city","like","%".$query."%")
+            ->select("city")->groupBy("city")->get();
+            $employers=Employer::where("name","like","%".$query."%")
+            ->select("name")->groupBy("name")->get();
+            return response()->json(['domaines'=>$domaines,"titles"=>$titles,"cities"=>$cities,"employers"=>$employers]);
+        }
+    }
+    public function searchJobs(Request $request){
+        $offres=offre::where("status","=","1");
+        
+        if($request->has("domaine")){
+            $offres->where("offres.domaine","=",$request->domaine);
+            
+        }
+        if($request->has("wilaya")){
+            $offres->where("offres.city","=",$request->wilaya);
+        }
+        if($request->has("title")){
+            $offres->where("offres.title","=",$request->title);
+        }
+        $offres->join("employers","offres.employer_id","=","employers.id");
+        if($request->has("name")){
+            $offres->where("employers.name","=",$request->name);
+        }
+        $offres->select("offres.*","employers.name","employers.image");
+        $all=count($offres->get());
+        $offres->offset(0)->limit(10);
+        return view("jobs.jobs",["offres"=>$offres->get(),"all"=>$all]);
     }
 }
