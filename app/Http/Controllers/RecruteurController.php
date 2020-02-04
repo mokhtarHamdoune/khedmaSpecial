@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use App\http\Controllers\imageController as Image;
+use App\Charts\SampleChart;
 use DB;
 
 class RecruteurController extends Controller
@@ -38,13 +39,40 @@ class RecruteurController extends Controller
     }
 
     public function dashboardApplications(){
+        $emp = null;
+        $chart = null;
         $user = Auth::guard('employer')->user();
-        return view('recruteur.dashboard',['user' => $user]);
+        $offres = Employer::find(2)->offre()->select('city' ,DB::raw('count(*) as total'))
+        ->groupBy('city')
+        ->get();
+        if($offres->isempty())
+            $emp = "No offres to show stats for";
+        else{
+        $cities = $offres->map(function ($item) {
+            return $item->city;
+        });
+
+        $values = $offres->map(function ($item) {
+            return $item->total;
+        });
+
+        $chart = new SampleChart;
+        $chart->labels($cities);
+        $chart->dataset('My dataset', 'pie', $values)->backgroundColor(['red','blue']);
+        $chart->options([
+        'scales' => [
+            'xAxes' => [
+                'display' => false],
+            'yAxes' => [
+                'display' => false],
+            ],]);
+        }
+        return view('recruteur.dashboard',['user' => $user, 'chart' => $chart, 'emp' => $emp]);
     }
 
     public function messages(){
         $user = Auth::guard('employer')->user();
-        $messages = DB::table('messages')->select('*')->where('employer_id','=',$user->id)->orderby('status','asc')->paginate(1);
+        $messages = DB::table('messages')->select('*')->where('employer_id','=',$user->id)->orderby('status','asc')->paginate(10);
         return view('recruteur.messages',['user' => $user, 'messages' => $messages]);
     }
 

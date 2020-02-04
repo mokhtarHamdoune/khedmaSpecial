@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Test;
 use App\Employer;
-use App\offre;
+use App\Offre;
 use App\Candidate;
 use Illuminate\Http\Request;
+use App\Charts\SampleChart;
 
 class TestController extends Controller
 {
@@ -23,69 +25,62 @@ class TestController extends Controller
         return view('test', ['candidates' => $offres]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function show()
     {
-        //
-    }
+        /*$chart = new sample;
+        $chart->labels(['one','two','three']);
+        $yesterday_users = Offre::whereDate('created_at', today()->subDays(1))->count();
+        $users_2_days_ago = Offre::whereDate('created_at', today()->subDays(2))->count();
+*/
+        //Pie Chart Start
+        $today_users = Offre::select('city' ,DB::raw('count(*) as total'))
+        ->groupBy('city')
+        ->get();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $cities = $today_users->map(function ($item) {
+            return $item->city;
+        });
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Test  $test
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Test $test)
-    {
-        //
-    }
+        $values = $today_users->map(function ($item) {
+            return $item->total;
+        });
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Test  $test
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Test $test)
-    {
-        //
-    }
+        $chart = new SampleChart;
+        $chart->labels($cities);
+        $chart->dataset('My dataset', 'pie', $values)->backgroundColor(['red','blue']);
+        $chart->options([
+        'scales' => [
+            'xAxes' => [
+                'display' => false],
+            'yAxes' => [
+                'display' => false],
+        ],]);
+        //Pie Chart End
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Test  $test
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Test $test)
-    {
-        //
-    }
+        //Bar Chart Start
+        $year = 2010;
+        $barsql = Offre::select(DB::raw('count(*) as total'), DB::raw('YEAR(created_at) year'), DB::raw('MONTH(created_at) month'))/*->whereYear('created_at',$year)*/
+        ->groupBy('month')
+        ->get();
+        $barvalues = $barsql->map(function ($item) {
+            return $item->total;
+        });
+        $bar = new SampleChart;
+        $bar->labels(['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','October','Novembre','Decembre']);
+        $bar->dataset('Bars', 'bar', $barvalues);
+        //Bar Chart End
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Test  $test
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Test $test)
-    {
-        //
+        //Line Chart Start
+        $barsql = Offre::select(DB::raw('count(*) as total'), DB::raw('YEAR(created_at) year'), DB::raw('MONTH(created_at) month'))/*->whereYear('created_at',$year)*/
+        ->groupBy('month')
+        ->get();
+        $barvalues = $barsql->map(function ($item) {
+            return $item->total;
+        });
+        $bar = new SampleChart;
+        $bar->labels(['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','October','Novembre','Decembre']);
+        $bar->dataset('Bars', 'bar', $barvalues);
+        //Bar Chart End
+        return view('test', ['chart' => $chart,'bar' => $bar, 'barsql' => $barsql]);
     }
 }
