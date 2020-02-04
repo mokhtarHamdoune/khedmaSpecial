@@ -2021,12 +2021,12 @@ a:hover {
 	float:left;
 	width:100%;
 	position:relative;
-	padding:35px;
-	padding-bottom:20px;
+	padding:20px;
+	padding-bottom: 0px;
 	text-align:center;
 }
 .company_img_wrapper img{
-	width:auto !important;
+	width:100px !important;
 	display:inline-block !important;
 }
 .btc_team_social_wrapper {
@@ -3678,7 +3678,7 @@ a:hover {
 	margin-top:30px;
 }
 .jp_listing_overview_list_main_wrapper{
-	padding-bottom:30px;
+	padding-bottom:15px;
 }
 .jp_listing_overview_list_outside_main_wrapper{
 	float:left;
@@ -3809,9 +3809,6 @@ a:hover {
 	color:#222;
 	text-transform:capitalize;
 	padding-bottom:25px;
-}
-.jp_job_des ul{
-	margin-top:20px;
 }
 .jp_job_des li{
 	float:left;
@@ -6915,7 +6912,7 @@ background:#fff;
   display: none;
 }
 .box.has-advanced-upload {
-	background-color: #92b0b3;
+	background-color: #f883a0;
 	outline: 2px dashed black;
 	outline-offset: -10px;
 	height: 160px;
@@ -6924,7 +6921,7 @@ background:#fff;
 	display: inline;
 }
 .box.is-dragover {
-	background-color: #bdc4c5;
+	background-color: #ff3366;
 }
 .dowDel{
 	display:flex;
@@ -6937,4 +6934,10 @@ background:#fff;
 .dowDel a:hover{
 	color:black;
 	transition-delay: 2ms;
+}
+.cmp_logo{
+	width:70px;
+}
+#job_sing_img{
+	width:120px;
 }

@@ -287,16 +287,7 @@
                         @elseauth('candidate')
                         <li class="has-mega gc_main_navigation"><a href="{{route('dashboard')}}" class="gc_main_navigation">dashboard</a>
                         @endauth
-                        <li class="has-mega gc_main_navigation"><a href="#" class="gc_main_navigation">blog</a>
-                            <ul class="navi_2_dropdown">
-                                    <li class="parent">
-                                        <a href="blog_single.html"> <i class="fas fa-square"></i>blog single</a>
-                                    </li>
-                                    <li class="parent">
-                                        <a href="blog_category_right_sidebar.html"> <i class="fas fa-square"></i>blog category</a>
-                                    </li>
-                                </ul>
-                        </li>
+                        <li class="has-mega gc_main_navigation"><a href="{{url('/companies')}}" class="gc_main_navigation {{ Request::is('companies') ? 'active_class3' : '' }}">Entreprises</a></li>
                         <li class="has-mega gc_main_navigation"><a href="{{url('/about_us')}}" class="gc_main_navigation {{ Request::is('about_us') ? 'active_class3' : '' }}">About US</a></li>
                     <li><a href="{{url('/contact_us')}}" class="gc_main_navigation {{ Request::is('contact_us') ? 'active_class3' : '' }}">contact</a></li>
 
@@ -502,6 +493,7 @@
     <script src="{{asset('js/custom.js')}}"></script>
     @yield("script")
     @yield("applied")
+    @yield("search")
     <!-- custom js-->
 </body>
 

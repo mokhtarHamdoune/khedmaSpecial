@@ -27,59 +27,58 @@
                         @endif
                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="select_box">
-                                    <label>job category</label>
+                                    <label>Domaine</label>
                                     <select name="domaine">
-                                        <option value="UI/UX designer" selected>UI/UX designer</option>
-                                        <option value="accountant">accountant</option>
-                                        <option value="graphic designer">graphic designer</option>
-                                        <option value="teacher">teacher</option>
+                                        <option selected>Informatique</option>
+                                        <option>Marketing</option>
+                                        <option>Comptabilité</option>
+                                        <option>Droits</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="contect_form3">
-                                    <label>job title</label>
+                                    <label>Titre</label>
                                     <input type="text" name="title" placeholder="Need Graphic Designer">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="select_box">
-                                    <label>job type</label>
+                                    <label>Type</label>
                                     <select name="type">
-                                        <option value="full time" selected>full time</option>
-                                        <option value="part time">part time</option>
-                                        <option value="temperory"> temperory</option>
-                                        <option value="freelance">freelance</option>
+                                        <option value="cdi" selected>CDI</option>
+                                        <option value="stage">Stage</option>
+                                        <option value="cdd">CDD</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="contect_form3">
-                                    <label>job diplome</label>
+                                    <label>Diplome</label>
                                     <input type="text" name="diplome" placeholder="Need Graphic Designer">
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="contect_form3">
-                                    <label>working hours</label>
+                                    <label>Duree</label>
                                     <input type="text" name="duree_stage" placeholder="40/h Week">
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="contect_form3">
-                                    <label>salary</label>
+                                    <label>Renumiration</label>
                                     <input type="text" name="remuniration" placeholder="40$ per hour">
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="contect_form3">
-                                    <label>competence</label>
+                                    <label>Competence</label>
                                     <input type="text" name="competence" placeholder="C, javascript">
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="select_box">
-                                    <label>experience</label>
+                                    <label>Experience</label>
                                     <select name="anneesExperience">
                                         <option value="1" selected>1 year experience</option>
                                         <option value="2">2 year experience</option>
@@ -113,21 +112,21 @@
                                 <div class="select_box">
                                     <label>country</label>
                                     <select name="country">
-                                        <option value="USA">USA</option>
+                                        <option value="Algerie" selected>Algerie</option>
                                         <option value="france">france</option>
                                         <option value="UK">UK</option>
-                                        <option value="germany" selected>germany</option>
+                                        <option value="germany">germany</option>
 
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="select_box">
-                                    <label>city</label>
+                                    <label>Wilaya</label>
                                     <select name="city">
-                                        <option value="new york">new york</option>
-                                        <option value="california" selected>california</option>
-                                        <option value="loss angles"> loss angles</option>
+                                        <option value="Alger">Alger</option>
+                                        <option value="Canstantine" selected>Constantine</option>
+                                        <option value="Tlemcen">Tlemcen</option>
                                     </select>
                                 </div>
                             </div>
@@ -135,19 +134,6 @@
                                 <div class="contect_form3">
                                     <label>full address</label>
                                     <input type="text" name="lieuTravailleExact" placeholder="Lundon UK">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                                <div class="contect_form3">
-                                    <label>latitude</label>
-                                    <input type="text" name="latitude" placeholder="41.4073509">
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
-                                <div class="contect_form3">
-                                    <label>longitude</label>
-                                    <input type="text" name="longitude" placeholder="50.4073509">
                                 </div>
                             </div>
                         </div>

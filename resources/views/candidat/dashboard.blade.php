@@ -24,7 +24,7 @@
                                         <div class="jp_job_post_right_btn_wrapper jb_cover">
                                             <div class="header_btn search_btn jb_cover">
 
-                                                <a href="{{route('profile')}}">view profile</a>
+                                                <a href="{{route('profile')}}">Edit profile</a>
                                             </div>
                                         </div>
 

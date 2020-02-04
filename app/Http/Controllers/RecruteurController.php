@@ -17,6 +17,11 @@ use DB;
 class RecruteurController extends Controller
 {
 
+    //all the companies
+    public function index(){
+        $employers = Employer::all();
+        return view("companies.companies",["employers"=>$employers]);
+    }
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -30,7 +35,7 @@ class RecruteurController extends Controller
         $rec = Employer::find($id);
         if($rec){
         $offres = $rec->offre()->orderBy('created_at','desc')->limit(6)->get();
-        return view('company_single', ['rec' => $rec, 'offres' => $offres, 'candidate' => $candidate]);}
+        return view('companies.company_single', ['rec' => $rec, 'offres' => $offres, 'candidate' => $candidate]);}
         return redirect()->route('home');
     }
 
@@ -146,17 +151,15 @@ class RecruteurController extends Controller
     {
 
         $this->validate($request, [
-            'title' => 'required|min:6|max:20',
-            'type' => 'min:6|max:20',
-            'domaine' => 'min:6|max:20',
-            'description' => 'min:6|max:20',
-            'lieuTravailleExact' =>'min:6|max:20',
+            'title' => 'required|min:6|max:30',
+            'type' => 'min:3|max:20',
+            'domaine' => 'min:6|max:30',
+            'description' => 'min:6|max:300',
+            'lieuTravailleExact' =>'min:4|max:20',
             'competence' =>'min:6|max:20',
-            'remuniration' => 'min:6|max:20',
-            'duree_stage' => 'min:6|max:20',
-            'diplome' => 'min:6|max:20',
-            'latitude' => 'min:6|max:20',
-            'longitude' => 'min:6|max:20'
+            'remuniration' => 'min:3|max:20',
+            'duree_stage' => 'min:2|max:20',
+            'diplome' => 'min:6|max:20' 
         ]);
 
         $offre = Offre::create([
@@ -178,7 +181,6 @@ class RecruteurController extends Controller
             'longitude' => $request->longitude,
             'status' => true,
         ]);
-
         Auth::guard('employer')->user()->offre()->save($offre);
         return redirect()->back()->with('success', 'the job has been successfully posted');
     }

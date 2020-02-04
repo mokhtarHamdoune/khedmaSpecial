@@ -18,7 +18,7 @@
                                     <h4>{{$rec->name}}</h4>
 
                                     <ul>
-                                        <li><i class="flaticon-location-pointer"></i>&nbsp; {{$rec->country}}</li>
+                                        <li><i class="flaticon-location-pointer"></i>&nbsp; Algeria</li>
                                     </ul>
                                 </div>
                             </div>
@@ -63,15 +63,15 @@
                                         <div class="row">
                                             <div class="col-lg-9 col-md-9 col-sm-12 col-12">
                                                 <div class="jp_job_post_side_img">
-                                                    <img src="../images/lt2.png" alt="post_img" />
-                                                    <br> <span>google</span>
+                                                    <img src="{{asset('storage/profile_images/'.$rec->image)}}" alt="post_img" />
+                                                    <br> <span>{{$rec->name}}</span>
                                                 </div>
                                                 <div class="jp_job_post_right_cont">
-                                                    <h4><a href="#">Trainee Web Designer, (Fresher)</a></h4>
+                                                    <h4><a href="{{route('jobs.show',$offre->id)}}">{{$offre->title}}</a></h4>
 
                                                     <ul>
-                                                        <li><i class="flaticon-cash"></i>&nbsp; $12K - 15k P.A.</li>
-                                                        <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles, Califonia PO, 455001</li>
+                                                        <li><i class="flaticon-cash"></i>&nbsp;{{$offre->remuniration}}DA/h</li>
+                                                        <li><i class="flaticon-location-pointer"></i>&nbsp;{{$offre->lieuTravailleExact}},{{$offre->city}}</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -83,7 +83,7 @@
                                                                 <a href="#!"><i class="far fa-heart"></i></a>
                                                             </div>
                                                         </li>
-                                                        <li><a href="job_single.html">Part Time</a></li>
+                                                        <li><a href="#">{{$offre->type}}</a></li>
                                                         <li> <a href="#">apply</a></li>
                                                     </ul>
                                                 </div>
@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="jp_listing_list_icon_cont_wrapper">
                                     <ul>
-                                        <li>Hotline::</li>
+                                        <li>Telephone:</li>
                                         <li>{{$rec->telephone}}</li>
                                     </ul>
                                 </div>

@@ -37,6 +37,12 @@ class CvController extends Controller
         $cv->delete();
         return redirect()->route("resume");
     }
+    //cv final de candidat
+    public function finalCv($id){
+        $cv=Cv::find($id);
+        $candidate=Auth::guard("candidate")->user();
+        return view("candidat.cv.cv_single",["candidate"=>$candidate,"cv"=>$cv]);
+    } 
     //start formation
     public function addFormation(Request $request){
         $formation = new Formation();

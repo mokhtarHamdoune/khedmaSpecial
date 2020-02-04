@@ -24,7 +24,7 @@ class CreateOffresTable extends Migration
             $table->string("duree_stage");
             $table->string("remuniration");
 
-            $table->string("description");
+            $table->text("description");
 
             $table->string("country");
             $table->string("city");
