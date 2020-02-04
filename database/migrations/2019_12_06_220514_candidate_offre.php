@@ -17,6 +17,7 @@ class CandidateOffre extends Migration
             $table->bigIncrements('id');
             $table->integer("candidate_id");
             $table->integer("offre_id");
+            $table->integer("cv_id");
             $table->timestamps();
         });
     }

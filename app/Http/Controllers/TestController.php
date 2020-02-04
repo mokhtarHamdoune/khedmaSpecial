@@ -57,6 +57,12 @@ class TestController extends Controller
         ],]);
         //Pie Chart End
 
+        $barsql = Offre::select(DB::raw('count(*) as total'), DB::raw('YEAR(created_at) year'), DB::raw('MONTH(created_at) month'))/*->whereYear('created_at',$year)*/
+        ->groupBy('month')
+        ->get();
+        $barvalues1 = $barsql->map(function ($item) {
+            return $item->total;
+        });
         //Bar Chart Start
         $year = 2010;
         $barsql = Offre::select(DB::raw('count(*) as total'), DB::raw('YEAR(created_at) year'), DB::raw('MONTH(created_at) month'))/*->whereYear('created_at',$year)*/
@@ -68,6 +74,7 @@ class TestController extends Controller
         $bar = new SampleChart;
         $bar->labels(['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','October','Novembre','Decembre']);
         $bar->dataset('Bars', 'bar', $barvalues);
+        $bar->dataset('Bars', 'line', $barvalues1);
         //Bar Chart End
 
         //Line Chart Start
@@ -77,10 +84,11 @@ class TestController extends Controller
         $barvalues = $barsql->map(function ($item) {
             return $item->total;
         });
-        $bar = new SampleChart;
-        $bar->labels(['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','October','Novembre','Decembre']);
-        $bar->dataset('Bars', 'bar', $barvalues);
-        //Bar Chart End
-        return view('test', ['chart' => $chart,'bar' => $bar, 'barsql' => $barsql]);
+        $bar0 = new SampleChart;
+        $bar0->labels(['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','October','Novembre','Decembre']);
+        $bar0->dataset('Bars', 'bar', $barvalues);
+        //Line Chart End
+
+        return view('test', ['chart' => $chart,'bar' => $bar, 'bar0' => $bar0,'barsql' => $barsql]);
     }
 }
