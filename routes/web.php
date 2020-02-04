@@ -110,4 +110,4 @@ Route::middleware(['middleware' => 'candidate'])->prefix("candidate")->group(fun
     // Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 });
 
-Route::get('/save','TestController@index');
+Route::get('/save','TestController@show');

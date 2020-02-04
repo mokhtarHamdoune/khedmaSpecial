@@ -86,8 +86,13 @@
                     <h1> view graph</h1>
                 </div>
                 <div class="job_overview_header jb_cover">
-                    <div class="sales-chart">
-                        <canvas id="team-chart"></canvas>
+                    <div class="sales-chart" id="app">
+                        @if($chart)
+                        {!! $chart->container() !!}
+                        @endif
+                        @if($emp)
+                        {{$emp}}
+                        @endif
                     </div>
                 </div>
             </div>
@@ -414,4 +419,14 @@
         </div>
     </div>
 </div>
+<script src="{{asset('js/vue.js')}}"></script>
+        <script>
+            var app = new Vue({
+                el: '#app',
+            });
+        </script>
+        <script src="{{asset('js/Chart.min.js')}}" charset="utf-8"></script>
+        @if($chart)
+        {!! $chart->script() !!}
+        @endif
 @endsection

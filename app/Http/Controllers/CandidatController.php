@@ -34,7 +34,7 @@ class CandidatController extends Controller
     public function postule(Request $request)
     {
         $user = Auth::guard('candidate')->user();
-        $user->offres()->saveWithoutDetaching([$request->offre_id]);
+        $user->offre()->syncWithoutDetaching([$request->offre_id => ['cv_id' => $request->cv_id]]);
         return redirect()->back();
     }
 
