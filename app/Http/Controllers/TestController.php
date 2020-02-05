@@ -32,16 +32,17 @@ class TestController extends Controller
         $yesterday_users = Offre::whereDate('created_at', today()->subDays(1))->count();
         $users_2_days_ago = Offre::whereDate('created_at', today()->subDays(2))->count();
 */
+        $id=2;
         //Pie Chart Start
-        $today_users = Offre::select('city' ,DB::raw('count(*) as total'))
+        $piesql = Offre::select('city' ,DB::raw('count(*) as total'))
         ->groupBy('city')
         ->get();
 
-        $cities = $today_users->map(function ($item) {
+        $cities = $piesql->map(function ($item) {
             return $item->city;
         });
 
-        $values = $today_users->map(function ($item) {
+        $values = $piesql->map(function ($item) {
             return $item->total;
         });
 
@@ -57,12 +58,6 @@ class TestController extends Controller
         ],]);
         //Pie Chart End
 
-        $barsql = Offre::select(DB::raw('count(*) as total'), DB::raw('YEAR(created_at) year'), DB::raw('MONTH(created_at) month'))/*->whereYear('created_at',$year)*/
-        ->groupBy('month')
-        ->get();
-        $barvalues1 = $barsql->map(function ($item) {
-            return $item->total;
-        });
         //Bar Chart Start
         $year = 2010;
         $barsql = Offre::select(DB::raw('count(*) as total'), DB::raw('YEAR(created_at) year'), DB::raw('MONTH(created_at) month'))/*->whereYear('created_at',$year)*/
@@ -73,22 +68,68 @@ class TestController extends Controller
         });
         $bar = new SampleChart;
         $bar->labels(['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','October','Novembre','Decembre']);
-        $bar->dataset('Bars', 'bar', $barvalues);
-        $bar->dataset('Bars', 'line', $barvalues1);
+        $bar->dataset('Bars', 'bar', $barvalues)->backgroundColor('purple');
         //Bar Chart End
 
         //Line Chart Start
-        $barsql = Offre::select(DB::raw('count(*) as total'), DB::raw('YEAR(created_at) year'), DB::raw('MONTH(created_at) month'))/*->whereYear('created_at',$year)*/
+        $linesql = Offre::select(DB::raw('count(*) as total'), DB::raw('YEAR(created_at) year'), DB::raw('MONTH(created_at) month'))->where('type','=','stage')/*->whereYear('created_at',$year)*/
         ->groupBy('month')
         ->get();
-        $barvalues = $barsql->map(function ($item) {
+        $stagevalues = $linesql->map(function ($item) {
             return $item->total;
         });
-        $bar0 = new SampleChart;
-        $bar0->labels(['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','October','Novembre','Decembre']);
-        $bar0->dataset('Bars', 'bar', $barvalues);
+
+        $linesql = Offre::select(DB::raw('count(*) as total'), DB::raw('YEAR(created_at) year'), DB::raw('MONTH(created_at) month'))->where('type','=','cdi')/*->whereYear('created_at',$year)*/
+        ->groupBy('month')
+        ->get();
+        $cdivalues = $linesql->map(function ($item) {
+            return $item->total;
+        });
+
+        $linesql = Offre::select(DB::raw('count(*) as total'), DB::raw('YEAR(created_at) year'), DB::raw('MONTH(created_at) month'))->where('type','=','cdd')/*->whereYear('created_at',$year)*/
+        ->groupBy('month')
+        ->get();
+        $cddvalues = $linesql->map(function ($item) {
+            return $item->total;
+        });
+
+        $line = new SampleChart;
+        $line->labels(['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','October','Novembre','Decembre']);
+        $line->dataset('stage', 'line', $stagevalues)->backgroundColor('transparent')->color('green');
+        $line->dataset('cdi', 'line', $cdivalues)->backgroundColor('transparent')->color('red');
+        $line->dataset('cdd', 'line', $cddvalues)->backgroundColor('transparent')->color('blue');
         //Line Chart End
 
-        return view('test', ['chart' => $chart,'bar' => $bar, 'bar0' => $bar0,'barsql' => $barsql]);
+        //Bar Candidat Start
+        $sql = DB::table('candidates')
+        ->join('candidate_offre','candidate_offre.candidate_id','=','candidates.id')
+        ->join('offres','offres.id','=','candidate_offre.offre_id')
+        ->join('employers','employers.id','=','offres.employer_id')
+        ->select(DB::raw('count(*) as total'), DB::raw('MONTH(candidate_offre.created_at) month'))
+        ->where('employers.id','=',$id)//,'and','candidate_offre.apply','=',true)
+        ->groupBy('month')
+        ->get();
+        $barvaluesPostule = $sql->map(function ($item) {
+            return $item->total;
+        });
+
+        $sql = DB::table('candidates')
+        ->join('candidate_offre','candidate_offre.candidate_id','=','candidates.id')
+        ->join('offres','offres.id','=','candidate_offre.offre_id')
+        ->join('employers','employers.id','=','offres.employer_id')
+        ->select(DB::raw('count(*) as total'), DB::raw('MONTH(candidate_offre.created_at) month'))
+        ->where('employers.id','=',$id)//,'and','candidate_offre.spontane','=',true)
+        ->groupBy('month')
+        ->get();
+        $barvaluesSpontan = $sql->map(function ($item) {
+            return $item->total;
+        });
+        $barcandidat = new SampleChart;
+        $barcandidat->labels(['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','October','Novembre','Decembre']);
+        $barcandidat->dataset('Bars', 'bar', $barvaluesPostule)->backgroundColor('red');
+        $barcandidat->dataset('Bars', 'bar', $barvaluesSpontan)->backgroundColor('blue');;
+        //Bar Chart End
+
+        return view('test', ['chart' => $chart,'bar' => $bar, 'line' => $line, 'barcandidat' => $barcandidat]);
     }
 }
