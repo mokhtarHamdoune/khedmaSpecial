@@ -142,7 +142,7 @@
                             <div id="grid" class="tab-pane active">
                                 <div class="row list_offre">
                                     @foreach($offres as $offre)
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 offre_g">
                                         <div class="job_listing_left_fullwidth job_listing_grid_wrapper jb_cover">
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
@@ -164,7 +164,7 @@
                                                         <ul>
                                                             <li>
                                                                 <div class="job_adds_right">
-                                                                    <a href="#!"><i class="far fa-heart"></i></a>
+                                                                    <a href="http://127.0.0.1:8000/favorite?id_offre={{$offre->id}}"><i class="far fa-heart"></i></a>
                                                                 </div>
                                                             </li>
                                                             <li><a href="job_single.html">{{$offre->type}}</a></li>
@@ -181,7 +181,7 @@
                             <div id="list" class="tab-pane fade">
                                 <div class="row list_offre"> 
                                     @foreach($offres as $offre)      
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 offre_l">
                                         <div class="job_listing_left_fullwidth jb_cover">
                                             <div class="row">
                                                 <div class="col-lg-9 col-md-9 col-sm-12 col-12">
@@ -203,7 +203,7 @@
                                                         <ul>
                                                             <li>
                                                                 <div class="job_adds_right">
-                                                                    <a href="#!"><i class="far fa-heart"></i></a>
+                                                                    <a href="#"><i class="far fa-heart"></i></a>
                                                                 </div>
                                                             </li>
                                                             <li><a href="job_single.html">{{$offre->type}}</a></li>

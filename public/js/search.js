@@ -37,10 +37,11 @@ $("#search").on("input",function(e){
         $("#search_result").hide();
     }
 });
+var index=0;
 $(document).on("click",".apply",function(e){
     e.preventDefault();
     let href=$(this).attr("href");
-    console.log("whatt ?")
+    index=$(".apply").index(this);
     $.ajax({
         method:"GET",
         url:"http://127.0.0.1:8000/postuler",
@@ -78,12 +79,31 @@ $("#apply_for_this").on("click",function(e){
         dataType:"json",
         success:function(response){
             if(response.etat){
-                location.reload(true);
+                $("#myModal").hide().removeClass("show");
+                $(".offre_l").eq(index).hide("1000",function(){
+                    $(this).remove();
+                });
+                $(".offre_g").eq(index).hide("1000",function(){
+                    $(this).remove();
+                });
             }
         }
     });
 });
 
+//favorites
+// $(document).on("click",".job_adds_right",function(e){
+//     e.preventDefault();
+//     $.ajax({
+//         method:"POST",
+//         url:$(this).children().first().attr("href"),
+//         statusCode: {
+//             419: function() {
+//                 window.location="login";
+//             }
+//         }
+//     })
+// })
 //just for dismiss the model
 $(".modal-content button").click(function(e){
     e.preventDefault();
