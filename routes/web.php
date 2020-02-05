@@ -37,17 +37,12 @@ Route::get('/candidate_single/{id}', 'CandidatController@candidateSingle');
 Route::get('/sendMessage/{id}', 'CandidatController@sendMess')->name('sendMessage');
 
 //sign in and up
-    Route::get('/login', 'Auth\LoginController@showLoginForm');
-    Route::get('/sign_up', 'Auth\RegisterController@showRegisterForm');
-    Route::post('/login','Auth\LoginController@Role')->name('login');
-    Route::post('/sign_up','Auth\RegisterController@Role')->name('sign_up');
-/*
-    Route::view('/home', 'home')->middleware('auth');
-    Route::view('/employer', 'employer');
-    Route::view('/candidate', 'candidate');*/
-
-
-    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/login', 'Auth\LoginController@showLoginForm');
+Route::get('/sign_up', 'Auth\RegisterController@showRegisterForm');
+Route::post('/login','Auth\LoginController@Role')->name('login');
+Route::post('/sign_up','Auth\RegisterController@Role')->name('sign_up');
+//logout
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 //restrict access
 Route::group(['middleware' => 'employer'], function () {
     Route::get('/recruteur', 'RecruteurController@dashboardApplications');
@@ -66,7 +61,10 @@ Route::group(['middleware' => 'employer'], function () {
 
 
 });
-
+//this for verify if the user is auth or not if not return him to login
+Route::get("/postuler","CandidatController@try");
+//if he is auth then he can apply
+Route::post("/postuler","CandidatController@postuler");
 
 Route::middleware(['middleware' => 'candidate'])->prefix("candidate")->group(function () {
     Route::get('/dashboard','CandidatController@show')->name("dashboard");
@@ -99,15 +97,8 @@ Route::middleware(['middleware' => 'candidate'])->prefix("candidate")->group(fun
 
     Route::get('/applied_jobs', 'AppliedJobsController@index')->name("appJobs");
     Route::delete("/applied_jobs/{id_offre}","AppliedJobsController@destroy");
-    // Route::view('/cv', 'candidat.cv');
-    // Route::view('/edit_profile', 'candidat.edit_profile');
-    // //candidats profil and edit profil
-    // //show the profil
-    // //take him to edit profile
-    // Route::get('/candidat/{id_candidat}/edit',"CandidatController@edit");
-    // //update
-    // Route::put('/candidat/{id_candidat}',"CandidatController@update");
-    // Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
+    
 });
 
 Route::get('/save','TestController@show');

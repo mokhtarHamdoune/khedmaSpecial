@@ -1,4 +1,10 @@
 //lets gooooo
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
 //home search
 $("#search").on("input",function(e){
     e.preventDefault();
@@ -30,7 +36,59 @@ $("#search").on("input",function(e){
         $("#search_result").empty();
         $("#search_result").hide();
     }
-})
+});
+$(document).on("click",".apply",function(e){
+    e.preventDefault();
+    let href=$(this).attr("href");
+    console.log("whatt ?")
+    $.ajax({
+        method:"GET",
+        url:"http://127.0.0.1:8000/postuler",
+        success:function(response){
+            if(!response.isAuth){
+                window.location="login";
+            }else{
+                $(".search_alert_box").empty();
+                response.cvs.forEach((cv,index)=>{
+                    $(".search_alert_box").append(`
+                        <div class="apply_job_form">
+                            <div class="row justify-content-around">
+                                <div class="col-8">
+                                    <label for="cv_${cv.id}">${cv.titre}</label>
+                                </div>
+                                <div class="col-2">
+                                    <input type="radio" id="cv_${cv.id}" name="cv_id" value="${cv.id}" ${index==0 ? 'checked' :''}>
+                                </div>
+                            </div>
+                        </div>`
+                    );
+                });
+                $("#apply_for_this").attr("href",href);
+                $("#myModal").show(200).addClass("show");
+            }
+        }
+    })
+});
+$("#apply_for_this").on("click",function(e){
+    e.preventDefault();
+    $.ajax({
+        method:"POST",
+        url:$(this).attr("href"),
+        data:$("#postule_form").serialize(),
+        dataType:"json",
+        success:function(response){
+            if(response.etat){
+                location.reload(true);
+            }
+        }
+    });
+});
+
+//just for dismiss the model
+$(".modal-content button").click(function(e){
+    e.preventDefault();
+    $("#myModal").hide().removeClass("show");
+});
 $(document).on("click","div.blog_pagination_section ul li a",function(e){
     e.preventDefault();
     let current=$("div.blog_pagination_section ul").find("li.third_pagger").text();
@@ -55,7 +113,7 @@ $("#filter").on("change",function(e){
 function filter(content,page=1){
     $.ajax({
         method:"GET",
-        url:"jobs/filter?page="+page,
+        url:"http://127.0.0.1:8000/jobs/filter?page="+page,
         data:content,
         dataType:"json",
         success:function(response){
@@ -98,7 +156,7 @@ function offreBloc(element,index){
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="jp_job_post_side_img">
-                            <img src="storage/profile_images/${element.image}" alt="post_img" class="cmp_logo" />
+                            <img src="http://127.0.0.1:8000/storage/profile_images/${element.image}" alt="post_img" class="cmp_logo" />
                             <br> <span>${element.name}</span>
                         </div>
                         <div class="jp_job_post_right_cont">
@@ -119,7 +177,7 @@ function offreBloc(element,index){
                                     </div>
                                 </li>
                                 <li><a href="job_single.html">${element.type}</a></li>
-                                <li> <a href="#">apply</a></li>
+                                <li> <a href="http://127.0.0.1:8000/postuler?id=${element.id}" class="apply">apply</a></li>
                             </ul>
                         </div>
                     </div>
@@ -132,7 +190,7 @@ function offreBloc(element,index){
             <div class="row">
                 <div class="col-lg-9 col-md-9 col-sm-12 col-12">
                     <div class="jp_job_post_side_img">
-                        <img src="storage/profile_images/${element.image}" class="cmp_logo" alt="post_img" />
+                        <img src="http://127.0.0.1:8000/storage/profile_images/${element.image}" class="cmp_logo" alt="post_img" />
                         <br> <span>${element.name}</span>
                     </div>
                     <div class="jp_job_post_right_cont">
@@ -153,7 +211,7 @@ function offreBloc(element,index){
                                 </div>
                             </li>
                             <li><a href="job_single.html">${element.type}</a></li>
-                            <li> <a href="#">apply</a></li>
+                            <li> <a href="http://127.0.0.1:8000/postuler?id=${element.id}" class="apply">apply</a></li>
                         </ul>
                     </div>
                 </div>

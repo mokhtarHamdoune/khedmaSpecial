@@ -31,13 +31,21 @@ class CandidatController extends Controller
         return redirect()->back();
     }
 
-    public function postule(Request $request)
+    public function try()
     {
-        $user = Auth::guard('candidate')->user();
-        $user->offre()->syncWithoutDetaching([$request->offre_id => ['cv_id' => $request->cv_id]]);
-        return redirect()->back();
+        if(!Auth::guard('candidate')->check()){
+            return response()->json(["isAuth"=>false]);
+        }else{
+            $cvs=Auth::guard('candidate')->user()->cv()->select("id","titre")->get();
+            return response()->json(["isAuth"=>true,"cvs"=>$cvs]);
+        }
     }
 
+    public function postuler(Request $request){
+        $user = Auth::guard('candidate')->user();
+        $user->offre()->syncWithoutDetaching([$request->id => ['cv_id' => $request->cv_id]]);
+        return response()->json(["etat"=>true]);
+    }
     /**
      * Display the specified resource.
      *

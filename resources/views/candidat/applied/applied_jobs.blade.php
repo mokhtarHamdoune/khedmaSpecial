@@ -15,11 +15,11 @@
                     <div class="row">
                         <div class="col-lg-9 col-md-9 col-sm-12 col-12">
                             <div class="jb_job_post_side_img">
-                                <img src="{{asset('images/lt1.png')}}" alt="post_img">
+                                <img src="{{asset('storage/profile_images/'.$job->employer_image)}}" class="cmp_logo" alt="post_img">
                                 <br> <span>{{$job->employer}}</span>
                             </div>
                             <div class="jb_job_post_right_cont">
-                                <h4><a href="#">{{$job->domaine}},{{$job->title}}</a></h4>
+                                <h4><a href="{{route('jobs.show',$job->id)}}">{{$job->domaine}},{{$job->title}}</a></h4>
 
                                 <ul>
                                     <li><i class="flaticon-cash"></i>&nbsp;{{$job->remuniration}}</li>

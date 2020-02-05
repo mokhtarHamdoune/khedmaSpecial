@@ -5,21 +5,28 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\offre;
 use App\Employer;
+use App\candidate_offre;
 use DB;
 class JobsController extends Controller
 {
     //just for the first time
     public function index(){
         $offres=DB::table("offres")->join("employers","offres.employer_id","=","employers.id")
-        ->select("offres.*","employers.name","employers.image")
         ->where("offres.status","=",1)
-        ->offset(0)
-        ->limit(10)
-        ->get();
+        ->select("offres.*","employers.name","employers.image");
         if(Auth::guard("candidate")->check()){
-            return view("jobs.jobs",["candidate"=>Auth::guard("candidate")->user(),"offres"=>$offres,"all"=>count(offre::all())]);
+            $id=Auth::guard("candidate")->id();
+            $applied_jobs=candidate_offre::where("candidate_id","=",$id)->select("offre_id")->get();
+            if(count($applied_jobs)){
+                $offres=$offres->whereNotIn("offres.id",$applied_jobs);
+            }
         }
-        return view("jobs.jobs",["offres"=>$offres,"all"=>count(offre::all())]);
+        $all=count($offres->get());
+        $offres=$offres->offset(0)->limit(10)->get();
+        if(Auth::guard("candidate")->check()){
+            return view("jobs.jobs",["candidate"=>Auth::guard("candidate")->user(),"offres"=>$offres,"all"=>$all]);
+        }
+        return view("jobs.jobs",["offres"=>$offres,"all"=>$all]);
     }
     //jobs single
     public function show($id_offre){
@@ -27,6 +34,9 @@ class JobsController extends Controller
         ->select("offres.*","employers.name","employers.image")
         ->where("offres.id","=",$id_offre)
         ->get();
+        if(Auth::guard("candidate")->check()){
+            return view("jobs.job_single",["candidate"=>Auth::guard("candidate")->user(),"offre"=>$offre[0]]);
+        }
         return view("jobs.job_single",["offre"=>$offre[0]]);
     }
     //filtring
@@ -49,12 +59,19 @@ class JobsController extends Controller
         if($request->has("name")){
             $offre->where("employers.name","=",$request->name);
         }
+        if(Auth::guard("candidate")->check()){
+            $id=Auth::guard("candidate")->id();
+            $applied_jobs=candidate_offre::where("candidate_id","=",$id)->select("offre_id")->get();
+            if(count($applied_jobs)){
+               $offre->whereNotIn("offres.id",$applied_jobs);
+            }
+        }
         $offre->select("offres.*","employers.name","employers.image");
         //number of lines return from filtring
         $all=count($offre->get());
         $offre->offset($page*10-10)->limit(10);
-        // return response()->json(["offres"=>$offre->get(),"all"=>$all]);
-        return view("jobs.jobs",["offres"=>$offre]);
+        return response()->json(["offres"=>$offre->get(),"all"=>$all]);
+        // return view("jobs.jobs",["offres"=>$offre]);
         
     }
     //home search
@@ -89,9 +106,19 @@ class JobsController extends Controller
         if($request->has("name")){
             $offres->where("employers.name","=",$request->name);
         }
+        if(Auth::guard("candidate")->check()){
+            $id=Auth::guard("candidate")->id();
+            $applied_jobs=candidate_offre::where("candidate_id","=",$id)->select("offre_id")->get();
+            if(count($applied_jobs)){
+               $offres->whereNotIn("offres.id",$applied_jobs);
+            }
+        }
         $offres->select("offres.*","employers.name","employers.image");
         $all=count($offres->get());
         $offres->offset(0)->limit(10);
+        if(Auth::guard("candidate")->check()){
+            return view("jobs.jobs",["candidate"=>Auth::guard("candidate")->user(),"offres"=>$offres->get(),"all"=>$all]);
+        }
         return view("jobs.jobs",["offres"=>$offres->get(),"all"=>$all]);
     }
 }
