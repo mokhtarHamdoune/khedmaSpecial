@@ -42,7 +42,7 @@ class imageController extends Controller
     public static function deleteProfileImage($id, $role){
 
         $user = imageController::getUser($id, $role);
-        if($user->image != "noimage.jpg")
+        if($user->image != "noimage.png")
         File::delete(public_path().'/storage/profile_images/'.$user->image);
     }
 
@@ -50,7 +50,7 @@ class imageController extends Controller
 
         $user = imageController::getUser($id, $role);
         imageController::deleteProfileImage($user->id, $role);
-        $user->image = "noimage.jpg";
+        $user->image = "noimage.png";
         $user->save();
     }
 }

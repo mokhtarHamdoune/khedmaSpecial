@@ -27,7 +27,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            
+
                             <div class="header_btn search_btn news_btn overview_btn  jb_cover">
 
                                 <a href="#" class="apply" >Postuler maintenant !</a>
@@ -53,17 +53,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="jb_keyword_key_wrapper jb_cover">
-                            <ul>
-                                <li><i class="fa fa-tags"></i> trending Keywords :</li>
-                                <li><a href="#">ui designer,</a></li>
-                                <li><a href="#">developer,</a></li>
-                                <li><a href="#">senior</a></li>
-                                <li><a href="#">it company,</a></li>
-                                <li><a href="#">design,</a></li>
-                                <li><a href="#">call center</a></li>
-                            </ul>
+                            @empty(!$employer)
+                                @if(!$employer->offre()->where('offres.id','=',$offre->id)->get()->isempty())
+                                    <div class="header_btn search_btn news_btn overview_btn  jb_cover">
+                                        <a href="{{url('edit_job/'.$offre->id)}}">Edit</a>
+                                    </div>
+                                @endif
+                            @endempty
                         </div>
                     </div>
                 </div>
@@ -82,7 +78,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            
+
                             <div class="jp_listing_overview_list_main_wrapper jb_cover">
                                 <div class="jp_listing_list_icon">
                                     <i class="fa fa-info-circle"></i>
@@ -151,7 +147,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            
+
                             <div class="jp_listing_overview_list_main_wrapper jb_cover">
                                 <div class="jp_listing_list_icon">
                                     <i class="fa fa-star"></i>
@@ -163,30 +159,11 @@
                                     </ul>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div class="jp_job_res jb_cover">
                             <h2 class="job_description_heading">Job Description</h2>
                             <p>{{$offre->description}}</p>
-                        </div>
-
-                        <div class="jp_job_res jb_cover">
-                            <h2 class="job_description_heading">location</h2>
-                            <div class="map_wrapper jb_cover">
-                                <div id="map" style="position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-err-container"><div class="gm-err-content"><div class="gm-err-icon"><img src="https://maps.gstatic.com/mapfiles/api-3/images/icon_error.png" draggable="false" style="user-select: none;"></div><div class="gm-err-title">Petit problème... Une erreur s'est produite</div><div class="gm-err-message">Google&nbsp;Maps ne s'est pas chargé correctement sur cette page. Pour plus d'informations techniques sur cette erreur, veuillez consulter la console JavaScript.</div></div></div></div></div>
-                            </div>
-
-                        </div>
-                        <div class="jp_job_res jp_listing_left_wrapper jb_cover">
-                            <div class="jp_listing_left_bottom_sidebar_social_wrapper">
-                                <ul>
-                                    <li>share :</li>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>

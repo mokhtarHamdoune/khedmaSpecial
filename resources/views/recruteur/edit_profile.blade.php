@@ -60,12 +60,20 @@
                         <div class="select_box">
                             <label>Company size</label>
                             <select name="company_size" style="display: none;">
-                                <option>1-500</option>
-                                <option>1-200</option>
-                                <option>1-100</option>
-                                <option>1-50</option>
-
-                            </select><div class="nice-select" tabindex="0"><span class="current">1-500</span><ul class="list"><li data-value="1-500" class="option selected">1-500</li><li data-value="1-200" class="option">1-200</li><li data-value="1-100" class="option">1-100</li><li data-value="1-50" class="option">1-50</li></ul></div>
+                                <option value="1-500">1-500</option>
+                                <option value="1-200">1-200</option>
+                                <option value="1-100">1-100</option>
+                                <option value="1-50">1-50</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="select_box">
+                            <label>type</label>
+                            <select name="type" style="display: none;">
+                                <option value="public">public</option>
+                                <option value="societe">société</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -75,57 +83,15 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="select_box">
-                            <label>job description</label>
-                            <select name="job_description" style="display: none;">
-                                <option>it &amp; computer</option>
-                                <option>marketing</option>
-                                <option>mechanical</option>
-                                <option>doctor</option>
-
-                            </select><div class="nice-select" tabindex="0"><span class="current">it &amp; computer</span><ul class="list"><li data-value="it &amp; computer" class="option selected">it &amp; computer</li><li data-value="marketing" class="option">marketing</li><li data-value="mechanical" class="option">mechanical</li><li data-value="doctor" class="option">doctor</li></ul></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="contect_form3">
-                            <label>address</label>
-                            <input type="text" name="address" placeholder="124/A Kalani Bagh">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="contect_form3">
                             <label>country</label>
                             <input type="text" name="country" placeholder="India">
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="select_box">
-                            <label>state</label>
-                            <select name="state" style="display: none;">
-                                <option>Madhya pradesh</option>
-                                <option>uttar pradesh</option>
-                                <option>himachal pradesh</option>
-                                <option>punjab</option>
-
-                            </select><div class="nice-select" tabindex="0"><span class="current">Madhya pradesh</span><ul class="list"><li data-value="Madhya pradesh" class="option selected">Madhya pradesh</li><li data-value="uttar pradesh" class="option">uttar pradesh</li><li data-value="himachal pradesh" class="option">himachal pradesh</li><li data-value="punjab" class="option">punjab</li></ul></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="contect_form3">
                             <label>city</label>
                             <input type="text" name="city" placeholder="Dewas">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                        <div class="select_box">
-                            <label>zip code</label>
-                            <select name="zip_code" style="display: none;">
-                                <option>455001</option>
-                                <option>422501</option>
-                                <option>45310</option>
-                                <option>41600</option>
-
-                            </select><div class="nice-select" tabindex="0"><span class="current">455001</span><ul class="list"><li data-value="455001" class="option selected">455001</li><li data-value="422501" class="option">422501</li><li data-value="45310" class="option">45310</li><li data-value="41600" class="option">41600</li></ul></div>
                         </div>
                     </div>
                 </div>
@@ -205,20 +171,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="login_remember_box jb_cover">
-                            <label class="control control--checkbox">Enable Two Step Verification Via Email
-                                <input type="checkbox">
-                                <span class="control__indicator"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="header_btn search_btn jb_cover">
                     <button type="submit" class="btn-custom" id="save">save changes</button>
-                </div>
+            </div>
             </form>
         </div>
     </div>

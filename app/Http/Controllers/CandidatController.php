@@ -11,8 +11,10 @@ use App\FavoriteJobs;
 class CandidatController extends Controller
 {
     public function candidateSingle($id){
-        $candidate = Candidate::find($id);
-        return view('candidate_single', ['candidate' => $candidate]);
+        $candidat = Candidate::find($id);
+        $candidate = Auth::guard('candidate')->user();
+        $employer = Auth::guard('employer')->user();
+        return view('candidate_single', ['candidat'=>$candidat, 'candidate' => $candidate,'employer'=>$employer]);
     }
 
     public function sendMess(Request $request, $id)
@@ -111,6 +113,19 @@ class CandidatController extends Controller
         $candidate->save();
         return redirect()->route("dashboard");
 
+    }
+
+    public function spontane($employer_id)
+    {
+        $user = Auth::guard('candidate')->user();
+        $user->employer()->syncWithoutDetaching([$employer_id]);
+        return redirect()->back();
+    }
+    public function cancel_spontane($employer_id)
+    {
+        $user = Auth::guard('candidate')->user();
+        $user->employer()->detach([$employer_id]);
+        return redirect()->back();
     }
 
 }

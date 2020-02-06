@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CandidateOffre extends Migration
+class CandidateEmployer extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CandidateOffre extends Migration
      */
     public function up()
     {
-        Schema::create('candidate_offre', function (Blueprint $table) {
+        Schema::create('candidate_employer', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer("candidate_id");
-            $table->integer("offre_id");
-            $table->integer("cv_id");
+            $table->integer("employer_id");
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CandidateOffre extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('candidate_offre');
+        Schema::dropIfExists('candidate_employer');
     }
 }

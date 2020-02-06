@@ -27,7 +27,8 @@ class JobsController extends Controller
         if(Auth::guard("candidate")->check()){
             return view("jobs.jobs",["candidate"=>Auth::guard("candidate")->user(),"offres"=>$offres,"all"=>$all]);
         }
-        return view("jobs.jobs",["offres"=>$offres,"all"=>$all]);
+        $employer = Auth::guard('employer')->user();
+        return view("jobs.jobs",["offres"=>$offres,"all"=>$all,'employer'=>$employer]);
     }
     //jobs single
     public function show($id_offre){
@@ -35,10 +36,13 @@ class JobsController extends Controller
         ->select("offres.*","employers.name","employers.image")
         ->where("offres.id","=",$id_offre)
         ->get();
+        if($offre->isempty())
+        return redirect()->back();
+        $employer = Auth::guard('employer')->user();
         if(Auth::guard("candidate")->check()){
-            return view("jobs.job_single",["candidate"=>Auth::guard("candidate")->user(),"offre"=>$offre[0]]);
+            return view("jobs.job_single",["candidate"=>Auth::guard("candidate")->user(),"offre"=>$offre[0],'employer'=>$employer]);
         }
-        return view("jobs.job_single",["offre"=>$offre[0]]);
+        return view("jobs.job_single",["offre"=>$offre[0],'employer'=>$employer]);
     }
     //filtring
     public function filter(Request $request,offre $offre){
@@ -73,7 +77,7 @@ class JobsController extends Controller
         $offre->offset($page*10-10)->limit(10);
         return response()->json(["offres"=>$offre->get(),"all"=>$all]);
         // return view("jobs.jobs",["offres"=>$offre]);
-        
+
     }
     //home search
     public function search(Request $request){
@@ -92,10 +96,10 @@ class JobsController extends Controller
     }
     public function searchJobs(Request $request){
         $offres=offre::where("status","=","1");
-        
+
         if($request->has("domaine")){
             $offres->where("offres.domaine","=",$request->domaine);
-            
+
         }
         if($request->has("wilaya")){
             $offres->where("offres.city","=",$request->wilaya);
@@ -120,6 +124,7 @@ class JobsController extends Controller
         if(Auth::guard("candidate")->check()){
             return view("jobs.jobs",["candidate"=>Auth::guard("candidate")->user(),"offres"=>$offres->get(),"all"=>$all]);
         }
-        return view("jobs.jobs",["offres"=>$offres->get(),"all"=>$all]);
+        $employer = Auth::guard('employer')->user();
+        return view("jobs.jobs",["offres"=>$offres->get(),"all"=>$all,'employer'=>$employer]);
     }
 }

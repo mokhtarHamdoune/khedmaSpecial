@@ -11,11 +11,10 @@
                     <div class="emp_dashboard_sidebar jb_cover">
                         <img src="{{$candidate->photo!==null ? asset('storage/'.$candidate->photo) : asset('/images/blank-profile-pic.png')}}" class="img-responsive" alt="post_img">
                         <div class="emp_web_profile candidate_web_profile jb_cover">
-                            <h4>luca wallace</h4>
-                            <p>@username</p>
+                            <h4>{{$candidate->nom}} {{$candidate->prenom}}</h4>
+                            <p>@ {{$candidate->userName}}</p>
                             <div class="skills jb_cover">
                                 <div class="skill-item jb_cover">
-                                    <h6>profile<span>70%</span></h6>
                                     <div class="skills-progress"><span data-value="70%" style="width: 70%;"></span>
                                     </div>
                                 </div>
@@ -27,19 +26,18 @@
                                 <li> <a href="{{route('profile')}}" class="{{Route::is('profile') ? 'link_active' : '' }}"> <i class="fas fa-edit"></i>edit profile</a></li>
                                 <li><a href="{{route('resume')}}" class="{{Route::is('resume') ? 'link_active' : '' }}"><i class="fas fa-file"></i>resume </a></li>
                                 <li><a href="{{route('appJobs')}}" class="{{Route::is('appJobs') ? 'link_active' : '' }}"><i class="fas fa-check-square"></i>applied job</a></li>
-                                <li><a href="{{url('/favorites')}}" class="{{Route::is('favorites') ? 'link_active' : '' }}"><i class="fas fa-heart"></i>favourite</a></li>
-                                
+                                <!-- <li><a href="{{url('/favorites')}}" class="{{Route::is('favorites') ? 'link_active' : '' }}"><i class="fas fa-heart"></i>favourite</a></li> -->
                             </ul>
                             <ul class="feedlist logout_link jb_cover">
-                                <li>
-                            <a href="{{route('logout')}}"
-                                onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();"><i class="fas fa-power-off"></i>
-                                 {{ __('Logout') }}
-                             </a>
-                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                 @csrf
-                             </form></li>
+                            <li>
+                                <a href="{{route('logout')}}"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();"><i class="fas fa-power-off"></i>
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form></li>
                             </ul>
                         </div>
                     </div>

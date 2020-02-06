@@ -45,7 +45,7 @@
     <!-- Top Scroll End -->
     <!-- cp navi wrapper Start -->
     <nav class="cd-dropdown  d-block d-sm-block d-md-block d-lg-none d-xl-none">
-        <h2><a href="index.html"> <span><img src="{{asset('images/logo.png')}}" alt="img"></span></a></h2>
+        <h2><a href="{{route('home')}}"> <span><img src="{{asset('images/logo.png')}}" alt="img"></span></a></h2>
         <a href="#0" class="cd-close">Close</a>
         <ul class="cd-dropdown-content">
             <li>
@@ -169,7 +169,7 @@
     <div class="cp_navi_main_wrapper jb_cover">
         <div class="container-fluid">
             <div class="cp_logo_wrapper">
-                <a href="index.html">
+            <a href="{{route('home')}}">
                     <img src="{{asset('images/logo.png')}}" alt="logo">
                 </a>
             </div>
@@ -212,14 +212,14 @@
             <div class="menu_btn_box jb_cover">
                <div class="jb_profile_box">
                    <div class="nice-select" tabindex="0"> <span class="current">
-				   <img src="{{asset('images/cmp1.png')}}" alt="img">
-				   <div class="luca_profile_wrapper"><h1><a href="#">I am an Employer</a></h1>
-				   <p><a href="#">luca@example.com</a></p>
+				   <img src="{{asset('storage/profile_images/'.$employer->image)}}" alt="img">
+				   <div class="luca_profile_wrapper"><h1><a href="#">{{$employer->name}}</a></h1>
+				   <p><a href="#">{{$employer->email}}</a></p>
 				   </div></span>
                       <ul class="list">
-							<li><a href="#"><i class="fas fa-user-edit"></i>account</a>
+							<li><a href="{{url('/recruteur')}}"><i class="fas fa-user-edit"></i>account</a>
 							</li>
-							<li><a href="#"><i class="fas fa-cog"></i>Setting</a>
+							<li><a href="{{route('edit_profile_recruteur')}}"><i class="fas fa-cog"></i>Setting</a>
 							</li>
 							<li>
                             <a href="{{route('logout')}}"
@@ -239,14 +239,14 @@
             <div class="menu_btn_box jb_cover">
                <div class="jb_profile_box">
                    <div class="nice-select" tabindex="0"> <span class="current">
-				   <img src="{{asset('images/pf.png')}}" alt="img">
+				   <img src="{{$candidate->photo!==null ? asset('storage/'.$candidate->photo) : asset('/images/blank-profile-pic.png')}}" alt="img">
 				   <div class="luca_profile_wrapper"><h1><a href="#">{{$candidate->userName}}</a></h1>
 				   <p><a href="#">{{$candidate->email}}</a></p>
 				   </div></span>
                       <ul class="list">
-							<li><a href="#"><i class="fas fa-user-edit"></i>account</a>
+							<li><a href="{{route('dashboard')}}"><i class="fas fa-user-edit"></i>account</a>
 							</li>
-							<li><a href="#"><i class="fas fa-cog"></i>Setting</a>
+							<li><a href="{{route('profile')}}"><i class="fas fa-cog"></i>Setting</a>
 							</li>
 							<li><a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();

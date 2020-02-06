@@ -127,7 +127,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="emp_job_post jb_cover">
                                         <div class="emp_job_side_img parts">
                                             <i class="fas fa-envelope-open-text"></i>
@@ -137,7 +137,7 @@
                                             <p>favourite jobs</p>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

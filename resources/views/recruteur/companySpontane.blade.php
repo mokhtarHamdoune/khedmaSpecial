@@ -7,7 +7,7 @@
                 <div class="latest_job_overlow jb_cover">
                     <div class="manage_jobs_wrapper jb_cover">
                         <div class="job_list mange_list applications_recent">
-                            <h6>recent applications</h6>
+                            <h6>tous les candidats spontane</h6>
                         </div>
                     </div>
 @if(count($candidates)>0)
@@ -18,11 +18,9 @@
                                 <img src="{{asset('dashboard/images/rs1.jpg')}}" alt="post_img">
                             </div>
                             <div class="recent_cntnt">
-                                <h6><a href="#">{{$candidate->userName}}</a></h6>
-                                <ul>
-                                    <li><i class="fas fa-suitcase"></i>&nbsp; {{$candidate->offre}}</li>
-                                    <li><i class="flaticon-location-pointer"></i>&nbsp; Los Angeles</li>
-                                </ul>
+                                <h6><a href="{{url('candidate_single/'.$candidate->id)}}">
+                                    <h4>{{$candidate->civilite!==null ? $candidate->civilite : "Mr"}} {{$candidate->nom!==null ? $candidate->nom :"Name"}} {{$candidate->prenom!==null ? $candidate->prenom:"Surname"}}</h4>
+                                </a></h6>
                             </div>
                         </div>
                         <div class="job_list_next recent_app_1">
@@ -36,6 +34,7 @@
                                 </ul>
                             </div>
                         </div>
+
                     </div>
 @endforeach
 @endif

@@ -14,23 +14,12 @@
                         <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                             <div class="jp_listing_overview_list_main_wrapper jb_cover">
                                 <div class="jp_listing_list_icon">
-                                    <i class="far fa-calendar"></i>
-                                </div>
-                                <div class="jp_listing_list_icon_cont_wrapper">
-                                    <ul>
-                                        <li>categories:</li>
-                                        <li>Design &amp; Creative</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
-                                <div class="jp_listing_list_icon">
                                     <i class="fas fa-map-marker-alt"></i>
                                 </div>
                                 <div class="jp_listing_list_icon_cont_wrapper">
                                     <ul>
-                                        <li>Location:</li>
-                                        <li>Los Angeles Califonia PO</li>
+                                        <li>Country:</li>
+                                    <li>{{$user->country}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -65,7 +54,7 @@
                                 <div class="jp_listing_list_icon_cont_wrapper">
                                     <ul>
                                         <li>website:</li>
-                                        <li><a href="#">www.webstrot.com</a></li>
+                                        <li><a href="{{$user->website}}">{{$user->website}}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -109,7 +98,7 @@
         <div class="col-lg-6 col-md-12 col-sm-12 col-12">
             <div class="header_btn search_btn jb_cover">
 
-                <a href="{{url('company_single/'.$user->id)}}">preview current state</a>
+                <a href="{{url('companies/'.$user->id)}}">preview current state</a>
             </div>
         </div>
 </form>

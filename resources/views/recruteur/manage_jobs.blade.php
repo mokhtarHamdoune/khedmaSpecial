@@ -26,9 +26,9 @@
                 </div>
                 @foreach($offres as $offre)
                 <div class="latest_job_box jb_cover">
-                    <div class="job_list">
-                        <h6><a href="#">{{$offre->title}}</a></h6>
-                        <p> <i class="far fa-calendar"></i> Date Posted : {{$offre->date_prevue}}</p>
+                    <div class="row job_list">
+                        <h6 class="col-12"><a href="{{url('jobs/details/'.$offre->id)}}">{{$offre->title}}</a></h6>
+                        <p><i class="far fa-calendar"></i>Posted At: {{$offre->created_at}}</p>
                     </div>
 
                     <div class="job_list_next">
@@ -36,14 +36,18 @@
                     </div>
 
                     <div class="job_list_next">
-                        <p class="gn">active</p>
+                    @if($offre->status)
+                        <p class="gn">Posté</p>
+                    @else
+                        <p>Retiré</p>
+                    @endif
                     </div>
 
                     <div class="job_list_next">
                         <ul>
-                            <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                            <li><a href="#"><i class="fas fa-edit"></i></a></li>
-                            <li><a href="#"><i class="fas fa-trash-alt"></i></a></li>
+                            <li><a href="{{url('status/'.$offre->id)}}"><i class="fas fa-eye"></i></a></li>
+                            <li><a href="{{url('edit_job/'.$offre->id)}}"><i class="fas fa-edit"></i></a></li>
+                            <li><a href="{{url('delete_job/'.$offre->id)}}"><i class="fas fa-trash-alt"></i></a></li>
                         </ul>
                     </div>
                 </div>

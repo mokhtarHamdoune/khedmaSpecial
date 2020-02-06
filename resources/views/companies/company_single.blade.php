@@ -18,10 +18,29 @@
                                     <h4>{{$rec->name}}</h4>
 
                                     <ul>
-                                        <li><i class="flaticon-location-pointer"></i>&nbsp; Algeria</li>
+                                        <li><i class="flaticon-location-pointer"></i>&nbsp; {{$rec->country}}</li>
                                     </ul>
                                 </div>
                             </div>
+                            @empty(!$candidate)
+                            <div class="col-lg-4 align-right header_btn search_btn news_btn overview_btn  jb_cover">
+                                @if($candidate->employer()->where('employer_id','=',$rec->id)->exists())
+                                <a href="{{route('despontane',$rec->id)}}">cancel spontane</a>
+                                @else
+                                <a href="{{route('spontane',$rec->id)}}">spontane</a>
+                                @endif
+                            </div>
+                            @else
+                            @empty($employer)
+                            <div class="col-lg-4 align-right header_btn search_btn news_btn overview_btn  jb_cover">
+                                <a href="{{url('login')}}">spontane</a>
+                            </div>
+                            @else
+                            <div class="col-lg-4 align-right header_btn search_btn news_btn overview_btn  jb_cover">
+                                <a style="pointer-events: none;cursor: default;text-decoration: none;color: black;" href="#">spontane</a>
+                            </div>
+                            @endempty
+                            @endempty
                         </div>
                     </div>
                 </div>
@@ -29,11 +48,19 @@
                     <div class="jb_listing_single_overview jb_cover">
                         <div class="jp_job_des jb_cover">
                             <h2 class="job_description_heading">About Us :</h2>
+                            @empty($rec->about_us)
+                            <p class="text-center">This Employer Didn't Provide Any Informaiotns</p>
+                            @else
                             <p>{{$rec->about_us}}</p>
+                            @endempty
                         </div>
                         <div class="jp_job_res jb_cover">
                             <h2 class="job_description_heading">Extra Info :</h2>
+                            @empty($rec->extra_info)
+                            <p class="text-center">This Employer Didn't Provide Any Extra Informaiotns</p>
+                            @else
                             <p>{{$rec->extra_info}}</p>
+                            @endempty
                         </div>
 
                         <div class="jp_job_res jp_listing_left_wrapper jb_cover">
@@ -130,6 +157,28 @@
                                     </ul>
                                 </div>
                             </div>
+                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                <div class="jp_listing_list_icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="jp_listing_list_icon_cont_wrapper">
+                                    <ul>
+                                        <li>Country:</li>
+                                    <li>{{$rec->country}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="jp_listing_overview_list_main_wrapper dcv jb_cover">
+                                <div class="jp_listing_list_icon">
+                                    <i class="fas fa-globe-asia"></i>
+                                </div>
+                                <div class="jp_listing_list_icon_cont_wrapper">
+                                    <ul>
+                                        <li>website:</li>
+                                        <li><a href="{{$rec->website}}">{{$rec->website}}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
 
                             <div class="header_btn search_btn news_btn overview_btn  jb_cover">
 
@@ -146,10 +195,10 @@
                                                         <div class="search_alert_box jb_cover">
 
                                                                 @csrf
-                                                            <div class="apply_job_form">
-                                                                <input type="text" name="name" placeholder="Name">
+                                                                <div class="contect_form3" style="width:100%">
+                                                                    <input type="text" name="name" placeholder="Name">
                                                             </div>
-                                                            <div class="apply_job_form">
+                                                            <div class="contect_form3" style="width:100%">
                                                                 <input type="text" name="Email" placeholder="Email">
                                                             </div>
                                                             <div class="apply_job_form">

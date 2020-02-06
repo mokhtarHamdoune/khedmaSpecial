@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Employer;
 use App\http\Controllers\imageController as Image;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileRecruteurController extends Controller
 {
@@ -17,20 +18,20 @@ class ProfileRecruteurController extends Controller
     public function index()
     {
         $user = Auth::guard('employer')->user();
-        return view('recruteur.edit_profile',['user' => $user]);
+        return view('recruteur.edit_profile',['user' => $user,'employer'=>$user]);
     }
 
     public function companyPage()
     {
         $user = Auth::guard('employer')->user();
-        return view('recruteur.companypage',['user' => $user]);
+        return view('recruteur.companypage',['user' => $user,'employer'=>$user]);
     }
 
     public function indexOffres()
     {
         $user = Auth::guard('employer')->user();
         $offres = $user->offre()->paginate(2);
-        return view('recruteur.manage_jobs',['offres' => $offres]);
+        return view('recruteur.manage_jobs',['offres' => $offres,'user'=>$user,'employer'=>$user]);
     }
 
     /**
@@ -94,15 +95,18 @@ class ProfileRecruteurController extends Controller
         $user = Employer::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        if($request->current_password == $user->password)        $user->password = $request->new_password;
-        $user->civilite = $request->civilite;
+        if(Hash::make($request->current_password) == $user->password)        $user->password = $request->new_password;
+        $user->type = $request->type;
         $user->telephone = $request->telephone;
-        $user->fonction = $request->fonction;
-        $user->google = $request->gmail;
+        $user->google = $request->google;
         $user->facebook = $request->facebook;
         $user->twitter = $request->twitter;
         $user->linkedin = $request->linkedin;
         $user->contact_email = $request->contact_email;
+        $user->country = $request->country;
+        $user->website = $request->website;
+        $user->company_size = $request->company_size;
+        $user->city = $request->city;
         image::uploadImage($id, "employer", $request);
         $user->save();
 
