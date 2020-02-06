@@ -21,13 +21,19 @@ class CreateEmployersTable extends Migration
             $table->text('about_us')->nullable();
             $table->text('extra_info')->nullable();
             $table->string("telephone")->nullable();
-            $table->boolean("type")->nullable();
-            $table->string("fonction")->nullable();
+            $table->string("google")->nullable();
             $table->string("facebook")->nullable();
             $table->string("twitter")->nullable();
             $table->string("linkedin")->nullable();
             $table->string("contact_email")->nullable();
-            $table->string("image")->default('noimge.png');
+            $table->string("image")->default('noimage.jpg');
+
+            $table->string("type")->nullable();
+            $table->string("country")->nullable();
+            $table->string("website")->nullable();
+            $table->string("company_size")->nullable();
+            $table->string("city")->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });

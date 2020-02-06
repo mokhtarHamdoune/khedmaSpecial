@@ -100,4 +100,17 @@ class CandidatController extends Controller
 
     }
 
+    public function spontane($employer_id)
+    {
+        $user = Auth::guard('candidate')->user();
+        $user->employer()->syncWithoutDetaching([$employer_id]);
+        return redirect()->back();
+    }
+    public function cancel_spontane($employer_id)
+    {
+        $user = Auth::guard('candidate')->user();
+        $user->employer()->detach([$employer_id]);
+        return redirect()->back();
+    }
+
 }

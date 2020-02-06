@@ -33,6 +33,7 @@ class TestController extends Controller
         $users_2_days_ago = Offre::whereDate('created_at', today()->subDays(2))->count();
 */
         $id=2;
+        $offre = Candidate::find(2)->offre()->where('offre_id','=',5);
         //Pie Chart Start
         $piesql = Offre::select('city' ,DB::raw('count(*) as total'))
         ->groupBy('city')

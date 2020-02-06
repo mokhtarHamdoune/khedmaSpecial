@@ -25,11 +25,15 @@ Route::get('/companies/{id}', 'RecruteurController@companySingle');
 
 //contact_us
 Route::get("/contact_us",function(){
-    return view ('contact_us');
+    $candidate = Auth::guard("candidate")->user();
+    $employer = Auth::guard("employer")->user();
+    return view ('contact_us',['candidate'=>$candidate,'employer'=>$employer]);
 });
 //about us
 Route::get("/about_us",function(){
-    return view ('about_us');
+    $candidate = Auth::guard("candidate")->user();
+    $employer = Auth::guard("employer")->user();
+    return view ('about_us',['candidate'=>$candidate,'employer'=>$employer]);
 });
 
 
@@ -52,14 +56,16 @@ Route::group(['middleware' => 'employer'], function () {
     Route::post('/company_page/update', 'ProfileRecruteurController@updateInfos')->name('rec_infos');
     Route::get('/company_page', 'ProfileRecruteurController@companyPage')->name('companyPage');
     Route::get('/company_applications', 'RecruteurController@CompanyApplications');
+    Route::get('/company_spontane', 'RecruteurController@CompanySpontane');
     Route::get('/messages', 'RecruteurController@messages');
-    Route::view('/post_job', 'recruteur.post_job');
-
+    Route::get('/post_job', 'RecruteurController@postNew');
+    Route::get('/edit_job/{id}', 'RecruteurController@editJob');
+    Route::get('/delete_job/{id}', 'RecruteurController@deleteJob');
+    Route::get('/status/{id}', 'RecruteurController@status');
+    Route::post('/year','RecruteurController@dashboardyear')->name('year');
     Route::post('/post_job/new','RecruteurController@postNewJob')->name('new_job');
-
+    Route::post('/post_job/edit/{offre_id}','RecruteurController@editJobUpdate')->name('edit_job');
     Route::post('/edit_profile_recruteur','RecruteurController@editProfile')->name('edit_profile_recruteur');
-
-
 });
 //this for verify if the user is auth or not if not return him to login
 Route::get("/postuler","CandidatController@try");
@@ -98,7 +104,8 @@ Route::middleware(['middleware' => 'candidate'])->prefix("candidate")->group(fun
     Route::get('/applied_jobs', 'AppliedJobsController@index')->name("appJobs");
     Route::delete("/applied_jobs/{id_offre}","AppliedJobsController@destroy");
 
-    
+    Route::get("/spontane/{employer_id}","CandidatController@spontane")->name("spontane");
+    Route::get("/despontane/{employer_id}","CandidatController@cancel_spontane")->name("despontane");
 });
 
 Route::get('/save','TestController@show');

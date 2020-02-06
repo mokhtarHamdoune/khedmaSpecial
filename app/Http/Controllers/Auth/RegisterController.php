@@ -93,6 +93,7 @@ class RegisterController extends Controller
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
+            'image' => 'noimage.jpg',
         ]);
         }
         catch (QueryException $e){
@@ -101,19 +102,28 @@ class RegisterController extends Controller
                 return back()->with(['error' => 'email is already in use, please try another']);
             }
         }
-        return redirect('login');
+        if (Auth::guard('employer')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect()->intended('/');
+        }
     }
 
     protected function createCandidate(Request $request)
     {
-        
+
         $this->validator($request->all())->validate();
-        $candidate = Candidate::create([
+        try{
+            $candidate = Candidate::create([
             'userName' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
-        
+        }
+        catch (QueryException $e){
+            $error_code = $e->errorInfo[1];
+            if($error_code == 1062){
+                return back()->with(['error' => 'email is already in use, please try another']);
+            }
+        }
         if (Auth::guard('candidate')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->intended('/');
         }

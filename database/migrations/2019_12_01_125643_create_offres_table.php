@@ -20,19 +20,16 @@ class CreateOffresTable extends Migration
             $table->string("type");
             $table->string("diplome")->nullable();
             $table->string("anneesExperience")->nullable();
-            $table->string("competence")->nullable();
-            $table->string("duree_stage");
-            $table->string("remuniration");
-
             $table->text("description");
+            $table->string("lieuTravailleExact");
+            $table->string("competence")->nullable();
+            $table->string("remuniration");
+            $table->boolean("status")->default(true);
+            $table->string("duree_stage")->nullable();
 
             $table->string("country");
             $table->string("city");
-            $table->string("lieuTravailleExact");
-            $table->string("latitude")->nullable();
-            $table->string("longitude")->nullable();
 
-            $table->boolean("status")->default(true);
             $table->timestamps();
         });
     }

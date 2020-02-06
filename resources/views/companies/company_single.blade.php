@@ -22,6 +22,25 @@
                                     </ul>
                                 </div>
                             </div>
+                            @empty(!$candidate)
+                            <div class="col-lg-4 align-right header_btn search_btn news_btn overview_btn  jb_cover">
+                                @if($candidate->employer()->where('employer_id','=',$rec->id)->exists())
+                                <a href="{{route('despontane',$rec->id)}}">cancel spontane</a>
+                                @else
+                                <a href="{{route('spontane',$rec->id)}}">spontane</a>
+                                @endif
+                            </div>
+                            @else
+                            @empty($employer)
+                            <div class="col-lg-4 align-right header_btn search_btn news_btn overview_btn  jb_cover">
+                                <a href="{{url('login')}}">spontane</a>
+                            </div>
+                            @else
+                            <div class="col-lg-4 align-right header_btn search_btn news_btn overview_btn  jb_cover">
+                                <a style="pointer-events: none;cursor: default;text-decoration: none;color: black;" href="#">spontane</a>
+                            </div>
+                            @endempty
+                            @endempty
                         </div>
                     </div>
                 </div>
@@ -29,11 +48,19 @@
                     <div class="jb_listing_single_overview jb_cover">
                         <div class="jp_job_des jb_cover">
                             <h2 class="job_description_heading">About Us :</h2>
+                            @empty($rec->about_us)
+                            <p class="text-center">This Employer Didn't Provide Any Informaiotns</p>
+                            @else
                             <p>{{$rec->about_us}}</p>
+                            @endempty
                         </div>
                         <div class="jp_job_res jb_cover">
                             <h2 class="job_description_heading">Extra Info :</h2>
+                            @empty($rec->extra_info)
+                            <p class="text-center">This Employer Didn't Provide Any Extra Informaiotns</p>
+                            @else
                             <p>{{$rec->extra_info}}</p>
+                            @endempty
                         </div>
 
                         <div class="jp_job_res jp_listing_left_wrapper jb_cover">
