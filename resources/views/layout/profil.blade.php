@@ -26,14 +26,20 @@
                                 <li><a href="{{route('dashboard')}}" class="{{Route::is('dashboard') ? 'link_active' : '' }}"><i class="fas fa-tachometer-alt"></i> dashboard </a></li>
                                 <li> <a href="{{route('profile')}}" class="{{Route::is('profile') ? 'link_active' : '' }}"> <i class="fas fa-edit"></i>edit profile</a></li>
                                 <li><a href="{{route('resume')}}" class="{{Route::is('resume') ? 'link_active' : '' }}"><i class="fas fa-file"></i>resume </a></li>
-                                <li><a href="{{url('/favorites')}}" class="{{Route::is('favorites') ? 'link_active' : '' }}"><i class="fas fa-heart"></i>favourite</a></li>
                                 <li><a href="{{route('appJobs')}}" class="{{Route::is('appJobs') ? 'link_active' : '' }}"><i class="fas fa-check-square"></i>applied job</a></li>
-                                <li><a href="message.html"><i class="fas fa-envelope"></i>message</a></li>
-                                <li><a href="pricing_plans.html"><i class="fas fa-tag"></i>pricing plans</a></li>
+                                <li><a href="{{url('/favorites')}}" class="{{Route::is('favorites') ? 'link_active' : '' }}"><i class="fas fa-heart"></i>favourite</a></li>
+                                
                             </ul>
                             <ul class="feedlist logout_link jb_cover">
-                                <li><a href="#"><i class="fas fa-power-off"></i> log out </a></li>
-                                <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fas fa-trash-alt"></i>delete profile</a></li>
+                                <li>
+                            <a href="{{route('logout')}}"
+                                onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();"><i class="fas fa-power-off"></i>
+                                 {{ __('Logout') }}
+                             </a>
+                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                 @csrf
+                             </form></li>
                             </ul>
                         </div>
                     </div>

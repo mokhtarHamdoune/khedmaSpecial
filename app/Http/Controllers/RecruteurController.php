@@ -20,6 +20,9 @@ class RecruteurController extends Controller
     //all the companies
     public function index(){
         $employers = Employer::all();
+        if(Auth::guard('candidate')->check()){
+            return view("companies.companies",["employers"=>$employers,"candidate"=>Auth::guard('candidate')->user()]);
+        }
         return view("companies.companies",["employers"=>$employers]);
     }
     protected function validator(array $data)
@@ -40,6 +43,9 @@ class RecruteurController extends Controller
     }
 
     public function companySingleJ(){
+        if(Auth::guard('employer')->check()){
+            return view('company_single',["candidate"=>Auth::guard('candidate')->user()]);
+        }
         return view('company_single');
     }
 

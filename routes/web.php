@@ -35,6 +35,7 @@ Route::get("/about_us",function(){
 
 Route::get('/candidate_single/{id}', 'CandidatController@candidateSingle');
 Route::get('/sendMessage/{id}', 'CandidatController@sendMess')->name('sendMessage');
+Route::post("/sendMessage",'CandidatController@seeMsg');
 
 //sign in and up
 Route::get('/login', 'Auth\LoginController@showLoginForm');

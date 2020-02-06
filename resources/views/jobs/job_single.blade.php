@@ -22,7 +22,7 @@
                                     <li>
                                         <div class="header_btn search_btn part_time_btn jb_cover">
 
-                                            <a href="#">{{$offre->type}}</a>
+                                            <a href="#" >{{$offre->type}}</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -30,47 +30,24 @@
                             
                             <div class="header_btn search_btn news_btn overview_btn  jb_cover">
 
-                                <a href="#" data-toggle="modal" data-target="#myModal41">apply now !</a>
+                                <a href="#" class="apply" >Postuler maintenant !</a>
 
                             </div>
-                            <div class="modal fade apply_job_popup" id="myModal41" role="dialog">
+                            <div class="modal fade apply_job_popup" id="myModal" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <button type="button" class="close" data-dismiss="modal">×</button>
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-
-                                                <div class="apply_job jb_cover">
-                                                    <h1>apply for this job :</h1>
+                                                <form id="postule_form" class="apply_job jb_cover">
+                                                    <h1>postuler pour cet emploi :</h1>
                                                     <div class="search_alert_box jb_cover">
-
-                                                        <div class="apply_job_form">
-
-                                                            <input type="text" name="name" placeholder="full name">
-                                                        </div>
-                                                        <div class="apply_job_form">
-
-                                                            <input type="text" name="Email" placeholder="Enter Your Email">
-                                                        </div>
-                                                        <div class="apply_job_form">
-                                                            <textarea class="form-control" name="message" placeholder="Message"></textarea>
-                                                        </div>
-
-                                                        <div class="resume_optional jb_cover">
-                                                            <p>resume (optional)</p>
-                                                            <div class="width_50">
-                                                                <div class="dropify-wrapper" style="height: 100px;"><div class="dropify-message"> <p></p></div><div class="dropify-loader"></div><div class="dropify-errors-container"><ul></ul></div><input type="file" id="input-file-now-custom-27" class="dropify" data-height="90"><button type="button" class="dropify-clear">Remove</button><div class="dropify-preview"><span class="dropify-render"></span><div class="dropify-infos"><div class="dropify-infos-inner"><p class="dropify-infos-message"></p></div></div></div></div><span class="post_photo">upload resume</span>
-                                                            </div>
-                                                            <p class="word_file"> microsoft word or pdf file only (5mb)</p>
-                                                        </div>
-
+                                                                                
                                                     </div>
                                                     <div class="header_btn search_btn applt_pop_btn jb_cover">
-
-                                                        <a href="#">apply now</a>
-
+                                                        <a href="http://127.0.0.1:8000/postuler?id={{$offre->id}}" id="apply_for_this">apply now</a>
                                                     </div>
-                                                </div>
+                                                </form>     
                                             </div>
                                         </div>
                                     </div>
@@ -191,11 +168,6 @@
                         <div class="jp_job_res jb_cover">
                             <h2 class="job_description_heading">Job Description</h2>
                             <p>{{$offre->description}}</p>
-                            <ul>
-                                <li><i class="fas fa-globe-asia"></i>&nbsp;&nbsp; <a href="#">www.example.com</a></li>
-                                <li><i class="fas fa-file-download"></i>&nbsp;&nbsp; <a href="#">Download Info</a></li>
-
-                            </ul>
                         </div>
 
                         <div class="jp_job_res jb_cover">
@@ -221,4 +193,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section("jobs_single")
+<script src="{{asset('js/apply_single.js')}}"></script>
 @endsection

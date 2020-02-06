@@ -22,18 +22,14 @@
                             <div class="header_btn download_btn_wrapper jb_cover">
                                 <ul>
                                     <li>
-                                        <a href="#" data-toggle="modal" data-target="#myModal01"><i class="fas fa-file-download"></i>view message</a>
-
+                                        <a href="#" class="see" id="msg{{$message->id}}" data-toggle="modal" data-target="#myModal01"><i class="fas fa-file-download"></i>view message</a>
                                     </li>
                                     <li>
-                                        <a href=""></i>mark as seen</a>
-
+                                        <a href="#" class="mark">{{$message->status ? "déja vue" : "pas vue"}}</a>
                                     </li>
                                 </ul>
                             </div>
-
                         </div>
-
                     </div>
                     <div class="modal fade apply_job_popup" id="myModal01" role="dialog">
                         <div class="modal-dialog">
@@ -75,4 +71,21 @@
         </div>
     </div>
 </div>
+@endsection
+@section("message_script")
+<script>
+    $(".see").on("click",function(e){
+        e.preventDefault();
+        console.log($(this).attr("id").substring(3,$(this).attr("id").length));
+
+        $.ajax({
+            method:"POST",
+            url:"http://127.0.0.1:8000/sendMessage?msg="+$(this).attr("id").substring(3,$(this).attr("id").length),
+            headers: {
+             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }   
+        })
+        $(".mark").eq($(".see").index(this)).text("déja vue");
+    });
+</script>
 @endsection

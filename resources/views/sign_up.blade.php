@@ -11,9 +11,7 @@
                             <a href="#">login with facebook <i class="fab fa-facebook-f"></i></a>
                         </div>
                         <div class="header_btn search_btn google_wrap jb_cover">
-
                             <a href="#">login with pinterest <i class="fab fa-pinterest-p"></i></a>
-
                         </div>
                         <div class="jp_regis_center_tag_wrapper jb_register_red_or">
                             <h1>OR</h1>

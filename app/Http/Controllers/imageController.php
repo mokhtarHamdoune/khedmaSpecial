@@ -32,7 +32,7 @@ class imageController extends Controller
             }
             else
             {
-                $fileNameToStore = "noimage.jpg"; //default image khas nzidha f dossier
+                $fileNameToStore = "noimage.png"; //default image khas nzidha f dossier
             }
             imageController::deleteProfileImage($user->id, $role);
             $user->image = $fileNameToStore;

@@ -494,6 +494,8 @@
     @yield("script")
     @yield("applied")
     @yield("search")
+    @yield("message_script")
+    @yield("jobs_single")
     <!-- custom js-->
 </body>
 

@@ -31,7 +31,12 @@ class CandidatController extends Controller
 
         return redirect()->back();
     }
+    public function seeMsg(Request $request){
+        $message = Messages::find($request->msg);
+        $message->status=1;
+        $message->save();
 
+    }
     public function try()
     {
         if(!Auth::guard('candidate')->check()){
