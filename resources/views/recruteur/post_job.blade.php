@@ -46,9 +46,9 @@
                                 <div class="select_box">
                                     <label>Type</label>
                                     <select name="type">
-                                        <option value="cdi" selected>CDI</option>
-                                        <option value="stage">Stage</option>
-                                        <option value="cdd">CDD</option>
+                                        <option value="CDI" selected>CDI</option>
+                                        <option value="Stage">Stage</option>
+                                        <option value="CDD">CDD</option>
                                     </select>
                                 </div>
                             </div>

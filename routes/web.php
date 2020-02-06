@@ -71,6 +71,8 @@ Route::group(['middleware' => 'employer'], function () {
 Route::get("/postuler","CandidatController@try");
 //if he is auth then he can apply
 Route::post("/postuler","CandidatController@postuler");
+//favorites jobs
+Route::post("/favorite","CandidatController@favorite");
 
 Route::middleware(['middleware' => 'candidate'])->prefix("candidate")->group(function () {
     Route::get('/dashboard','CandidatController@show')->name("dashboard");

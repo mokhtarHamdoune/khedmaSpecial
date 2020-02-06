@@ -11,6 +11,7 @@ class JobsController extends Controller
 {
     //just for the first time
     public function index(){
+        $applied_jobs=array();
         $offres=DB::table("offres")->join("employers","offres.employer_id","=","employers.id")
         ->where("offres.status","=",1)
         ->select("offres.*","employers.name","employers.image");

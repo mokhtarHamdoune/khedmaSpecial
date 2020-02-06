@@ -7,6 +7,7 @@ use App\Messages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\FavoriteJobs;
 class CandidatController extends Controller
 {
     public function candidateSingle($id){
@@ -45,6 +46,13 @@ class CandidatController extends Controller
         $user = Auth::guard('candidate')->user();
         $user->offre()->syncWithoutDetaching([$request->id => ['cv_id' => $request->cv_id]]);
         return response()->json(["etat"=>true]);
+    }
+    //for favorite
+    public function favorite(Request $request){
+        $fav= new FavoriteJobs();
+        $fav->id_candidat=Auth::guard('candidate')->id();
+        $fav->id_offre=$request->id_offre;
+        $fav->save();
     }
     /**
      * Display the specified resource.
