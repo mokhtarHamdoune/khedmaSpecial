@@ -98,7 +98,7 @@
         <div class="col-lg-6 col-md-12 col-sm-12 col-12">
             <div class="header_btn search_btn jb_cover">
 
-                <a href="{{url('company_single/'.$user->id)}}">preview current state</a>
+                <a href="{{url('companies/'.$user->id)}}">preview current state</a>
             </div>
         </div>
 </form>

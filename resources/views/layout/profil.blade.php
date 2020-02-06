@@ -32,7 +32,14 @@
                                 <li><a href="pricing_plans.html"><i class="fas fa-tag"></i>pricing plans</a></li>
                             </ul>
                             <ul class="feedlist logout_link jb_cover">
-                                <li><a href="#"><i class="fas fa-power-off"></i> log out </a></li>
+                                <li><a href="{{route('logout')}}"
+                                    onclick="event.preventDefault();
+                                                  document.getElementById('logout-form').submit();"><i class="fas fa-power-off"></i>
+                                     {{ __('Logout') }}
+                                 </a></li>
+                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                     @csrf
+                                 </form>
                                 <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fas fa-trash-alt"></i>delete profile</a></li>
                             </ul>
                         </div>

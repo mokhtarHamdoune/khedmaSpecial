@@ -26,13 +26,13 @@
                         <div class="job_list_next recent_app_1">
                             <div class="header_btn download_btn_wrapper jb_cover">
                                 <ul>
-                                    <li><i class="fas fa-envelope"></i>&nbsp; {{$candidate->email}}</li>
                                     <li>
-                                        <a href="#"> <i class="fas fa-envelope"></i>send</a>
+                                        <a href="{{url('/candidate_single/'.$candidate->id)}}"><i class="fas fa-file-download"></i>check page</a>
+                                    </li>
+                                    <li>
                                     </li>
                                 </ul>
                             </div>
-
                         </div>
 
                     </div>

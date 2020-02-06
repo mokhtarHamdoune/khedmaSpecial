@@ -18,7 +18,7 @@
                                     <h4>{{$rec->name}}</h4>
 
                                     <ul>
-                                        <li><i class="flaticon-location-pointer"></i>&nbsp; Algeria</li>
+                                        <li><i class="flaticon-location-pointer"></i>&nbsp; {{$rec->country}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -157,6 +157,28 @@
                                     </ul>
                                 </div>
                             </div>
+                            <div class="jp_listing_overview_list_main_wrapper jb_cover">
+                                <div class="jp_listing_list_icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="jp_listing_list_icon_cont_wrapper">
+                                    <ul>
+                                        <li>Country:</li>
+                                    <li>{{$rec->country}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="jp_listing_overview_list_main_wrapper dcv jb_cover">
+                                <div class="jp_listing_list_icon">
+                                    <i class="fas fa-globe-asia"></i>
+                                </div>
+                                <div class="jp_listing_list_icon_cont_wrapper">
+                                    <ul>
+                                        <li>website:</li>
+                                        <li><a href="{{$rec->website}}">{{$rec->website}}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
 
                             <div class="header_btn search_btn news_btn overview_btn  jb_cover">
 
@@ -173,10 +195,10 @@
                                                         <div class="search_alert_box jb_cover">
 
                                                                 @csrf
-                                                            <div class="apply_job_form">
-                                                                <input type="text" name="name" placeholder="Name">
+                                                                <div class="contect_form3" style="width:100%">
+                                                                    <input type="text" name="name" placeholder="Name">
                                                             </div>
-                                                            <div class="apply_job_form">
+                                                            <div class="contect_form3" style="width:100%">
                                                                 <input type="text" name="Email" placeholder="Email">
                                                             </div>
                                                             <div class="apply_job_form">

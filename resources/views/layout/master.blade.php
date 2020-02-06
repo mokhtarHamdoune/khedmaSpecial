@@ -45,7 +45,7 @@
     <!-- Top Scroll End -->
     <!-- cp navi wrapper Start -->
     <nav class="cd-dropdown  d-block d-sm-block d-md-block d-lg-none d-xl-none">
-        <h2><a href="index.html"> <span><img src="{{asset('images/logo.png')}}" alt="img"></span></a></h2>
+        <h2><a href="{{route('home')}}"> <span><img src="{{asset('images/logo.png')}}" alt="img"></span></a></h2>
         <a href="#0" class="cd-close">Close</a>
         <ul class="cd-dropdown-content">
             <li>
@@ -169,7 +169,7 @@
     <div class="cp_navi_main_wrapper jb_cover">
         <div class="container-fluid">
             <div class="cp_logo_wrapper">
-                <a href="index.html">
+            <a href="{{route('home')}}">
                     <img src="{{asset('images/logo.png')}}" alt="logo">
                 </a>
             </div>

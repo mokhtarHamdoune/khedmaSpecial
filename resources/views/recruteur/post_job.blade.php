@@ -109,25 +109,30 @@
                     <div class="job_overview_header jb_cover">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="select_box">
+                                <div class="contect_form3">
                                     <label>country</label>
-                                    <select name="country">
-                                        <option value="Algerie" selected>Algerie</option>
-                                        <option value="france">france</option>
-                                        <option value="UK">UK</option>
-                                        <option value="germany">germany</option>
-
-                                    </select>
+                                    <input type="text" name="country" list="country_list" placeholder="Algerie">
+                                    <div class="select_box">
+                                        <datalist id="country_list">
+                                            <option value="Algerie" selected>Algerie</option>
+                                            <option value="france">france</option>
+                                            <option value="UK">UK</option>
+                                            <option value="germany">germany</option>
+                                        </datalist>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-12">
-                                <div class="select_box">
+                                <div class="contect_form3">
                                     <label>Wilaya</label>
-                                    <select name="city">
-                                        <option value="Alger">Alger</option>
-                                        <option value="Canstantine" selected>Constantine</option>
-                                        <option value="Tlemcen">Tlemcen</option>
-                                    </select>
+                                    <input type="text" name="city" list="city_list" placeholder="Tlemcen">
+                                    <div class="select_box">
+                                        <datalist id="city_list">
+                                            <option value="Alger">Alger</option>
+                                            <option value="Canstantine" selected>Constantine</option>
+                                            <option value="Tlemcen">Tlemcen</option>
+                                        </datalist>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-12">

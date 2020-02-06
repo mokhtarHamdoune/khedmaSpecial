@@ -33,11 +33,13 @@
                                 <a href="#">apply now !</a>
 
                             </div>
+                            @empty(!$employer)
                             @if(!$employer->offre()->where('offres.id','=',$offre->id)->get()->isempty())
                             <div class="header_btn search_btn news_btn overview_btn  jb_cover">
                                 <a href="{{url('edit_job/'.$offre->id)}}">Edit</a>
                             </div>
                             @endif
+                            @endempty
                         </div>
                     </div>
                 </div>

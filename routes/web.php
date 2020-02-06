@@ -49,19 +49,19 @@ Route::post('/sign_up','Auth\RegisterController@Role')->name('sign_up');
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 //restrict access
 Route::group(['middleware' => 'employer'], function () {
-    Route::get('/recruteur', 'RecruteurController@dashboardApplications');
+    Route::get('/recruteur', 'RecruteurController@dashboardApplications')->name('dash');
     Route::get('/edit_profile_recruteur', 'ProfileRecruteurController@index')->name('edit_profile_recruteur.index');
-    Route::get('/manage_jobs', 'ProfileRecruteurController@indexOffres');
-    Route::post('/edit_profile_recruteur/update', 'ProfileRecruteurController@update')->name('edit_profile_recruteur.update');
-    Route::post('/company_page/update', 'ProfileRecruteurController@updateInfos')->name('rec_infos');
+    Route::get('/manage_jobs', 'ProfileRecruteurController@indexOffres')->name('managejobsPage');
     Route::get('/company_page', 'ProfileRecruteurController@companyPage')->name('companyPage');
-    Route::get('/company_applications', 'RecruteurController@CompanyApplications');
-    Route::get('/company_spontane', 'RecruteurController@CompanySpontane');
-    Route::get('/messages', 'RecruteurController@messages');
-    Route::get('/post_job', 'RecruteurController@postNew');
+    Route::get('/company_applications', 'RecruteurController@CompanyApplications')->name('companyApp');
+    Route::get('/company_spontane', 'RecruteurController@CompanySpontane')->name('spontanePage');
+    Route::get('/messages', 'RecruteurController@messages')->name('messagesPage');
+    Route::get('/post_job', 'RecruteurController@postNew')->name('postJobPage');
     Route::get('/edit_job/{id}', 'RecruteurController@editJob');
     Route::get('/delete_job/{id}', 'RecruteurController@deleteJob');
     Route::get('/status/{id}', 'RecruteurController@status');
+    Route::post('/edit_profile_recruteur/update', 'ProfileRecruteurController@update')->name('edit_profile_recruteur.update');
+    Route::post('/company_page/update', 'ProfileRecruteurController@updateInfos')->name('rec_infos');
     Route::post('/year','RecruteurController@dashboardyear')->name('year');
     Route::post('/post_job/new','RecruteurController@postNewJob')->name('new_job');
     Route::post('/post_job/edit/{offre_id}','RecruteurController@editJobUpdate')->name('edit_job');

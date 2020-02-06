@@ -11,8 +11,10 @@ use App\FavoriteJobs;
 class CandidatController extends Controller
 {
     public function candidateSingle($id){
-        $candidate = Candidate::find($id);
-        return view('candidate_single', ['candidate' => $candidate]);
+        $candidat = Candidate::find($id);
+        $candidate = Auth::guard('candidate')->user();
+        $employer = Auth::guard('employer')->user();
+        return view('candidate_single', ['candidat'=>$candidat, 'candidate' => $candidate,'employer'=>$employer]);
     }
 
     public function sendMess(Request $request, $id)

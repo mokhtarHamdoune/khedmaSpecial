@@ -152,7 +152,7 @@ class RecruteurController extends Controller
 
         $chart = new SampleChart;
         $chart->labels($cities);
-        $chart->dataset('My dataset', 'pie', $values)->backgroundColor(['red','blue']);
+        $chart->dataset('My dataset', 'pie', $values)->backgroundColor(['red','blue','green','yellow','purple','orange','black','white','grey']);
         $chart->options([
         'scales' => [
             'xAxes' => [
@@ -292,7 +292,7 @@ class RecruteurController extends Controller
 
         $chart = new SampleChart;
         $chart->labels($cities);
-        $chart->dataset('My dataset', 'pie', $values)->backgroundColor(['red','blue']);
+        $chart->dataset('My dataset', 'pie', $values)->backgroundColor(['red','blue','green','yellow','purple','orange','black','white','grey']);
         $chart->options([
         'scales' => [
             'xAxes' => [
@@ -312,7 +312,7 @@ class RecruteurController extends Controller
         });
         $bar = new SampleChart;
         $bar->labels(['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','October','Novembre','Decembre']);
-        $bar->dataset('Offres', 'bar', $barvalues)->backgroundColor('purple');
+        $bar->dataset('Bars', 'bar', $barvalues)->backgroundColor('purple');
         //Bar Chart End
 
         //Line Chart Start
@@ -368,8 +368,8 @@ class RecruteurController extends Controller
         });
         $barcandidat = new SampleChart;
         $barcandidat->labels(['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','October','Novembre','Decembre']);
-        $barcandidat->dataset('Postule', 'bar', $barvaluesPostule)->backgroundColor('red');
-        $barcandidat->dataset('Spontane', 'bar', $barvaluesSpontan)->backgroundColor('blue');;
+        $barcandidat->dataset('Bars', 'bar', $barvaluesPostule)->backgroundColor('red');
+        $barcandidat->dataset('Bars', 'bar', $barvaluesSpontan)->backgroundColor('blue');;
         //Bar Chart End
 
         return view('recruteur.dashboard',['user' => $user,'employer'=>$employer, 'chart' => $chart,'bar' => $bar, 'line' => $line, 'barcandidat' => $barcandidat, 'emp' => $emp,'number'=>$number,'year'=>$year]);

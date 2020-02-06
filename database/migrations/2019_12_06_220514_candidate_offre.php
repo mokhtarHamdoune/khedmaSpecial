@@ -18,8 +18,6 @@ class CandidateOffre extends Migration
             $table->integer("candidate_id");
             $table->integer("offre_id");
             $table->integer("cv_id");
-            $table->boolean("apply");
-            $table->boolean("fav");
             $table->timestamps();
         });
     }

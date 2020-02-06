@@ -29,16 +29,13 @@
                             <div class="header_btn download_btn_wrapper jb_cover">
                                 <ul>
                                     <li>
-                                        <a href="#"><i class="fas fa-file-download"></i>download info</a>
+                                        <a href="{{url('/candidate_single/'.$candidate->id)}}"><i class="fas fa-file-download"></i>check page</a>
                                     </li>
                                     <li>
-                                        <a href="#"> <i class="fas fa-envelope"></i>send</a>
                                     </li>
                                 </ul>
                             </div>
-
                         </div>
-
                     </div>
 @endforeach
 @endif
